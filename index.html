@@ -24,12 +24,12 @@
        
         <!-- home page -->
         <main role='main'>
-            <div class="container text-center">
+            <div class="container">
                 <div class="jumbotron">
-                <h1 class="display-2">Mana Contact Manager</h1>
-                <p class="fs-5">An efficient and simple Contact Manager for managing your family and friends.</p>
+                    <h1 class="display-1">Mana Contact Manager</h1>
+                    <p class="fs-5">An efficient and simple Contact Manager for managing your family and friends.</p>
+                </div>
             </div>
-        </div>
         </main>
         <div class='container-fluid p-4'>
             <div class="parallax"></div>
@@ -41,5 +41,13 @@
             </div>
             <div class="parallax"></div>
         </div>
+        <footer>
+            <div id="footer-placement"></div>
+            <script>
+                $(function(){
+                    $('#footer-placement').load("nav.html footer")
+                })
+            </script>
+        </footer>
     </body>
 </html>

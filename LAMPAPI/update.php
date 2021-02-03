@@ -1,4 +1,5 @@
 <?php
+
 	$inData = getRequestInfo();
 	
 	$id = 0;
@@ -52,5 +53,5 @@
 		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
-	
+
 ?>
