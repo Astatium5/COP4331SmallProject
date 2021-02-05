@@ -12,7 +12,7 @@
         <link href="css/styles.css" rel="stylesheet">
     </head>
 
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         <header>
             <div id="nav-placement"></div>
             <script>
@@ -23,31 +23,34 @@
         </header>
        
         <!-- home page -->
-        <main role='main'>
+        <main class='flex-shrink-0'>
             <div class="container">
                 <div class="jumbotron">
                     <h1 class="display-1">Mana Contact Manager</h1>
                     <p class="fs-5">An efficient and simple Contact Manager for managing your family and friends.</p>
                 </div>
             </div>
-        </main>
-        <div class='container-fluid p-4'>
-            <div class="parallax"></div>
-            <div class="row">
-                <h3 class="display-6">All your contacts in one place.</h3>
-                <p class="lead">
-                Add your contacts manually, or import them from Google Contacts (Currently in Development).
-                </p>
+        
+            <div class='container p-4'>
+                <div class="parallax"></div>
+                <div class="row">
+                    <h3 class="display-6">All your contacts in one place.</h3>
+                    <p class="lead">
+                    Add your contacts manually, or import them from Google Contacts (Currently in Development).
+                    </p>
+                </div>
+                <div class="parallax"></div>
             </div>
-            <div class="parallax"></div>
-        </div>
-        <footer>
-            <div id="footer-placement"></div>
+        </main>
+        
+        <footer class="footer mt-auto py-3 bg-dark">
+            <div id="foot-placement"></div>
             <script>
                 $(function(){
-                    $('#footer-placement').load("nav.html footer")
-                })
+                    $('#foot-placement').load("nav.html footer");
+                });
             </script>
         </footer>
+   
     </body>
 </html>

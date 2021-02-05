@@ -18,17 +18,10 @@ var firstName = "";
 var lastName = "";
 
 function doLogin() {
-<<<<<<< HEAD
-    // let login = ;
-    let login = document.getElementById("loginName").nodeValue;
-    let password = document.getElementById("loginPassword").nodeValue;
-    let hash 
-=======
     userId = 0;
 	firstName = "";
     lastName = "";
     
->>>>>>> a1bf10a5de8de3f3673ea29adb0afbd5e7770820
     
     var login = document.getElementById("login").nodeValue;
     var password = document.getElementById("password").nodeValue;

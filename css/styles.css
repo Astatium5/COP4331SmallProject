@@ -48,12 +48,15 @@ a:hover {
 
 body, html {
     height: 100%;
-    padding: 60px;
     font-size: 1rem;
     line-height: 1.5;
     background-color: #282a36;
     background-color: var(--surface1, #E7FCFF);
 }
+
+main > .container {
+    padding: 70px 15px 0;
+  }
 
 .login {
     width: 60%;
@@ -104,14 +107,7 @@ body, html {
     background-color: #cee3ed;
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-}
+
 .parallax {
     /* The image used */
     background-image: url("./imgs/");
@@ -144,5 +140,4 @@ body, html {
       background:#d7dbee;
 
   }
-
   

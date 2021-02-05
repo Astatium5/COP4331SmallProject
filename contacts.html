@@ -11,7 +11,7 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
         <div id="nav-placement"></div>
         <script>
@@ -20,10 +20,10 @@
             });
         </script>
     </header>
-
-<!--seperates right side and left side-->
-<div class="container-fluid">
- <div class="row g-0">
+    <main class="flex-shrink-0">
+    <!--separates right side and left side-->
+    <div class="container-fluid">
+    <div class="row g-0">
 
     <!--left side of page: shows contact list/search contacts-->
     <div class="col-md-6 g-0">
@@ -85,7 +85,15 @@
        <div class="rightside"></div>
     </div>
  </div>   
-
+</main>
 </div>
+<footer class="footer mt-auto py-3 bg-dark">
+    <div id="foot-placement"></div>
+    <script>
+        $(function(){
+            $('#foot-placement').load("nav.html footer");
+        });
+    </script>
+</footer>
 </body>
 </html>

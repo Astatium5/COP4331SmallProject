@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" color-mode="light">
+<html lang="en" color-mode="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +7,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="css/styles.css">
-    <title>Contact Manager - Login</title>
-        
+    <title>Contact Manager - Login</title>  
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
         <div id="nav-placement"></div>
         <script>
@@ -20,20 +19,21 @@
             });
         </script>
     </header>
-    
+
     <!-- login page-->
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="display-4 text-center">Mana Contact Manager </h1>
+    <main class='flex-shrink-0'>
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="display-4 text-center">Mana Contact Manager</h1>
+            </div>
         </div>
-    </div>
     
-    <div class="container">
-        <p class="text-center fw-bold fs-5">Please Log In:</p>
-        <div class="login">
-            <form action="auth" method="POST">
-            <div class="form-group">
-                <input type="userName" class="form-control" id="login" placeholder="Username" required>
+        <div class="container">
+            <p class="text-center fw-bold fs-5">Please Log In:</p>
+            <div class="login">
+                <form action="auth" method="POST">
+                <div class="form-group">
+                    <input type="userName" class="form-control" id="login" placeholder="Username" required>
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" id="password" placeholder="Password" required>
@@ -42,33 +42,24 @@
                 <!-- #TODO Add remember me function -->
                     <input type="checkbox" checked="checked" name="remember">Remember me?
                     <span id="loginResult"></span>
-            </div>
-            </form>
+                </div>
+                </form>
 
-            <div class="signupbutton text-center">
-                <p class="text-center fs-6">Are you a new user?</p>
-                <a href="register.html">
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#SignUp">Sign Up Here!</button>
-                </a>
-            </div>
-            <!-- Modal Popup -->
-            <div class="modal fade" id="SignUp" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog" role="dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <!-- <h5 class="modal-title" id="signuplabel">Sign Up</h5> -->
-                            <button type="button" class="close" data-dismiss="modal" onclick="doRegister();"aria-label="Register">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="signup">
-                                <input type="text" id="loginName" placeholder="Username"/><br />
-                                <input type="password" id="loginPassword" placeholder="Password" /><br />
-                            </div>
-                        </div>
-                    </div>    
-        </div>
-    </div>
-
+                <div class="signupbutton text-center">
+                    <p class="text-center fs-6">Are you a new user?</p>
+                    <a href="register.html">
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#SignUp">Sign Up Here!</button>
+                    </a>
+                </div>
+        </div> 
+    </main>
+    <footer class="footer mt-auto py-3 bg-dark">
+        <div id="foot-placement"></div>
+        <script>
+            $(function(){
+                $('#foot-placement').load("nav.html footer");
+            });
+        </script>
+    </footer>
 </body>
 </html>
