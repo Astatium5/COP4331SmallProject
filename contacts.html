@@ -9,6 +9,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link href="css/styles.css" rel="stylesheet">
+    <script src="js/login.js"></script>
+    <script src="js/md5.js"></script>
+
+    <style>
+        .container{overflow: hidden;}
+        .tab{float: left;margin-left: 20px;}
+        .tab-2 input{display: block;margin-bottom: 10px;}
+    </style>
 </head>
 
 <body>
@@ -39,59 +47,23 @@
 </nav>
 
 <!--seperates right side and left side-->
-<div class="container-fluid">
+<div class="container">
  <div class="row g-0">
 
     <!--left side of page: shows contact list/search contacts-->
     <div class="col-md-6 g-0">
         <p class="text-center display-6">Search your contacts here!</p>
         <div class="leftside">
-
-            <!-- prints Greeting for user-->
-            <script>
-                $(document).ready(function(){
-                $("#login").text("Hello, " + login.val());
-            });
-            </script>
-
             <!--search bar-->
             <div class="input-group">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                <input type="search" class="form-control rounded" id="searchText" placeholder="Search for a contact" aria-label="Search"
                   aria-describedby="search-addon" />
                 <button type="button" class="btn btn-outline-primary" onclick="searchContact();">search</button>
-                <span id="contactSearchResut"></span>
-
-                <!--autocomplete-->
-                <script>
-                    $(function(){
-                        $("#firstName").autocomplete({
-                            source: ["Andrew", "Alex", "Dima", "Dorri", "Henry"],
-                            minLength: 1
-                        });
-                    });
-                </script>
             </div>
-
-            <!--show contact list (firstname lastname)-->
-            <div id = "contactList">
-              <script>
-                  $(document).ready(function(){
-                      // loops through all of the contacts in  the user's list
-                      var obj = jQuery.parseJSON(response);
-                      $.each(obj, function(index){
-                      console.log(index + ". ");
-                      index += 1;
-                        $.get("LAMPAPI/create.php", function(first, last){
-                        // gets and displays the firstname and lastname of the contact
-                        first = $("#firstName").val();
-                        last = $("#lastName").val();
-
-                        console.log(first + " " + last);
-                        });
-                      });
-                    });
-              </script>
-            </div>
+            <div id="contactSearchResult"></div>
+            <div id="contactList"></div>
+            <!--displays the contacts-->
+            <script>displayContacts();</script>
         </div>
     </div>
 
@@ -99,8 +71,22 @@
     <!-- has the options to edit or delete a contact-->
     <div class="col-md-6 g-0">
         <p class="text-center display-6">Edit and Delete contacts here!</p>
-       <div class="rightside"></div>
+       <div class="rightside">
+         <div class="form">
+            First Name: <input type="text" class="form-control" name="fname" id="newFirstName"></br>
+            Last Name: <input type="text" class="form-control" name="lname" id="newLastName"></br>
+            Phone Number: <input type="text" class="form-control" name="phoneNum" id="newPhone"></br>
+            Email Address: <input type="text" class="form-control" name="emailAddr" id="newEmail"></br>
+           
+            <button type="button" class="btn btn-outline-primary">Edit Contact</button>
+            <button type="button" class="btn btn-outline-primary">Delete Contact</button>
+          </div>
+       </div>
     </div>
+    <a href="addContact.html">
+    <button type="button" class="btn btn-outline-success" onclick="addContact();">Add new Contact</button>
+    </a>
+    <button type="button" class="btn btn-outline-danger" onclick="logout();">Log Out</button>
  </div>   
 
 </div>

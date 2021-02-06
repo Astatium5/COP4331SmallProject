@@ -8,6 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>
 
     <title>Contact Manager - Register</title>
 </head>
@@ -42,9 +44,23 @@
                 <label for="registerLast">Last Name: </label>
                 <input type="text" class="form-control" id="registerLast" placeholder="last Name" required>
             </div>
-            <button type="submit" class="btn btn-secondary" id="create-account" onclick="doRegister();">Create account</button>
-            </label>
+            <button type="submit" class="btn btn-secondary" id="create-account" onclick="doRegister()">Create account</button>
             <span id="registerResult"></span>
+
+            <script>
+                if (document.getElementById("registerName").length > 20)
+                  alert("Your username is too long");
+                
+                if (document.getElementById("registerPassword").length > 20)
+                  alert("Your password is too long");
+                
+                if (document.getElementById("registerFirst").length > 30)
+                  alert("Your first name is too long");
+    
+                if (document.getElementById("registerLast").length > 30)
+                  alert("Your last name is too long");
+            </script>
+        
         </div>
         </form>
     

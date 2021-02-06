@@ -1,28 +1,27 @@
 <?php
+    include 'util.php';
+    include 'classes/user.php';
     $inData = getRequestInfo();
-
-    $id = 0;
-    $firstName = "";
-    $lastName = "";
-
+    try {
+        $user = new User(0, "", "", $inData["login"], $inData["password"]);
+    } catch (Exception $e) {
+		echo 'Caught Exception: ', $e->getMessage(), "\n";
+		returnWithError($e->getMessage());
+    }
     $connection = new mysqli("localhost", "Team21", "COP433121Team", "COP4331");
-
     if ($connection->connect_error) {
         returnWithError($connection->connect_error);
     } else {
-        $sql = "SELECT uid, firstName, lastName FROM Users where Login='" . $inData["login"] . "' and Password='" . $inData["password"] . "'";
+        $sql = "SELECT uid, firstName, lastName FROM Users where 
+        login=`" . $user.get_login() . "` and password=`" . $user.get_password() . "`;";
         $result = $connection->query($sql);
-
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $firstName = $row["firstName"];
-            $lastName = $row["lastName"];
-            $id = $row["uid"];
-
-
-            returnWithInfo($firstName, $lastName, $id);
-        } else returnWithError("No record found");
-
+            $user.set_firstName($row["firstName"]);
+            $user.set_lastName($row["lastName"]);
+            $user.set_uid($row["uid"]);
+            returnWithInfo($user.get_firstName(), $user.get_lastName(), $user.get_uid());
+        } else returnWithError("The account with the given login and password does not exist.");
         $connection->close();
     }
 
