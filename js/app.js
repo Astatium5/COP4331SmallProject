@@ -31,7 +31,7 @@ function doLogin() {
 
     var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
 
-    var url = urlBase + '/Login.' + extension;
+    var url = urlBase + '/login' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -95,9 +95,9 @@ function doRegister() {
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.onreadystatechange = function() 
+		xhr.onreadystatechange = function()
 		{
-			if (this.readyState == 4 && this.status == 200) 
+			if (this.readyState == 4 && this.status == 200)
 			{
                 window.location.href = "contacts.html";
 			}
@@ -133,7 +133,7 @@ function addContact()
 					   + '", "phone" : "' + phone + '", "email" : "' + email + '", "address" : "' + address
 					   + '", "city": "' + city + '", "state" : "' + state + '", "zip" : "' + zipCode + '"}';
 
-	var url = urlBase + '/AddContact.' + extension;
+	var url = urlBase + '/create' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -164,7 +164,7 @@ function searchContact()
 	var contactList = "";
 	
 	var jsonPayload = '{"search" : "' + srch + '","userId" : ' + userId + '}';
-	var url = urlBase + '/Contacts.' + extension;
+	var url = urlBase + '/search' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
