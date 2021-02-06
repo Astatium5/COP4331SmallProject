@@ -11,10 +11,10 @@
 	function returnWithError($err) {
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
-    }
+    	}
     
-    function returnWithInfo($firstName, $lastName, $id) {
-        $returnValue = '{"id": ' . $id . ', "firstName": ' . $firstName . ', "lastName": ' . $lastName . '"error":""'};
-        sendResultInfoAsJSON($returnValue);
-    }
+    	function returnWithInfo($firstName, $lastName, $id) {
+        	$returnValue = '{"id": ' . $id . ', "firstName": ' . $firstName . ', "lastName": ' . $lastName . '"error":""'};
+        	sendResultInfoAsJSON($returnValue);
+    	}
 ?>
