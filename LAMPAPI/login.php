@@ -1,9 +1,6 @@
 <?php
-<<<<<<< HEAD
     include 'util.php';
     include 'classes/user.php';
-=======
->>>>>>> a1bf10a5de8de3f3673ea29adb0afbd5e7770820
 
     $inData = getRequestInfo();
 
@@ -35,28 +32,4 @@
 
         $connection->close();
     }
-<<<<<<< HEAD
-=======
-
-    function getRequestInfo() {
-        return json_decode(file_get_contents('php://input'), true);
-    }
-
-    function sendResultInfoAsJSON($obj) {
-        header('Content-type: application/json');
-        echo $obj;
-    }
-
-    function returnWithError($error) {
-        $returnValue = '{"id": ' . ', "firstName": ' . ', "lastName": ' . ', "error": ' . $error;
-        sendResultInfoAsJSON($returnValue);
-    }
-
-    function returnWithInfo($firstName, $lastName, $id) {
-        $returnValue = '{"id": ' . $id . ', "firstName": ' . $firstName . ', "lastName": ' . $lastName . '"error":""'};
-        sendResultInfoAsJSON($returnValue);
-    }
-
-
->>>>>>> a1bf10a5de8de3f3673ea29adb0afbd5e7770820
 ?>
