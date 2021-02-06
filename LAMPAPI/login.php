@@ -1,17 +1,14 @@
 <?php
-<<<<<<< HEAD
     include 'util.php';
     include 'classes/user.php';
-=======
->>>>>>> a1bf10a5de8de3f3673ea29adb0afbd5e7770820
 
     $inData = getRequestInfo();
 
     try {
         $user = new User(0, "", "", $inData["login"], $inData["password"]);
     } catch (Exception $e) {
-		echo 'Caught Exception: ', $e->getMessage(), "\n";
-		returnWithError($e->getMessage());
+	echo 'Caught Exception: ', $e->getMessage(), "\n";
+	returnWithError($e->getMessage());
     }
 
     $connection = new mysqli("localhost", "Team21", "COP433121Team", "COP4331");
@@ -35,28 +32,4 @@
 
         $connection->close();
     }
-<<<<<<< HEAD
-=======
-
-    function getRequestInfo() {
-        return json_decode(file_get_contents('php://input'), true);
-    }
-
-    function sendResultInfoAsJSON($obj) {
-        header('Content-type: application/json');
-        echo $obj;
-    }
-
-    function returnWithError($error) {
-        $returnValue = '{"id": ' . ', "firstName": ' . ', "lastName": ' . ', "error": ' . $error;
-        sendResultInfoAsJSON($returnValue);
-    }
-
-    function returnWithInfo($firstName, $lastName, $id) {
-        $returnValue = '{"id": ' . $id . ', "firstName": ' . $firstName . ', "lastName": ' . $lastName . '"error":""'};
-        sendResultInfoAsJSON($returnValue);
-    }
-
-
->>>>>>> a1bf10a5de8de3f3673ea29adb0afbd5e7770820
 ?>
