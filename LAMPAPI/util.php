@@ -1,24 +1,33 @@
 <?php
+	// getting data from JSON sent from front end
 	function getRequestInfo() {
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
+	// sending the information from back end to front end in the JSON format
 	function sendResultInfoAsJSON($obj) {
 		header('Content-type: application/json');
 		echo $obj;
 	}
 	
+	// returning from back end with error
 	function returnWithError($err) {
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson($retValue);
     }
-    
-    function returnWithInfoUser($firstName, $lastName, $uid) {
-		$returnValue = '{"id": "' . $uid . '", "firstName": "' . $firstName . '", "lastName": "' . 
-						$lastName . '", error":""}';
-        sendResultInfoAsJSON($returnValue);
+	
+	// sends the info about a user in a JSON package to front end
+    function returnWithInfoUser($login, $firstName, $lastName, $uid) {
+		$obj->login = $login;
+		$obj->uid = $uid;
+		$obj->firstName = $firstName;
+		$obj->lastName = $lastName;
+
+		$json = json_encode($obj);
+        sendResultInfoAsJSON($json);
 	}
 	
+	// sends the info about a contact in a JSON package to front end
 	function returnWithInfoContact($uid, $cid, $firstName, $lastName, $phone, $email,
 								   $address, $city, $state, $zip) {
 		$obj->uid = $uid;
@@ -33,9 +42,10 @@
 		$obj->zip = $zip;
 
 		$json = json_encode($obj);
-		sendResultInfoAsJson($returnValue);
+		sendResultInfoAsJson($json);
 	}
 
+	// creates a JSON with info about a contact
 	function createJSONContact($uid, $cid, $firstName, $lastName, $phone, $email,
 							   $address, $city, $state, $zip) {
 		$obj->uid = $uid;

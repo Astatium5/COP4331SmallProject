@@ -26,7 +26,7 @@
             $user.set_lastName($row["lastName"]);
             $user.set_uid($row["uid"]);
 
-            returnWithInfo($user.get_firstName(), $user.get_lastName(), $user.get_uid());
+            returnWithInfoUser($user.get_login(), $user.get_firstName(), $user.get_lastName(), $user.get_uid());
         } else returnWithError("The account with the given login and password does not exist.");
 
         $connection->close();
