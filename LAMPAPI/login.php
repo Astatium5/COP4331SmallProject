@@ -7,8 +7,8 @@
     try {
         $user = new User(0, "", "", $inData["login"], $inData["password"]);
     } catch (Exception $e) {
-	echo 'Caught Exception: ', $e->getMessage(), "\n";
-	returnWithError($e->getMessage());
+	    echo 'Caught Exception: ', $e->getMessage(), '\n';
+	    returnWithError($e->getMessage());
     }
 
     $connection = new mysqli("localhost", "Team21", "COP433121Team", "COP4331");
@@ -25,7 +25,6 @@
             $user.set_firstName($row["firstName"]);
             $user.set_lastName($row["lastName"]);
             $user.set_uid($row["uid"]);
-
 
             returnWithInfo($user.get_firstName(), $user.get_lastName(), $user.get_uid());
         } else returnWithError("The account with the given login and password does not exist.");
