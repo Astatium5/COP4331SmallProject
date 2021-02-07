@@ -31,7 +31,7 @@ function doLogin() {
     document.getElementById("loginResult").innerHTML = "";
 
     var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
-
+    // var jsonPayload = {"login": login.value, "password": hash.value};
     var url = urlBase + '/login.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -43,6 +43,7 @@ function doLogin() {
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
+				// the json that is recovered is converted to a js object
 				var jsonObject = JSON.parse( xhr.responseText );
 				
 				// gets the user id of the user that is logged in
@@ -81,6 +82,10 @@ function doRegister() {
     let first = document.getElementById("registerFirst").value;
     let last = document.getElementById("registerLast").value;
 	let hash = md5( password );
+
+	// creates a json and converts the JSON data to a string
+	let jsonPay = {login: login.value, password: hash.value, firstName: first.value, lastName: last.value};
+	let jsonString = JSON.stringify(jsonPay);
 	
 	// creates a xhr object
 	let url = urlBase + '/register.' + extension;
@@ -103,11 +108,8 @@ function doRegister() {
 		}
 	};
 		
-	// converts the JSON data to a string
-	let jsonPay = JSON.stringify({login:login.value, password:hash.value, firstName:first.value, lastName:last.value});
-		
-	// sends the data with the request
-	xhr.send(jsonPay);
+	// sends the json string to the server with the request
+	xhr.send(jsonString);
 }
 
 function displayContacts()
@@ -162,30 +164,40 @@ function addContact()
 	var state = document.getElementById("state").value;
 	var zipCode = document.getElementById("zip").value;
 
-	document.getElementById("userAddResult").innerHTML = "";
+	// document.getElementById("userAddResult").innerHTML = "";
 	
 	// var jsonPayload = '{"uid" : ' + userId + '", "firstName" : "' + firstName + '", "lastName" : "' + lastName
 	// 				   + '", "phone" : "' + phone + '", "email" : "' + email + '", "address" : "' + address
 	// 				   + '", "city": "' + city + '", "state" : "' + state + '", "zip" : "' + zipCode + '"}';
 	
-	let jsonPay = JSON.stringify({firstName:firstName.value, lastName:lastName.value, phone:phone.value, email:email.value, address:address.value
-					            ,city:city.value, state:state.value, zip:zipCode.value});
+	// creates a json object to send to the server
+	let jsonPay = {firstName: firstName.value, lastName: lastName.value, phone: phone.value, email: email.value, address: address.value
+				   , city: city.value, state: state.value, zip: zipCode.value};
+	
+	//converts the json object to a string
+    let jsonString = JSON.stringify(jsonPay);
 
 	var url = urlBase + '/create.' + extension;
 	
+	// creates new request
 	var xhr = new XMLHttpRequest();
+
+	// opens connection to the server 
 	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	xhr.setRequestHeader("Content-type", "application/json");
 	try
 	{
 		xhr.onreadystatechange = function() 
 		{
+			// if successful, we will be notified that a new contact was added
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				document.getElementById("userAddResult").innerHTML = "A new contact has been added!";
 			}
 		};
-		xhr.send(jsonPay);
+
+		// sends the json string with the request
+		xhr.send(jsonString);
 	}
 	catch(err)
 	{
@@ -197,14 +209,23 @@ function addContact()
 // user searches for a contact
 function searchContact()
 {
+	// the search that the user makes in the UI
     var srch = document.getElementById("searchText").value;
+	// The result of the search (success or failure)
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
 	var contactList = "";
+
+	// creates the search json that we want to send to the server
 	var jsonPayload = '{"search" : "' + srch + '","userId" : ' + userId + '}';
+	
+	// creates the url link of the server
 	var url = urlBase + '/search.' + extension;
 	
+	// creates the request to link to server
 	var xhr = new XMLHttpRequest();
+	
+	// opens a connection to the server
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
@@ -212,8 +233,11 @@ function searchContact()
 		xhr.onreadystatechange = function() 
 		{
 			if (xhr.readyState == 4 && xhr.status == 200) 
-			{
+			{   
+				// if a success, we gwet msg that the contacts are found
 				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
+				
+				// turns the json string retrieved into a js object
 				var jsonObject = JSON.parse( xhr.responseText );
 				
 				for( var i=0; i<jsonObject.results.length; i++ )
@@ -235,6 +259,57 @@ function searchContact()
 		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 
+}
+
+function editContact()
+{
+	
+    var firstName = document.getElementById("fullName").value;
+	var lastName = document.getElementById("fullName").value;
+	var phone = document.getElementById("phone").value;
+	var email = document.getElementById("eMail").value;
+	var address = document.getElementById("Street").value;
+	var city = document.getElementById("ciTy").value;
+	var state = document.getElementById("sTate").value;
+	var zipCode = document.getElementById("zIp").value;
+
+	document.getElementById("updatedContactInfo").innerHTML = "";
+	
+	// let jsonPay = JSON.stringify({firstName:firstName.value, lastName:lastName.value, phone:phone.value, email:email.value, address:address.value
+					            // ,city:city.value, state:state.value, zip:zipCode.value});
+
+	
+	var jsonPayload = '{"firstName" : "' + firstName + '", "lastName" : "' + lastName
+						+ '", "phone" : "' + phone + '", "email" : "' + email + '", "address" : "' + address
+						+ '", "city": "' + city + '", "state" : "' + state + '", "zip" : "' + zipCode + '"}';
+							
+	var url = urlBase + '/update.' + extension;
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				// the json object is retrieved and converted to a js object
+				document.getElementById("updatedContactInfo").innerHTML = "Your contact has been updated!";
+			}
+		};
+		xhr.send(jsonPay);
+	}
+	catch(err)
+	{
+		document.getElementById("updatedContactInfo").innerHTML = err.message;
+	}
+
+}
+
+function deleteContact()
+{
+	
 }
 
 function isLoggedIn () {

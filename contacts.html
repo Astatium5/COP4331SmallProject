@@ -9,14 +9,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link href="css/styles.css" rel="stylesheet">
-    <script src="js/login.js"></script>
+    <script src="js/appFunctions.js"></script>
     <script src="js/md5.js"></script>
-
-    <style>
-        .container{overflow: hidden;}
-        .tab{float: left;margin-left: 20px;}
-        .tab-2 input{display: block;margin-bottom: 10px;}
-    </style>
 </head>
 
 <body>
@@ -61,7 +55,10 @@
                 <button type="button" class="btn btn-outline-primary" onclick="searchContact();">search</button>
             </div>
             <div id="contactSearchResult"></div>
-            <div id="contactList"></div>
+            <p id="contactList"></p>
+            <a href="addContact.html">
+                <button type="button" class="btn btn-outline-success" id="addContactButton"  onclick="addContact();">Add new Contact</button>
+                </a>
             <!--displays the contacts-->
             <script>displayContacts();</script>
         </div>
@@ -72,7 +69,7 @@
     <div class="col-md-6 g-0">
         <p class="text-center display-6">Edit and Delete contacts here!</p>
        <div class="rightside">
-         <div class="form">
+         <!-- <div class="form">
             First Name: <input type="text" class="form-control" name="fname" id="newFirstName"></br>
             Last Name: <input type="text" class="form-control" name="lname" id="newLastName"></br>
             Phone Number: <input type="text" class="form-control" name="phoneNum" id="newPhone"></br>
@@ -81,13 +78,13 @@
             <button type="button" class="btn btn-outline-primary">Edit Contact</button>
             <button type="button" class="btn btn-outline-primary">Delete Contact</button>
           </div>
-       </div>
+       </div> -->
     </div>
-    <a href="addContact.html">
-    <button type="button" class="btn btn-outline-success" onclick="addContact();">Add new Contact</button>
-    </a>
-    <button type="button" class="btn btn-outline-danger" onclick="logout();">Log Out</button>
- </div>   
+    
+    <div class="d-grid gap-2">
+    <button type="button" class="btn btn-outline-danger" id="logOutButton" onclick="logout();">Log Out</button>
+    </div>
+</div>   
 
 </div>
 </body>
