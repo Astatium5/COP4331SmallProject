@@ -5,8 +5,8 @@
 	$inData = getRequestInfo();
 	
 	try {
-		$user = new User(0, $inData["registerFirst"], $inData["registerLast"], 
-						$inData["registerName"], $inData["registerPassword"]);
+		$user = new User(0, $inData["firstName"], $inData["lastName"], 
+						$inData["login"], $inData["password"]);
 	} catch (Exception $e) {
 		echo 'Caught Exception: ', $e->getMessage(), "\n";
 		returnWithError($e->getMessage());
