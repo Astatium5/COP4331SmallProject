@@ -51,7 +51,7 @@ function doLogin() {
 		
 		xhr.send(jsonPayload);
 	} catch(err) {
-		document.getElementById("colorAddResult").innerHTML = err.message;
+		document.getElementById("loginResult").innerHTML = err.message;
 	}
 	
 }
@@ -68,7 +68,7 @@ function doRegister() {
     const last = document.getElementById("registerLast").value;
 	const hash = md5(password);
 	
-	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("registerContactResult").innerHTML = "";
 
 	let obj = new Object();
 	obj.login = login;
@@ -92,7 +92,7 @@ function doRegister() {
 		
 		xhr.send(jsonPayload);
 	} catch(err) {
-		document.getElementById("colorAddResult").innerHTML = err.message;
+		document.getElementById("registerContactResult").innerHTML = err.message;
 	}
 	
 }
@@ -156,7 +156,7 @@ function addContact() {
 	const state = document.getElementById("state").value;
 	const zipCode = document.getElementById("zip").value;
 
-	document.getElementById("userAddResult").innerHTML = "";
+	document.getElementById("createContactResult").innerHTML = "";
 	
 	let obj = new Object();
 	obj.uid = userId;
@@ -170,7 +170,7 @@ function addContact() {
 	obj.zip = zipCode;
 
 	const jsonPayload = JSON.stringify(obj);
-	const url = urlBase + '/AddContact' + extension;
+	const url = urlBase + '/create' + extension;
 	
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -179,17 +179,19 @@ function addContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("userAddResult").innerHTML = "A new contact has been added!";
+				document.getElementById("createContactResult").innerHTML = "A new contact has been added!";
 			}
 		};
 		xhr.send(jsonPayload);
 	} catch(err) {
-		document.getElementById("colorAddResult").innerHTML = err.message;
+		document.getElementById("createContactResult").innerHTML = err.message;
 	}
 	
 }
 
-function updateContact() {
+// update contact
+function updateContact() 
+{
 	
 }
 
@@ -214,7 +216,7 @@ function searchContact() {
 				let jsonObject = JSON.parse(xhr.responseText);
 				
 				for (let i = 0; i < jsonObject.results.length; i++) {
-					colorList += jsonObject.results[i];
+					contactList += jsonObject.results[i];
 
 					if (i < jsonObject.results.length - 1) {
 						contactList += "<br />\r\n";
@@ -228,5 +230,4 @@ function searchContact() {
 	} catch(err) {
 		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
-
 }
