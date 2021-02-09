@@ -14,17 +14,13 @@
 	
 	$conn = new mysqli("localhost", "Team21", "COP433121Team", "COP4331");
 
-	if ($conn->connect_error) 
-	{
+	if ($conn->connect_error) {
 		returnWithError($conn->connect_error);
-	} 
-	else
-	{
+	} else {
 		$sql = "insert into USERS (firstName, lastName, login, password) VALUES (`" . $user.get_firstName() . 
 		"`, `". $user.get_lastName() . "`, `" . $user.get_login() . "`, `" . $user.get_password() . "`)";
 
-		if($result = $conn->query($sql) != TRUE)
-		{
+		if($result = $conn->query($sql) != TRUE) {
 			returnWithError($conn->error);
 		}
 		

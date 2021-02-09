@@ -6,37 +6,36 @@ let firstName = "";
 let lastName = "";
 
 // login
-function doLogin()
-{
+function doLogin() {
 	userId = 0;
 	firstName = "";
 	lastName = "";
 	
-	var login = document.getElementById("loginName").value;
-	var password = document.getElementById("loginPassword").value;
-	var hash = md5( password );
+	const login = document.getElementById("loginName").value;
+	const password = document.getElementById("loginPassword").value;
+	const hash = md5(password);
 	
 	document.getElementById("loginResult").innerHTML = "";
 
-	const jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
-	// var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
-	const url = urlBase + '/Login' + extension;
+	let obj = new Object();
+	obj.login = login;
+	obj.password = hash;
 
-	const xhr = new XMLHttpRequest();
+	const jsonPayload = JSON.stringify(obj);
+	const url = urlBase + '/login' + extension;
+
+	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				var jsonObject = JSON.parse( xhr.responseText );
+
+	try {
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				const jsonObject = JSON.parse(xhr.responseText);
 		
 				userId = jsonObject.id;
 		
-				if( userId < 1 )
-				{
+				if (userId < 1) {
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
@@ -51,17 +50,14 @@ function doLogin()
 		};
 		
 		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
+	} catch(err) {
 		document.getElementById("colorAddResult").innerHTML = err.message;
 	}
 	
 }
 
 // register
-function doRegister()
-{
+function doRegister() {
 	userId = 0;
 	firstName = "";
 	lastName = "";
@@ -70,36 +66,32 @@ function doRegister()
     const password = document.getElementById("registerPassword").value;
     const first = document.getElementById("registerFirst").value;
     const last = document.getElementById("registerLast").value;
-	const hash = md5( password );
+	const hash = md5(password);
 	
 	document.getElementById("loginResult").innerHTML = "";
 
-	const jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '", "first" : "' + first + '", "last" : "' + last + '"}';
+	let obj = new Object();
+	obj.login = login;
+	obj.password = hash;
+	obj.firstName = first;
+	obj.lastName = last;
 
-	// var dat = {login:login, password:hash, first:firstName, last:lastName};
-	// var jsonPay = JSON.stringify(dat);
+	const jsonPayload = JSON.stringify(obj);
+	const url = urlBase + '/register' + extension;
 
-	// var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
-	var url = urlBase + '/register' + extension;
-
-	var xhr = new XMLHttpRequest();
+	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
+
+	try {
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
                 window.location.href = "contacts.html";
-                
-			}
+            }
 		};
 		
 		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
+	} catch(err) {
 		document.getElementById("colorAddResult").innerHTML = err.message;
 	}
 	
@@ -170,28 +162,32 @@ function addContact()
 
 	document.getElementById("userAddResult").innerHTML = "";
 	
-	const jsonPayload = '{"uid" : ' + userId + '", "firstName" : "' + firstName + '", "lastName" : "' + lastName
-					   + '", "phone" : "' + phone + '", "email" : "' + email + '", "address" : "' + address
-					   + '", "city": "' + city + '", "state" : "' + state + '", "zip" : "' + zipCode + '"}';
+	let obj = new Object();
+	obj.uid = userId;
+	obj.firstName = firstName;
+	obj.lastName = lastName;
+	obj.phone = phone;
+	obj.email = email;
+	obj.address = address;
+	obj.city = city;
+	obj.state = state;
+	obj.zipCode = zip;
 
+	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/AddContact' + extension;
 	
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
+
+	try {
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById("userAddResult").innerHTML = "A new contact has been added!";
 			}
 		};
 		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
+	} catch(err) {
 		document.getElementById("colorAddResult").innerHTML = err.message;
 	}
 	
@@ -204,31 +200,28 @@ function updateContact() {
 // search for a contact
 function searchContact()
 {
-	var srch = document.getElementById("searchText").value;
+	const srch = document.getElementById("searchText").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
-	var contactList = "";
+	let contactList = "";
 	
-	var jsonPayload = '{"search" : "' + srch + '","uid" : ' + userId + '}';
-	var url = urlBase + '/SearchContacts' + extension;
+	const jsonPayload = '{"search" : "' + srch + '","uid" : ' + userId + '}';
+	const url = urlBase + '/search' + extension;
 	
-	var xhr = new XMLHttpRequest();
+	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
+
+	try {
+		xhr.onreadystatechange = function()  {
+			if (this.readyState == 4 && this.status == 200)  {
 				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
-				var jsonObject = JSON.parse( xhr.responseText );
+				let jsonObject = JSON.parse(xhr.responseText);
 				
-				for( var i=0; i<jsonObject.results.length; i++ )
-				{
+				for(let i = 0; i < jsonObject.results.length; i++) {
 					colorList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
-					{
+
+					if(i < jsonObject.results.length - 1){
 						contactList += "<br />\r\n";
 					}
 				}
@@ -237,9 +230,7 @@ function searchContact()
 			}
 		};
 		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
+	} catch(err) {
 		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 
