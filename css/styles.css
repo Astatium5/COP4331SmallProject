@@ -1,5 +1,4 @@
 :root[color-mode="light"] {
-    background-color: #E7FCFF;
     --dark: #4A4453;
 }
 
@@ -30,8 +29,7 @@ a {
     display: block;
     padding: 8px;
     color: #6272a4;
-    text-decoration: none;
-    
+    text-decoration: none; 
 }
 
 a:link {
@@ -58,10 +56,17 @@ main > .container {
     padding: 70px 15px 0;
   }
 
-.login {
-    width: 60%;
+.login, .image {
+    min-height: 100vh;
     margin: 0 auto;
 }
+
+.bg-image {
+    background-image: url("../imgs/castle/118Z_2012.w017.n001.334B.p15.334.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 45% 50%;
+  }
 
 .login input[type="password"],
 .login input[type="username"] {
@@ -72,6 +77,27 @@ main > .container {
     box-sizing: border-box;
 }
 
+.form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .form-label-group > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    line-height: 1;
+    color: #495057;
+    cursor: text;
+    /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: .2rem;
+    transition: all .1s ease-in-out;  
+  }
+  
 .login button[type="submit"] {
     width: 100%;
     padding: 10px;
@@ -103,41 +129,5 @@ main > .container {
 
 .jumbotron {
     padding: 3rem;
-    
     background-color: #cee3ed;
 }
-
-
-.parallax {
-    /* The image used */
-    background-image: url("./imgs/");
-  
-    /* Set a specific height */
-    min-height: 100%; 
-  
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  @media only screen and (max-device-width: 1366px) {
-    .parallax {
-      background-attachment: scroll;
-    }
-  }
-   
-  .leftside{
-      height:100vh;
-      width:100%;
-      background: #cee3ed;
-  }
-  
-  .rightside{
-      height:100vh;
-      width:100%;
-      background:#d7dbee;
-
-  }
-  
