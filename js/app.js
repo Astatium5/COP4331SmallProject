@@ -97,16 +97,14 @@ function doRegister() {
 	
 }
 
-function saveCookie()
-{
-	var minutes = 20;
-	var date = new Date();
+function saveCookie() {
+	const minutes = 20;
+	const date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));	
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
-function readCookie()
-{
+function readCookie() {
 	userId = -1;
 	var data = document.cookie;
 	var splits = data.split(",");
@@ -139,8 +137,7 @@ function readCookie()
 }
 
 // logout
-function doLogout()
-{
+function doLogout() {
 	userId = 0;
 	firstName = "";
 	lastName = "";
@@ -149,8 +146,7 @@ function doLogout()
 }
 
 // add a contact 
-function addContact()
-{
+function addContact() {
 	const firstName = document.getElementById("contactFirstName").value;
 	const lastName = document.getElementById("contactLastName").value;
 	const phone = document.getElementById("phone").value;
@@ -171,7 +167,7 @@ function addContact()
 	obj.address = address;
 	obj.city = city;
 	obj.state = state;
-	obj.zipCode = zip;
+	obj.zip = zipCode;
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/AddContact' + extension;
@@ -198,8 +194,7 @@ function updateContact() {
 }
 
 // search for a contact
-function searchContact()
-{
+function searchContact() {
 	const srch = document.getElementById("searchText").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
@@ -218,10 +213,10 @@ function searchContact()
 				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
 				let jsonObject = JSON.parse(xhr.responseText);
 				
-				for(let i = 0; i < jsonObject.results.length; i++) {
+				for (let i = 0; i < jsonObject.results.length; i++) {
 					colorList += jsonObject.results[i];
 
-					if(i < jsonObject.results.length - 1){
+					if (i < jsonObject.results.length - 1) {
 						contactList += "<br />\r\n";
 					}
 				}
