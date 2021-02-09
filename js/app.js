@@ -19,8 +19,7 @@ function doLogin()
 	document.getElementById("loginResult").innerHTML = "";
 
 	const jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
-	// var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
-	const url = urlBase + '/Login' + extension;
+	const url = urlBase + '/login' + extension;
 
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -76,10 +75,6 @@ function doRegister()
 
 	const jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '", "first" : "' + first + '", "last" : "' + last + '"}';
 
-	// var dat = {login:login, password:hash, first:firstName, last:lastName};
-	// var jsonPay = JSON.stringify(dat);
-
-	// var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
 	var url = urlBase + '/register' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -174,7 +169,7 @@ function addContact()
 					   + '", "phone" : "' + phone + '", "email" : "' + email + '", "address" : "' + address
 					   + '", "city": "' + city + '", "state" : "' + state + '", "zip" : "' + zipCode + '"}';
 
-	const url = urlBase + '/AddContact' + extension;
+	const url = urlBase + '/create' + extension;
 	
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -197,7 +192,9 @@ function addContact()
 	
 }
 
-function updateContact() {
+// Update a contact
+function updateContact() 
+{
 	
 }
 
@@ -210,7 +207,7 @@ function searchContact()
 	var contactList = "";
 	
 	var jsonPayload = '{"search" : "' + srch + '","uid" : ' + userId + '}';
-	var url = urlBase + '/SearchContacts' + extension;
+	var url = urlBase + '/search' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
