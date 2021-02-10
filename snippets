@@ -20,3 +20,36 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+    <div class="row">
+                <div class="col-lg-6 align-items-center"></div>
+                <div class="col-lg-6 align-items-center">
+                    <svg class="icon" height="30%" preserveaspectratio="true" xmlns="./potion.svg"></svg>
+                    <p class="text-center fw-bold fs-5">Please Log In:</p>
+                    <div class="login">
+                        <form action="auth" method="POST">
+                    <div class="form-group">
+                    <input type="userName" class="form-control" id="login" placeholder="Username" required>
+                </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark" onclick="doLogin();">Login</button>
+                    <!-- #TODO Add remember me function -->
+                    <input type="checkbox" checked="checked" name="remember">Remember me?
+                    <span id="loginResult"></span>
+                </div>
+                </form>
+                <div class="signupbutton text-center">
+                    <p class="text-center fs-6">Are you a new user?</p>
+                    <a href="register.html">
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#SignUp">Sign Up Here!</button>
+                    </a>
+                </div>
+            </div>
+            </div>
+        </div> 

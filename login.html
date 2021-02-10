@@ -22,39 +22,41 @@
 
     <!-- login page-->
     <main class='flex-shrink-0'>
-        <div class="container">
-                <h1 class="display-4 text-center">Mana Contact Manager</h1>
-        </div>
-    
-        <div class="container align-items-center">
-            <div class="row">
-                <div class="col-lg-6 align-items-center"></div>
-                <div class="col-lg-6 align-items-center">
-                    <svg class="icon" height="30%" preserveaspectratio="true" xmlns="./potion.svg"></svg>
-                    <p class="text-center fw-bold fs-5">Please Log In:</p>
-                    <div class="login">
-                        <form action="auth" method="POST">
-                    <div class="form-group">
-                    <input type="userName" class="form-control" id="login" placeholder="Username" required>
-                </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+                <div class="col-md-8 col-lg-6">
+                    <div class="login d-flex align-items-center py-5">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <h3 class="display-5 login-heading text-center">Mana</h1>
+                                <h3 class="login-heading mb-4 text-center">Welcome back!</h3>
+                                <form action="auth" method="POST">
+                                    <div class="form-label-group">
+                                        <input type="userName" class="form-control" id="login" placeholder="Username" required autofocus>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                    </div>
+                                    <button type="submit" class="btn-primary btn btn-block btn-dark text-uppercase font-weight-bold btn-login mb-2" onclick="doLogin();">Login</button>
+                                    <!-- #TODO Add remember me function -->
+                                    <div class="custom-checkbox mb-3">
+                                    <input type="checkbox" checked="checked" name="remember">Remember me</input>
+                                    <span id="loginResult"></span>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                  <a class="small" href="register.html">New User?</a>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-dark" onclick="doLogin();">Login</button>
-                    <!-- #TODO Add remember me function -->
-                    <input type="checkbox" checked="checked" name="remember">Remember me?
-                    <span id="loginResult"></span>
-                </div>
-                </form>
-                <div class="signupbutton text-center">
-                    <p class="text-center fs-6">Are you a new user?</p>
-                    <a href="register.html">
-                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#SignUp">Sign Up Here!</button>
-                    </a>
                 </div>
             </div>
-            </div>
-        </div> 
+        </div>
     </main>
     <footer class="footer mt-auto py-3 bg-dark">
         <div id="foot-placement"></div>
