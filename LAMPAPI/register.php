@@ -10,7 +10,7 @@
 	$login = $inData["login"];
 	$password = $inData["password"];
 	
-	$conn = new mysqli("localhost", "root", "COP4331Team21", "COP4331");
+	$conn = db_connection();
 
 	if ($conn->connect_error) {
 		returnWithError($conn->connect_error);

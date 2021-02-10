@@ -2,7 +2,7 @@
     include 'util.php';
 
     $inData = getRequestInfo();
-	checkUser(" ", " ", $inData["login"], $inData["password"]);
+	checkUser("a", "a", $inData["login"], $inData["password"]);
 
 	$login = $inData["login"];
     $password = $inData["password"];
@@ -10,7 +10,7 @@
     $firstName = "";
     $lastName = "";
 
-    $connection = new mysqli("localhost", "Team21", "COP433121Team", "COP4331");
+	$conn = db_connection();
 
     if ($connection->connect_error) {
         returnWithError($connection->connect_error);

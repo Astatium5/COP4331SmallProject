@@ -92,4 +92,8 @@
 		else if (strlen($zip) >= 7 || $zip == NULL)
 			returnWithError("The contact zip is invalid.");
 	}
+
+	function db_connection() {
+		return new mysqli("localhost", "root", "COP4331Team21", "COP4331");
+	} 
 ?>

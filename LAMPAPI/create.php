@@ -18,7 +18,7 @@
 	$state = $inData["state"];
 	$zip = $inData["zip"];
 
-	$conn = new mysqli("localhost", "Team21", "COP433121Team", "COP4331");
+	$conn = db_connection();
 
 	if ($conn->connect_error) {
 		returnWithError($conn->connect_error);

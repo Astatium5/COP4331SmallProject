@@ -6,7 +6,7 @@
 
     $cid = $inData["cid"];
     
-    $connection = new mysqli("localhost", "Team21", "COP433121Team", "COP4331");
+	$conn = db_connection();
 
     if ($connection->connect_error) {
         returnWithError($connection->connect_error);
