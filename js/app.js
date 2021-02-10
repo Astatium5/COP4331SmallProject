@@ -13,11 +13,9 @@ function doLogin() {
 	firstName = "";
 	lastName = "";
 	
-	const login = document.getElementById("loginName").value;
-	const password = document.getElementById("loginPassword").value;
+	const login = document.getElementById("login").value;
+	const password = document.getElementById("password").value;
 	const hash = md5(password);
-	
-	document.getElementById("loginResult").innerHTML = "";
 
 	let obj = new Object();
 	obj.login = login;
