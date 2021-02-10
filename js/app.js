@@ -77,6 +77,7 @@ function doRegister() {
 	obj.lastName = last;
 
 	const jsonPayload = JSON.stringify(obj);
+	console.log(jsonPayload);
 	const url = urlBase + '/register' + extension;
 
 	let xhr = new XMLHttpRequest();
