@@ -17,7 +17,7 @@
 	$login = $inData["login"];
 	$password = $inData["password"];
 	
-	$conn = new mysqli("localhost", "Team21", "COP433121Team", "COP4331");
+	$conn = new mysqli("localhost", "Team21", "5a298ebdffa6839672ea628d70c94599fa37ed3c7d208478", "COP4331");
 
 	if ($conn->connect_error) {
 		returnWithError($conn->connect_error);
