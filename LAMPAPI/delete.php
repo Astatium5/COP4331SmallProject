@@ -1,6 +1,5 @@
 <?php
     include 'util.php';
-    include 'classes/contact.php';
 
     $inData = getRequestInfo();
 
