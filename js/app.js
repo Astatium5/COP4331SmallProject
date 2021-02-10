@@ -24,6 +24,7 @@ function doLogin() {
 	obj.password = hash;
 
 	const jsonPayload = JSON.stringify(obj);
+	console.log(jsonPayload);
 	const url = urlBase + '/login' + extension;
 
 	let xhr = new XMLHttpRequest();
@@ -77,7 +78,6 @@ function doRegister() {
 	obj.lastName = last;
 
 	const jsonPayload = JSON.stringify(obj);
-	console.log(jsonPayload);
 	const url = urlBase + '/register' + extension;
 
 	let xhr = new XMLHttpRequest();
@@ -185,8 +185,7 @@ function addContact() {
 }
 
 // update contact
-function updateContact() 
-{
+function updateContact() {
 	
 }
 

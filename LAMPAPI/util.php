@@ -61,4 +61,39 @@
 
 		return $obj;
 	}
+
+	function checkUser($login, $password, $firstName, $lastName) {
+		if (strlen($login) >= 20 || $login == NULL)
+			returnWithError("The login is invalid.");
+		else if (strlen($password) >= 70 || $password == NULL)
+			returnWithError("The password is invalid.");
+		else if (strlen($firstName) >= 30 || $firstName == NULL)
+			returnWithError("The user first name is invalid.");
+		else if (strlen($lastName) >= 30 || $lastName == NULL)
+			returnWithError("The user last name is invalid.");
+	}
+
+	function checkContact($firstName, $lastName, $phone, $email, $address,
+						  $city, $state, $zip) {
+		if (strlen($firstName) >= 30 || $firstName == NULL)
+			returnWithError("The contact first name is invalid.");
+		else if (strlen($lastName) >= 30 || $lastName == NULL)
+			returnWithError("The contact last name is invalid.");
+		else if (strlen($phone) >= 15 || $phone == NULL)
+			returnWithError("The contact phone is invalid.");
+		else if (strlen($email) >= 20 || $email == NULL)
+			returnWithError("The contact email is invalid.");
+		else if (strlen($address) >= 100 || $address == NULL)
+			returnWithError("The contact adress is invalid.");
+		else if (strlen($city) >= 20 || $city == NULL)
+			returnWithError("The contact city is invalid.");
+		else if (strlen($state) >= 20 || $state == NULL)
+			returnWithError("The contact state is invalid.");
+		else if (strlen($zip) >= 7 || $zip == NULL)
+			returnWithError("The contact zip is invalid.");
+	}
+
+	function db_connection() {
+		return new mysqli("localhost", "root", "COP4331Team21", "COP4331");
+	} 
 ?>
