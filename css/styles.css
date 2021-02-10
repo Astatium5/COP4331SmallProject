@@ -135,3 +135,10 @@ main > .container {
 .potion {
     transform: rotate(40deg) scaleX(-1);
 }
+
+#register {
+    display: none;
+}
+#login {
+    display: block;
+}
