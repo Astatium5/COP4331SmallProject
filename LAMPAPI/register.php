@@ -3,7 +3,7 @@
 
 	$inData = getRequestInfo();
 
-	checkUser($inData["firstName"], $inData["lastName"], $inData["login"], $inData["password"]);
+	checkUser($inData["login"], $inData["password"], $inData["firstName"], $inData["lastName"]);
 
 	$firstName = $inData["firstName"];
 	$lastName = $inData["lastName"];
