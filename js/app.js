@@ -1,4 +1,4 @@
-import {md5} from './md5.js';
+// import {md5} from './md5.js';
 
 const urlBase = 'http://cop4331team21.live/LAMPAPI'
 const extension = '.php';
