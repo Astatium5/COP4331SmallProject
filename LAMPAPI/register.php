@@ -24,10 +24,10 @@
 	} else {
 		// $sql = "insert into USERS (firstName, lastName, login, password) VALUES ('" . $user.get_firstName() . 
 		// "', '". $user.get_lastName() . "', '" . $user.get_login() . "', '" . $user.get_password() . "')";
-		$sql = "insert into USERS (firstName, lastName, login, password) VALUES ('" . $user.get_firstName() . 
+		$sql = "insert into USERS (firstName, lastName, login, password) VALUES ('" . $firstName . 
 		"', '". $lastName . "', '" . $login . "', '" . $password . "')";
 
-		if($result = $conn->query($sql) != TRUE) {
+		if ($result = $conn->query($sql) != TRUE) {
 			returnWithError($conn->error);
 		}
 		

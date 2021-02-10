@@ -86,7 +86,7 @@ function doRegister() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-                window.location.href = "contacts.html";
+				window.location.href = "contacts.html";
             }
 		};
 		
@@ -108,30 +108,24 @@ function readCookie() {
 	userId = -1;
 	var data = document.cookie;
 	var splits = data.split(",");
-	for(var i = 0; i < splits.length; i++) 
-	{
-		var thisOne = splits[i].trim();
-		var tokens = thisOne.split("=");
-		if( tokens[0] == "firstName" )
-		{
+	for (let i = 0; i < splits.length; i++) {
+		const thisOne = splits[i].trim();
+		const tokens = thisOne.split("=");
+
+		if(tokens[0] == "firstName") {
 			firstName = tokens[1];
 		}
-		else if( tokens[0] == "lastName" )
-		{
+		else if(tokens[0] == "lastName") {
 			lastName = tokens[1];
 		}
-		else if( tokens[0] == "userId" )
-		{
-			userId = parseInt( tokens[1].trim() );
+		else if(tokens[0] == "userId") {
+			userId = parseInt(tokens[1].trim());
 		}
 	}
 	
-	if( userId < 0 )
-	{
+	if(userId < 0) {
 		window.location.href = "index.html";
-	}
-	else
-	{
+	} 	else {
 		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
 	}
 }
