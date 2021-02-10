@@ -1,17 +1,22 @@
 <?php
 	include 'util.php';
-	include 'classes/contact.php';
 
 	$inData = getRequestInfo();
-	
-	try {
-		$contact = new Contact($inData["uid"], 0, $inData["firstName"], $inData["lastName"],
-							$inData["phone"], $inData["email"], $inData["address"], 
-							$inData["city"], $inData["state"], $inData["zip"]);
-	} catch (Exception $e) {
-		echo 'Caught message: ', $e->getMessage(), '\n';
-		returnWithError($e->getMessage());
-	}
+
+	checkContact($inData["firstName"], $inData["lastName"], $inData["phone"],
+				 $inData["email"], $inData["address"], $inData["city"], 
+				 $inData["state"], $inData["zip"]);
+				 
+	$uid = $inData["uid"];
+	$cid = 0;
+	$firstName = $inData["firstName"];
+	$lastName = $inData["lastName"];
+	$phone = $inData["phone"];
+	$email = $inData["email"];
+	$address = $inData["address"];
+	$city = $inData["city"];
+	$state = $inData["state"];
+	$zip = $inData["zip"];
 
 	$conn = new mysqli("localhost", "Team21", "COP433121Team", "COP4331");
 
@@ -19,13 +24,13 @@
 		returnWithError($conn->connect_error);
 	} else {
 		$sql = "insert into CONTACTS (uid, firstName, lastName, phone, email, address, city, state, zip) VALUES 
-		('" . $contact.get_firstName() . "', '". $contact.get_lastName() . "', '" . $contact.get_phone() . "', '" . $contact.get_email() . "', '" 
-		. $contact.get_address() . "', '" . $contact.get_city() . "', '" . $contact.get_state() . "', '" . $contact.get_zip() . "');";
+		('" . $uid . ", " . $firstName . "', '". $lastName . "', '" . $phone . "', '" . $email . "', '" 
+		. $address . "', '" . $city . "', '" . $state . "', '" . $zip . "');";
 
 		if($result = $conn->query($sql) != TRUE) {
 			returnWithError($conn->error);
 		}
 		
-		$conn->close();
+		$conn->close;
 	}
 ?>
