@@ -54,7 +54,7 @@ body, html {
 }
 
 main > .container {
-    padding: 70px 15px 0;
+    padding: 80px 15px 0;
   }
 
 .login, .image {
@@ -130,4 +130,8 @@ main > .container {
 .jumbotron {
     padding: 3rem;
     background-color: #cee3ed;
+}
+
+.potion {
+    transform: rotate(40deg) scaleX(-1);
 }
