@@ -65,7 +65,7 @@
 	function checkUser($login, $password, $firstName, $lastName) {
 		if (strlen($login) >= 20)
 			returnWithError("The login is invalid. length" . $login);
-		else if ($login == NULL)
+		else if ($login === NULL)
 			returnWithError("The login is invalid. null" . $login);
 		else if (strlen($password) >= 70 || $password == NULL)
 			returnWithError("The password is invalid.");
