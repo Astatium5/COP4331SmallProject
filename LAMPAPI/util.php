@@ -66,7 +66,8 @@
 		if (strlen($login) >= 20)
 			returnWithError("The login is invalid. length" . $login);
 		else if ($login === NULL)
-			returnWithError("The login is invalid. null" . $login);
+			returnWithError($login);
+			// returnWithError("The login is invalid. null" . $login);
 		else if (strlen($password) >= 70 || $password == NULL)
 			returnWithError("The password is invalid.");
 		else if (strlen($firstName) >= 30 || $firstName == NULL)
