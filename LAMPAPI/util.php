@@ -61,4 +61,15 @@
 
 		return $obj;
 	}
+
+	function checkUser($login, $password, $firstName, $lastName) {
+		if (strlen($firstName) >= 20 || $firstName == NULL)
+			returnWithError("The user first name is invalid.");
+		else if (strlen($lastName) >= 20 || $lastName == NULL)
+			returnWithError("The user last name is invalid.");
+		else if (strlen($login) >= 20 || $login == NULL)
+			returnWithError("The login is invalid.");
+		else if (strlen($password) >= 70 || $password == NULL)
+			returnWithError("The password is invalid.");
+	}
 ?>
