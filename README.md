@@ -7,8 +7,8 @@ COP 4331 Small Project
 
 ## Authors
 
-Dorri
-Alex
-Henry
-Dima
-Andrew
+* Dorri
+* Alex
+* Henry
+* Dima
+* Andrew
