@@ -22,14 +22,14 @@
 	else
 	{
 		$sql = "UPDATE Contacts
-				SET firstName = `" . $contact.get_firstName() .
-				"`, lastName = `" . $contact.get_lastName() . 
-				"`, phone = `" . $contact.get_phone() .
-				"`, email = `" . $contact.get_email() . 
-				"`, address = `" . $contact.get_address() . 
-				"`, city = `" . $contact.get_city() . 
-				"`, state = `" . $contact.get_state() . 
-				"`, zip = `" . $contact.get_zip() . "`" . 
+				SET firstName = '" . $contact.get_firstName() .
+				"', lastName = '" . $contact.get_lastName() . 
+				"', phone = '" . $contact.get_phone() .
+				"', email = '" . $contact.get_email() . 
+				"', address = '" . $contact.get_address() . 
+				"', city = '" . $contact.get_city() . 
+				"', state = '" . $contact.get_state() . 
+				"', zip = '" . $contact.get_zip() . "'" . 
 				"WHERE cid = " . $contact.get_cid() . ";";
 
 		$result = $conn->query($sql);

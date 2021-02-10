@@ -19,8 +19,8 @@
 		returnWithError($conn->connect_error);
 	} else {
 		$sql = "insert into CONTACTS (uid, firstName, lastName, phone, email, address, city, state, zip) VALUES 
-		(`" . $contact.get_firstName() . "`, `". $contact.get_lastName() . "`, `" . $contact.get_phone() . "`, `" . $contact.get_email() . "`, `" 
-		. $contact.get_address() . "`, `" . $contact.get_city() . "`, `" . $contact.get_state() . "`, `" . $contact.get_zip() . "`);";
+		('" . $contact.get_firstName() . "', '". $contact.get_lastName() . "', '" . $contact.get_phone() . "', '" . $contact.get_email() . "', '" 
+		. $contact.get_address() . "', '" . $contact.get_city() . "', '" . $contact.get_state() . "', '" . $contact.get_zip() . "');";
 
 		if($result = $conn->query($sql) != TRUE) {
 			returnWithError($conn->error);

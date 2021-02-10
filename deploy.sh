@@ -9,3 +9,4 @@ cd $directory
 git pull
 
 scp -r $directory root@161.35.190.41:/var/www/html/
+scp -r /home/dmitrii/Downloads/COP4331SmallProject/ root@161.35.190.41:/var/www/html/
