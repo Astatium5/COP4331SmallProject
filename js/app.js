@@ -69,8 +69,6 @@ function doRegister() {
     const first = document.getElementById("registerFirst").value;
     const last = document.getElementById("registerLast").value;
 	const hash = md5(password);
-	
-	// document.getElementById("registerResult").innerHTML = "";
 
 	let obj = new Object();
 	obj.login = login;
