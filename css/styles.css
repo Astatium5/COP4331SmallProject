@@ -77,6 +77,22 @@ main > .container {
     box-sizing: border-box;
 }
 
+.btn {
+    text-decoration: double;
+}
+
+.btn-warning {
+    background-color: #fb4454;
+    border-color: #fb4454;
+    color: #4c3257;
+}
+
+.btn-primary {
+    background-color: #21c4dc;
+    border-color: #21c4dc;
+
+}
+
 .form-label-group {
     position: relative;
     margin-bottom: 1rem;
@@ -141,4 +157,16 @@ main > .container {
 }
 #login {
     display: block;
+}
+
+.colorbutton {
+    fill: #cee3ed;
+}
+
+.light-hidden {
+    display: block;
+}
+
+.dark-hidden {
+    display: none;
 }

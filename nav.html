@@ -14,11 +14,18 @@
             </li> 
             <li>
                 <button class="colorbutton light-hidden btn" aria-label="Light Mode">
-                    <object width="1rem" height="1rem" aria-hidden="true" data="imgs/sun.svg" type="image/svg+xml"><img src="imgs/sun.svg" /></object>
+                    <object width="1rem" height="1rem" data="imgs/sun.svg" type="image/svg+xml"><img src="imgs/sun.svg" /></object>
                 </button>
                 <button class="colorbutton dark-hidden btn" aria-label="Dark Mode">
-                    <object width="1rem" height="1rem" aria-hidden="true" data="imgs/moon.svg" type="image/svg+xml"><img src="imgs/moon.svg" /></object>
+                    <object width="1rem" height="1rem" data="imgs/moon.svg" type="image/svg+xml"><img src="imgs/moon.svg" /></object>
                 </button>
+                <script>
+                     $(".colorbutton").click(function(){
+                        $(".dark-hidden").toggle();
+                        $(".light-hidden").toggle();
+                        $("#formToggle").text(($("#formToggle").text() == 'New User?') ? 'Login' : 'New User?').fadeIn();
+                        });
+                </script>
             </li>
         </ul>      
     </div>
