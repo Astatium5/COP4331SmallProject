@@ -195,6 +195,11 @@ function updateContact()
 	
 }
 
+// delete contact
+function deleteContact() {
+
+}
+
 // search for a contact
 function searchContact() {
 	const srch = document.getElementById("searchText").value;
