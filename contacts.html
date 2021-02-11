@@ -22,9 +22,24 @@
                   <li class="nav-item">
                     <a class="navlink" href="./index.html">Home</a>
                   </li>
+
                   <li class="nav-item">
-                    <p>username</p>
+                      <!-- is supposed to display the user name -->
+                      <script>
+                          var navBarUserName = {
+                            navBarName: document.getElementById("login").value,
+                            displayName: function displayUserName(){
+                                if (this.navBarName == null)
+                                  this.navBarName = "default";
+
+                                return this.navBarName;
+                          }
+                        }
+                          document.getElementById("displayedName").innerHTML = navBarUserName.displayUserName();
+                      </script>
+                      <a href="#" id="displayedName"></a>
                   </li>
+
                   <li>
                     <button type="button" class="btn btn-outline-danger" id="logOutButton" onclick="doLogout();">Log Out</button>
                   </li> 
