@@ -75,6 +75,23 @@ main > .container {
     border: 1px solid #d7dbee;
     margin-bottom: 4%;
     box-sizing: border-box;
+    background-color: #F9FEFF;
+}
+
+.btn {
+    text-decoration: double;
+}
+
+.btn-warning {
+    background-color: #fb4454;
+    border-color: #fb4454;
+    color: #4c3257;
+}
+
+.btn-primary {
+    background-color: #21c4dc;
+    border-color: #21c4dc;
+
 }
 
 .form-label-group {
@@ -82,7 +99,7 @@ main > .container {
     margin-bottom: 1rem;
   }
 
-  .form-label-group > label {
+.form-label-group > label {
     position: absolute;
     top: 0;
     left: 0;
@@ -102,7 +119,7 @@ main > .container {
     width: 100%;
     padding: 10px;
     border: 0;
-    cursor: pointer;
+    cursor: text;
     box-sizing: border-box;
 }
 
@@ -112,9 +129,7 @@ main > .container {
     margin: 0 auto;
 }
 
-.register input[type="text"],
-.register input[type="password"],
-.register input[type="username"] {
+.register {
     width: 100%;
     padding: 10px;
     border: 1px solid #d7dbee;
@@ -141,4 +156,79 @@ main > .container {
 }
 #login {
     display: block;
+}
+
+#formToggle {
+    cursor: pointer;
+}
+
+.colorbutton {
+    fill: #cee3ed;
+}
+
+.light-hidden {
+    display: block;
+}
+
+.dark-hidden {
+    display: none;
+}
+
+.leftside{
+    height:100vh;
+    width:100%;
+    background: #cee3ed;
+}
+
+.rightside{
+    height:100vh;
+    width:100%;
+    background:#d7dbee;
+
+}
+
+.account-settings .user-profile {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.account-settings .user-profile .user-avatar {
+    margin: 0 0 1rem 0;
+}
+.account-settings .user-profile .user-avatar img {
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+}
+.account-settings .user-profile h6.user-email {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+.account-settings .about {
+    margin: 1rem 0 0 0;
+    font-size: 0.8rem;
+    text-align: center;
+}
+.card {
+    background:#d7dbee;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 2px;
+    border: 0;
+    margin-bottom: 1rem;
+}
+.form-control {
+    border: 1px solid #d7dbee;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 1px;
+    font-size: .825rem;
+    background: #E7FCFF;
+    color: #6272a4;
 }

@@ -31,9 +31,9 @@ function doLogin() {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonObject = JSON.parse(xhr.responseText);
-
-				userId = jsonObject.id;
-
+		
+				userId = jsonObject.uid;
+		
 				if (userId < 1) {
 					document.getElementById('loginResult').innerHTML = 'User/Password combination incorrect';
 					return;
