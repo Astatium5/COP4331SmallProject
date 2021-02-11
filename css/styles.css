@@ -128,9 +128,7 @@ main > .container {
     margin: 0 auto;
 }
 
-.register input[type="text"],
-.register input[type="password"],
-.register input[type="username"] {
+.register {
     width: 100%;
     padding: 10px;
     border: 1px solid #d7dbee;
