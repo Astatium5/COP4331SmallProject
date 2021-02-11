@@ -1,0 +1,23 @@
+{
+  "name": "cop4331smallproject",
+  "version": "1.0.0",
+  "description": "COP4331 Small Project Team 21",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doc-ock/COP4331SmallProject.git"
+  },
+  "author": "Team 21: Alex, Dmitrii, Dorri, Andrew, Henry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/doc-ock/COP4331SmallProject/issues"
+  },
+  "homepage": "https://github.com/doc-ock/COP4331SmallProject#readme",
+  "devDependencies": {
+    "eslint": "^7.19.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
