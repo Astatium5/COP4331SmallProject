@@ -31,9 +31,9 @@ function doLogin() {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonObject = JSON.parse(xhr.responseText);
-		
+
 				userId = jsonObject.uid;
-		
+
 				if (userId < 1) {
 					document.getElementById('loginResult').innerHTML = 'User/Password combination incorrect';
 					return;
@@ -56,22 +56,20 @@ function doLogin() {
 
 function checkPassword() {
 	const pw = document.getElementById('password');
-	pw.addEventListener('input', evt => {
-		const value = pw.value
-	  
+	pw.addEventListener('input', (evt) => {
+		const value = pw.value;
+
 		if (!value) {
-		  pw.dataset.state = ''
-		  return
+		  pw.dataset.state = '';
+		  return;
 		}
-	  
-		const trimmed = value.trim()
-	  
+
+		const trimmed = value.trim();
+
 		if (trimmed) {
-		  pw.dataset.state = 'valid'
-		}
-		
-		else {
-		  pw.dataset.state = 'invalid'
+		  pw.dataset.state = 'valid';
+		} else {
+		  pw.dataset.state = 'invalid';
 		}
 	  });
 }
