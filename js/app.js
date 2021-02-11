@@ -54,26 +54,6 @@ function doLogin() {
 	}
 }
 
-function checkPassword() {
-	const pw = document.getElementById('password');
-	pw.addEventListener('input', (evt) => {
-		const value = pw.value;
-
-		if (!value) {
-		  pw.dataset.state = '';
-		  return;
-		}
-
-		const trimmed = value.trim();
-
-		if (trimmed) {
-		  pw.dataset.state = 'valid';
-		} else {
-		  pw.dataset.state = 'invalid';
-		}
-	  });
-}
-
 // register
 function doRegister() {
 	userId = 0;
