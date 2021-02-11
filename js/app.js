@@ -65,12 +65,30 @@ function doRegister() {
 	const first = document.getElementById('registerFirst').value;
 	const last = document.getElementById('registerLast').value;
 	const hash = md5(password);
+	const input = document.querySelector('div.form-label-group input');
+
+	if (!password) {
+		input.dataset.state = '';
+		return;
+	}
+
+	const trimmed = value.trim();
+
+	if (trimmed) {
+		input.dataset.state = 'valid';
+	}
+
+	else {
+		input.dataset.state = 'invalid';
+		return;
+	}
 
 	const obj = new Object();
 	obj.login = login;
 	obj.password = hash;
 	obj.firstName = first;
 	obj.lastName = last;
+
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/register' + extension;
