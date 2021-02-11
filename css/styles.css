@@ -232,3 +232,11 @@ main > .container {
     background: #E7FCFF;
     color: #6272a4;
 }
+
+input[data-state="valid"] {
+    border-color: #21C4DC;
+  }
+
+  input[data-state="invalid"] {
+    border-color: #fb4454;
+  }
