@@ -118,7 +118,7 @@ main > .container {
     width: 100%;
     padding: 10px;
     border: 0;
-    cursor: pointer;
+    cursor: text;
     box-sizing: border-box;
 }
 
@@ -157,6 +157,10 @@ main > .container {
 }
 #login {
     display: block;
+}
+
+#formToggle {
+    cursor: pointer;
 }
 
 .colorbutton {
