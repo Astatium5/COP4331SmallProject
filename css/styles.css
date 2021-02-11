@@ -107,7 +107,7 @@ main > .container {
     margin-bottom: 0;
     line-height: 1;
     color: #495057;
-    cursor: text;
+    cursor: pointer;
     /* Match the input under the label */
     border: 1px solid transparent;
     border-radius: .2rem;
