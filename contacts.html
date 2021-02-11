@@ -31,24 +31,26 @@
 
       <!--left side of page: shows contact list/search contacts-->
       <div class="col-md-6 g-0">
-      </br> </br> </br>
+         </br> </br> </br>
           <p class="text-center display-6">Search your contacts here!</p>
+  
           <div class="leftside">
 
               <!--search bar-->
-              <div class="input-group">
+              <div class="input-group" id="searchBar">
                   <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                     aria-describedby="search-addon" />
                   <button type="button" class="btn btn-outline-primary" onclick="searchContact();">search</button>
                   <span id="contactSearchResut"></span>
+                  <div id = "contactList"></div>
+                </div>
 
-                <!--show contact list (firstname lastname)-->
-                <div id = "contactList"></div>
-
-              </div>
+                <!--Button to create a new contact-->
+                <div id="addContactButton">
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addContactModal">Add New Contact</button>
+                </div>
           </div>
       </div>
-
 
       <!--right side of page: shows all fields of contact-->
       <!-- has the options to edit or delete a contact-->
@@ -56,14 +58,15 @@
         </br> </br> </br>
           <p class="text-center display-6">Manage contacts here!</p>
          <div class="rightside">
+             <div class="container">
             <div class="row gutters">
-                <!-- <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb-4">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
                             <div class="account-settings">
                                 <div class="user-profile">
                                     <div class="user-avatar">
-                                        <img src=>
+                                        <img class="default-icon" src="./imgs/wizard.svg">
                                     </div>
                                     <h5 id="userName"></h5>
                                     <h6 id="email"></h6>
@@ -71,7 +74,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <form class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                     <div class="card h-100">
                         <div class="card-body">
@@ -134,7 +137,7 @@
                                 <div class="container text-center">
                                     <div class="btn-group text-center mt-4" role="group">
                                         <button type="button" id="submit" name="submit" class="btn btn-warning btn-secondary">Cancel</button>
-                                        <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                                        <button type="button" id="submit" name="submit" class="btn btn-primary" onclick="updateContact();">Update</button>
                                     </div>
                                 </div>
                             </div>
@@ -142,14 +145,12 @@
                     </div>
                 </form>
             </div>
-         </div>
+             </div> 
+        </div>
       </div>
    </div>
-    
-   <!-- <div class="container"> -->
-   <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addContactModal">Add New Contact</button>
-
  
+   <!--Pop up prompt allowing user to create a contact-->
 <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -208,13 +209,6 @@
     </div>
   </div>
   </div>
- <!-- </div> -->
-
-
-
-   <!-- <div class="d-grid gap-2"> -->
-    <button type="button" class="btn btn-outline-danger" id="logOutButton" onclick="doLogout();">Log Out</button>
-    <!-- </div>    -->
 </div>
 </main>
 
