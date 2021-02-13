@@ -1,7 +1,7 @@
 <?php
 	// getting data from JSON sent from front end
 	function getRequestInfo() {
-		return json_decode(file_get_contents('php://input'));
+		return json_decode(file_get_contents('php://input'), true);
 	}
 
 	// sending the information from back end to front end in the JSON format
@@ -24,7 +24,7 @@
 		$obj->lastName = $lastName;
 
 		$json = json_encode($obj);
-        sendResultInfoAsJSON($json);
+    sendResultInfoAsJSON($json);
 	}
 	
 	// sends the info about a contact in a JSON package to front end

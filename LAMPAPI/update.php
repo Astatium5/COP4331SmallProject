@@ -38,10 +38,10 @@
 
 		if ($result->num_rows > 0) {	
 			returnWithInfoContact($uid, $cid,
-						   		  $firstName, $lastName,
-						   		  $phone, $email,
-								  $address, $city,
-								  $state, $zip);
+						   		  				$firstName, $lastName,
+						   		  				$phone, $email,
+								  					$address, $city,
+								  					$state, $zip);
 		}
 		else {
 			returnWithError("No Records Found");

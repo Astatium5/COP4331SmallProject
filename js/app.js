@@ -83,7 +83,7 @@ function doRegister() {
 	}
 
 	const hash = md5(trimmed);
-	const obj = new Object();
+	let obj = new Object();
 	obj.login = login;
 	obj.password = hash;
 	obj.firstName = first;
