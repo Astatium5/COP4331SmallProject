@@ -161,8 +161,6 @@ function addContact() {
 	const state = document.getElementById('state').value;
 	const zipCode = document.getElementById('zip').value;
 
-	document.getElementById('createContactResult').innerHTML = '';
-
 	const obj = new Object();
 	obj.uid = userId;
 	obj.firstName = firstName;
