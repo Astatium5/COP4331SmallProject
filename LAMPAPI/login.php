@@ -2,7 +2,6 @@
     include 'util.php';
 
     $inData = getRequestInfo();
-    echo $inData["login"] . $inData["password"];
 
 	$login = $inData["login"];
     $password = $inData["password"];
