@@ -23,7 +23,7 @@
 		returnWithError($conn->connect_error);
 	} 
 	else {
-		$sql = "UPDATE Contacts
+		$sql = "UPDATE CONTACTS
 				SET firstName = '" . $firstName .
 				"', lastName = '" . $lastName . 
 				"', phone = '" . $phone .
