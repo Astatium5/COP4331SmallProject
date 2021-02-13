@@ -92,7 +92,7 @@ function doRegister() {
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/register' + extension;
-
+	console.log(jsonPayload);
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
@@ -121,6 +121,7 @@ function readCookie() {
 	userId = -1;
 	const data = document.cookie;
 	const splits = data.split(',');
+
 	for (let i = 0; i < splits.length; i++) {
 		const thisOne = splits[i].trim();
 		const tokens = thisOne.split('=');
@@ -136,7 +137,7 @@ function readCookie() {
 
 	if (userId < 0) {
 		window.location.href = 'index.html';
-	} 	else {
+	} else {
 		document.getElementById('userName').innerHTML = 'Logged in as ' + firstName + ' ' + lastName;
 	}
 }
