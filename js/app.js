@@ -30,6 +30,7 @@ function doLogin() {
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
+		xhr.send(jsonPayload);
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonObject = JSON.parse(xhr.responseText);
@@ -49,8 +50,6 @@ function doLogin() {
 				window.location.href = 'contacts.html';
 			}
 		};
-
-		xhr.send(jsonPayload);
 	} catch (err) {
 		document.getElementById('loginResult').innerHTML = err.message;
 	}
