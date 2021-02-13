@@ -64,7 +64,6 @@ function doRegister() {
 	const password = document.getElementById('registerPassword').value;
 	const first = document.getElementById('registerFirst').value;
 	const last = document.getElementById('registerLast').value;
-	const hash = md5(password);
 	const input = document.querySelector('div.form-label-group input');
 
 	if (!password) {
@@ -72,7 +71,7 @@ function doRegister() {
 		return;
 	}
 
-	const trimmed = value.trim();
+	const trimmed = password.trim();
 
 	if (trimmed) {
 		input.dataset.state = 'valid';
@@ -83,6 +82,7 @@ function doRegister() {
 		return;
 	}
 
+	const hash = md5(trimmed);
 	const obj = new Object();
 	obj.login = login;
 	obj.password = hash;
