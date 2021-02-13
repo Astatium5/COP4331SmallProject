@@ -12,7 +12,7 @@
 
 	checkUser($login, $password, "", "");
 
-	$conn = db_connection();
+	$connection = db_connection();
 
     if ($connection->connect_error) {
         returnWithError($connection->connect_error);

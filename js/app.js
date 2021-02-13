@@ -15,13 +15,11 @@ function doLogin() {
 	const password = document.getElementById('password').value;
 	const hash = md5(password);
 
-	// const obj = new Object();
-	// obj.login = login;
-	// obj.password = hash;
+	const obj = new Object();
+	obj.login = login;
+	obj.password = hash;
 
-	// const jsonPayload = JSON.stringify(obj);
-	
-	const jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
+	const jsonPayload = JSON.stringify(obj);
 	console.log(jsonPayload);
 	const url = urlBase + '/login' + extension;
 
@@ -30,7 +28,6 @@ function doLogin() {
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
-		xhr.send(jsonPayload);
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonObject = JSON.parse(xhr.responseText);
@@ -50,6 +47,8 @@ function doLogin() {
 				window.location.href = 'contacts.html';
 			}
 		};
+
+		xhr.send(jsonPayload);
 	} catch (err) {
 		document.getElementById('loginResult').innerHTML = err.message;
 	}
