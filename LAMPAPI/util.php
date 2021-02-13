@@ -76,7 +76,7 @@
 	}
 
 	function checkContact($firstName, $lastName, $phone, $email, $address,
-						  $city, $state, $zip) {
+						  					$city, $state, $zip) {
 		if (strlen($firstName) >= 30 || $firstName == NULL)
 			returnWithError("The contact first name is invalid.");
 		else if (strlen($lastName) >= 30 || $lastName == NULL)

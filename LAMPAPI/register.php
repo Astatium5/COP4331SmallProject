@@ -2,7 +2,6 @@
 	include 'util.php';
 
 	$inData = getRequestInfo();
-	echo $inData["login"] . $inData["password"];
 	checkUser($inData["login"], $inData["password"], $inData["firstName"], $inData["lastName"]);
 
 	$firstName = $inData["firstName"];

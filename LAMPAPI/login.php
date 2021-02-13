@@ -3,14 +3,14 @@
 
     $inData = getRequestInfo();
     echo $inData["login"] . $inData["password"];
-    
-	checkUser($inData["login"], $inData["password"], "", "");
 
 	$login = $inData["login"];
     $password = $inData["password"];
     $uid = 0;
     $firstName = "";
     $lastName = "";
+
+	checkUser($login, $password, "", "");
 
 	$conn = db_connection();
 
