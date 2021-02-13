@@ -182,7 +182,7 @@ function addContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById('createContactResult').innerHTML = 'A new contact has been added!';
+				// document.getElementById('createContactResult').innerHTML = 'A new contact has been added!';
 			}
 		};
 		xhr.send(jsonPayload);
