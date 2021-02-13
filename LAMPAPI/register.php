@@ -2,13 +2,13 @@
 	include 'util.php';
 
 	$inData = getRequestInfo();
+	echo $inData["login"] . $inData["password"];
+	checkUser($inData->login, $inData->password, $inData->firstName, $inData->lastName);
 
-	checkUser($inData["login"], $inData["password"], $inData["firstName"], $inData["lastName"]);
-
-	$firstName = $inData["firstName"];
-	$lastName = $inData["lastName"];
-	$login = $inData["login"];
-	$password = $inData["password"];
+	$firstName = $inData->firstName;
+	$lastName = $inData->lastName;
+	$login = $inData->login;
+	$password = $inData->password;
 	
 	$conn = db_connection();
 

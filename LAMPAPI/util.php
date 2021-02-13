@@ -1,7 +1,7 @@
 <?php
 	// getting data from JSON sent from front end
 	function getRequestInfo() {
-		return json_decode(file_get_contents('php://input'), true);
+		return json_decode(file_get_contents('php://input'));
 	}
 
 	// sending the information from back end to front end in the JSON format

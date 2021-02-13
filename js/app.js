@@ -89,7 +89,6 @@ function doRegister() {
 	obj.firstName = first;
 	obj.lastName = last;
 
-
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/register' + extension;
 	console.log(jsonPayload);
