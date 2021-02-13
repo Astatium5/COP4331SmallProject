@@ -39,6 +39,8 @@ function doLogin() {
 					return;
 				}
 
+				console.log(jsonObject);
+
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
 
