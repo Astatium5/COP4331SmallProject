@@ -15,11 +15,13 @@ function doLogin() {
 	const password = document.getElementById('password').value;
 	const hash = md5(password);
 
-	const obj = new Object();
-	obj.login = login;
-	obj.password = hash;
+	// const obj = new Object();
+	// obj.login = login;
+	// obj.password = hash;
 
-	const jsonPayload = JSON.stringify(obj);
+	// const jsonPayload = JSON.stringify(obj);
+	
+	const jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
 	console.log(jsonPayload);
 	const url = urlBase + '/login' + extension;
 
