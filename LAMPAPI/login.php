@@ -10,7 +10,7 @@
     $firstName = "";
     $lastName = "";
 
-	checkUser($login, $password, "", "");
+	checkUser($login, $password, " ", " ");
 
 	$connection = db_connection();
 
