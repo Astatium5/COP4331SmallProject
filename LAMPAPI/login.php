@@ -16,8 +16,7 @@
     if ($connection->connect_error) {
         returnWithError($connection->connect_error);
     } else {
-        $sql = "SELECT uid, firstName, lastName FROM Users where 
-        login='" . $login . "' and password='" . $password . "';";
+        $sql = "SELECT uid, firstName, lastName FROM Users WHERE login='" . $login . "' AND password='" . $password . "';";
         $result = $connection->query($sql);
 
         if ($result->num_rows > 0) {
