@@ -53,23 +53,22 @@
                     <!-- <button type="button" class="btn btn-primary" onclick="searchContact();">Search</button>
                     <span id="contactSearchResut"></span> -->
 
-                  
-
                     <div id="addContactButton">
                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addContactModal">Add New Contact</button>
                     </div>
                     <div id ="contactList"> </div>
                 </div>
-            </div>
+                <!--table that shows contacts-->
+                <table class="table table-striped">
+                  <tr class="bg-info">
+                    <th class="bg-info" data-colname="first Name" data-order="desc">First Name</th>
+                    <th data-colname="last Name" data-order="desc">Last Name</th>
+                  </tr>
+                  <tbody id="userTable"></tbody>
+                </table>
+    
+              </div>
         </div>
-
-        <table class="table table-striped">
-          <tr class="bg-info">
-            <th class="bg-info" data-colname="first Name" data-order="desc">First Name</th>
-            <th data-colname="last Name" data-order="desc">Last Name</th>
-          </tr>
-          <tbody id="userTable"></tbody>
-        </table>
 
         <script>
           // holds the jsons that we are dealing with 
