@@ -12,7 +12,7 @@
     } else {
         $sql = "DELETE FROM CONTACTS WHERE cid = " . $cid . ";";
 
-        if ($result = $conn->query($sql) != TRUE) {
+        if ($result = $connection->query($sql) != TRUE) {
 			returnWithErrorContact("No Records Found");
 		} else {
             // actually returns no error
