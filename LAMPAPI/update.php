@@ -1,6 +1,7 @@
 <?php
 	include 'util.php';
 
+	echo 'test';
 	$inData = getRequestInfo();
 	
 	checkContact($inData["firstName"], $inData["lastName"], $inData["phone"],
@@ -19,7 +20,6 @@
 	$zip = $inData["zip"];
 
 	$conn = db_connection();
-	echo 'test';
 	if ($conn->connect_error) {
 		returnWithErrorContact($conn->connect_error);
 	} else {
