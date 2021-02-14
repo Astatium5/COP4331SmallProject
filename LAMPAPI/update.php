@@ -1,7 +1,6 @@
 <?php
 	include 'util.php';
 
-	echo 'test';
 	$inData = getRequestInfo();
 	
 	checkContact($inData["firstName"], $inData["lastName"], $inData["phone"],
@@ -36,35 +35,35 @@
 			$currentState = $row["state"];
 			$currentZip = $row["zip"];
 
-			if ($currentFirstName != $firstName && isset($firstName) === true && $firstName === "") {
+			if ($currentFirstName != $firstName && $firstName === "") {
 				$firstName = $currentFirstName;
 			}
 
-			if ($currentLastName != $lastName && isset($lastName) === true && $lastName == "") {
+			if ($currentLastName != $lastName && $lastName == "") {
 				$lastName = $currentLastName;
 			}
 
-			if ($currentPhone != $phone && isset($phone) === true && $phone == "") {
+			if ($currentPhone != $phone && $phone == "") {
 				$phone = $currentPhone;
 			}
 
-			if ($currentEmail != $email && isset($email) === true && $email == "") {
+			if ($currentEmail != $email && $email == "") {
 				$email = $currentEmail;
 			}
 
-			if ($currentAddress != $address && isset($address) === true && $address == "") {
+			if ($currentAddress != $address && $address == "") {
 				$address = $currentAddress;
 			}
 
-			if ($currentCity != $city && isset($city) === true && $city == "") {
+			if ($currentCity != $city && $city == "") {
 				$city = $currentCity;
 			}
 
-			if ($currentState != $state && isset($state) === true && $state == "") {
+			if ($currentState != $state && $state == "") {
 				$state = $currentState;
 			}
 
-			if ($currentZip != $zip && isset($zip) === true && $zip == "") {
+			if ($currentZip != $zip && $zip == "") {
 				$zip = $currentZip;
 			}
 		}
