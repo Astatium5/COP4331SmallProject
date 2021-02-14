@@ -84,9 +84,8 @@
 	if ($result = $conn->query($sql) != TRUE) {
 		returnWithErrorContact("No Records Found");
 	} else {
-		// actually returns no error
 		returnWithInfoContact($uid, $cid, $firstName, $lastName, $phone, 
-													$email, $address, $city, $state, $zip);
+													$email, $address, $city, $state, $zip, "");
 	}
 		
 	conn->close();
