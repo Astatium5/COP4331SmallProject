@@ -196,7 +196,7 @@ function addContact() {
 
 // update contact
 function updateContact() {
-
+	
 }
 
 // delete contact
