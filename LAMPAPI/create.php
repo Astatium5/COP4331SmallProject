@@ -3,7 +3,9 @@
 
 	$inData = getRequestInfo();
 
-	checkContact($inData["firstName"], $inData["lastName"]);
+	checkContact($inData["firstName"], $inData["lastName"], $inData["phone"],
+				 			 $inData["email"], $inData["address"], $inData["city"], 
+				 			 $inData["state"], $inData["zip"]);
 				 
 	$uid = $inData["uid"];
 	$cid = 0;
@@ -22,7 +24,7 @@
 		returnWithErrorContact($conn->connect_error);
 	} else {
 		$sql = "insert into CONTACTS (uid, firstName, lastName, phone, email, address, city, state, zip) VALUES 
-		('" . $uid . ", " . $firstName . "', '". $lastName . "', '" . $phone . "', '" . $email . "', '" 
+		(" . $uid . ", " . $firstName . "', '". $lastName . "', '" . $phone . "', '" . $email . "', '" 
 		. $address . "', '" . $city . "', '" . $state . "', '" . $zip . "');";
 
 		if ($result = $conn->query($sql) != TRUE) {
