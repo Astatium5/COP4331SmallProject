@@ -80,23 +80,22 @@
 			returnWithErrorUser("The last name is invalid.");
 	}
 
-	function checkContact($firstName, $lastName, $phone, $email, $address,
-						  					$city, $state, $zip) {
+	function checkContact($firstName, $lastName) {
 		if (strlen($firstName) >= 30 || $firstName == NULL)
 			returnWithErrorContact("The contact first name is invalid.");
 		else if (strlen($lastName) >= 30 || $lastName == NULL)
 			returnWithErrorContact("The contact last name is invalid.");
-		else if (strlen($phone) >= 15 || $phone == NULL)
+		else if (strlen($phone) >= 15)
 			returnWithErrorContact("The contact phone is invalid.");
-		else if (strlen($email) >= 20 || $email == NULL)
+		else if (strlen($email) >= 20)
 			returnWithErrorContact("The contact email is invalid.");
-		else if (strlen($address) >= 100 || $address == NULL)
+		else if (strlen($address) >= 100)
 			returnWithErrorContact("The contact adress is invalid.");
-		else if (strlen($city) >= 20 || $city == NULL)
+		else if (strlen($city) >= 20)
 			returnWithErrorContact("The contact city is invalid.");
-		else if (strlen($state) >= 20 || $state == NULL)
+		else if (strlen($state) >= 20)
 			returnWithErrorContact("The contact state is invalid.");
-		else if (strlen($zip) >= 7 || $zip == NULL)
+		else if (strlen($zip) >= 7)
 			returnWithErrorContact("The contact zip is invalid.");
 	}
 

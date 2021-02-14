@@ -3,9 +3,7 @@
 
 	$inData = getRequestInfo();
 
-	checkContact($inData["firstName"], $inData["lastName"], $inData["phone"],
-				 			 $inData["email"], $inData["address"], $inData["city"], 
-				 			 $inData["state"], $inData["zip"]);
+	checkContact($inData["firstName"], $inData["lastName"]);
 				 
 	$uid = $inData["uid"];
 	$cid = 0;
