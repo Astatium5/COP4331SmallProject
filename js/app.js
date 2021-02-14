@@ -204,7 +204,7 @@ function updateContact() {
 	const city = document.getElementById('editedCity').value;
 	const state = document.getElementById('editedState').value;
 	const zip = document.getElementById('editedZip').value;
-	const cid; // must be added from the data attribute from html
+	// const cid; // must be added from the data attribute from html
 
 	const obj = new Object();
 	obj.cid = cid;
@@ -227,10 +227,10 @@ function updateContact() {
 
 // delete contact
 function deleteContact() {
-	const cid; // must be added from the data attribute from html
+	// const cid; // must be added from the data attribute from html
 
 	const obj = new Object();
-	obj.cid = cid;
+	// obj.cid = cid;
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/delete' + extension;
