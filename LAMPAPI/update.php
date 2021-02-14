@@ -89,5 +89,5 @@
 													$email, $address, $city, $state, $zip, "");
 	}
 		
-	conn->close();
+	$conn->close();
 ?>
