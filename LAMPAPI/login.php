@@ -11,6 +11,7 @@
 
 	checkUser($login, $password, " ", " ");
 
+    echo 'test';
 	$connection = db_connection();
 
     if ($connection->connect_error) {
