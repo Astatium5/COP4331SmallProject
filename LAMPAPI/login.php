@@ -11,7 +11,6 @@
 
 	checkUser($login, $password, " ", " ");
 
-    echo 'test';
 	$connection = db_connection();
 
     if ($connection->connect_error) {
@@ -30,6 +29,7 @@
             returnWithInfoUser($uid, $login, $firstName, $lastName, "");
         } else returnWithErrorUser("The account with the given login and password does not exist.");
 
+        echo 'test';
         $connection->close();
     }
 ?>
