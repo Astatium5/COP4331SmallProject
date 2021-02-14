@@ -238,6 +238,18 @@ function deleteContact() {
 	const xhr = new XMLHttpRequest();
 	xhr.open('DELETE', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+
+	try {
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				// should have "updated successfuly somewhere in html"
+			}
+		};
+
+		xhr.send(jsonPayload);
+	} catch (err) {
+
+	}
 }
 
 // search for a contact
