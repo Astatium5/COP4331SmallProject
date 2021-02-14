@@ -196,14 +196,14 @@ function addContact() {
 
 // update contact
 function updateContact() {
-	const firstName = document.getElementById('editFirstName').value;
-	const lastName = document.getElementById('editLastName').value;
-	const phone = document.getElementById('editPhone').value;
-	const email = document.getElementById('editEmail').value;
-	const address = document.getElementById('editAddress').value;
-	const city = document.getElementById('editCity').value;
-	const state = document.getElementById('editState').value;
-	const zip = document.getElementById('editZip').value;
+	const firstName = document.getElementById('editedFirstName').value;
+	const lastName = document.getElementById('editedLastName').value;
+	const phone = document.getElementById('editedPhone').value;
+	const email = document.getElementById('editedEmail').value;
+	const address = document.getElementById('editedAddress').value;
+	const city = document.getElementById('editedCity').value;
+	const state = document.getElementById('editedState').value;
+	const zip = document.getElementById('editedZip').value;
 	const cid; // must be added from the data attribute from html
 
 	const obj = new Object();
