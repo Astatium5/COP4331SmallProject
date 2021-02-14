@@ -36,35 +36,35 @@
 			$currentState = $row["state"];
 			$currentZip = $row["zip"];
 
-			if ($currentFirstName != $firstName && $firstName == "") {
+			if ($currentFirstName != $firstName && isset($firstName) === true && $firstName === "") {
 				$firstName = $currentFirstName;
 			}
 
-			if ($currentLastName != $lastName && $lastName == "") {
+			if ($currentLastName != $lastName && isset($lastName) === true && $lastName == "") {
 				$lastName = $currentLastName;
 			}
 
-			if ($currentPhone != $phone && $phone == "") {
+			if ($currentPhone != $phone && isset($phone) === true && $phone == "") {
 				$phone = $currentPhone;
 			}
 
-			if ($currentEmail != $email && $email == "") {
+			if ($currentEmail != $email && isset($email) === true && $email == "") {
 				$email = $currentEmail;
 			}
 
-			if ($currentAddress != $address && $address == "") {
+			if ($currentAddress != $address && isset($address) === true && $address == "") {
 				$address = $currentAddress;
 			}
 
-			if ($currentCity != $city && $city == "") {
+			if ($currentCity != $city && isset($city) === true && $city == "") {
 				$city = $currentCity;
 			}
 
-			if ($currentState != $state && $state == "") {
+			if ($currentState != $state && isset($state) === true && $state == "") {
 				$state = $currentState;
 			}
 
-			if ($currentZip != $zip && $zip == "") {
+			if ($currentZip != $zip && isset($zip) === true && $zip == "") {
 				$zip = $currentZip;
 			}
 		}
