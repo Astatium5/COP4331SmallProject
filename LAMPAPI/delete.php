@@ -5,7 +5,7 @@
 
     $cid = $inData["cid"];
     
-	$connecttion = db_connection();
+	$connection = db_connection();
 
     if ($connection->connect_error) {
         returnWithErrorContact($connection->connect_error);
@@ -16,6 +16,6 @@
         
         // actually returns no error
         returnWithErrorContact("");
-        $connection->close;
+        $connection->close();
     }
 ?>
