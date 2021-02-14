@@ -21,13 +21,12 @@
         $result = $connection->query($sql);
         
         if ($result->num_rows > 0) {
-            
-            echo 'test';
             $row = $result->fetch_assoc();
             $firstName = $row["firstName"];
             $lastName = $row["lastName"];
             $uid = $row["uid"];
-
+            
+            echo 'test';
             returnWithInfoUser($uid, $login, $firstName, $lastName, "");
         } else returnWithErrorUser("The account with the given login and password does not exist.");
 
