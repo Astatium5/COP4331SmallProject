@@ -14,7 +14,7 @@
 	$connection = db_connection();
 
     if ($connection->connect_error) {
-        returnWithError($connection->connect_error);
+        returnWithErrorUser($connection->connect_error);
     } else {
         $sql = "SELECT uid, firstName, lastName FROM USERS 
         WHERE login='" . $login . "' AND password='" . $password . "';";
@@ -26,8 +26,8 @@
             $lastName = $row["lastName"];
             $uid = $row["uid"];
 
-            returnWithInfoUser($login, $firstName, $lastName, $uid);
-        } else returnWithError("The account with the given login and password does not exist.");
+            returnWithInfoUser($uid, $login, $firstName, $lastName, "");
+        } else returnWithErrorUser("The account with the given login and password does not exist.");
 
         $connection->close();
     }

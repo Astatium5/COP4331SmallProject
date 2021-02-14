@@ -20,7 +20,7 @@
 
 	$conn = db_connection();
 	if ($conn->connect_error)  {
-		returnWithError($conn->connect_error);
+		returnWithErrorContact($conn->connect_error);
 	} 
 	else {
 		$sql = "UPDATE CONTACTS
@@ -41,10 +41,10 @@
 						   		  				$firstName, $lastName,
 						   		  				$phone, $email,
 								  					$address, $city,
-								  					$state, $zip);
+								  					$state, $zip, "");
 		}
 		else {
-			returnWithError("No Records Found");
+			returnWithErrorContact("No Records Found");
 		}
 
 		$conn->close;

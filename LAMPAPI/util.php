@@ -10,18 +10,9 @@
 		echo $obj;
 	}
 	
-	// returning from back end with error
-	function returnWithError($err) {
-		$retValue = '{"error":"' . $err . '"}';
-		sendResultInfoAsJson($retValue);
-    }
-	
 	// sends the info about a user in a JSON package to front end
-    function returnWithInfoUser($login, $firstName, $lastName, $uid) {
-		$obj->login = $login;
-		$obj->uid = $uid;
-		$obj->firstName = $firstName;
-		$obj->lastName = $lastName;
+  function returnWithInfoUser($uid, $login, $password, $firstName, $lastName, $error) {
+		$obj = createObjectUser($uid, $login, $password, $firstName, $lastName, $error);
 
 		$json = json_encode($obj);
     sendResultInfoAsJSON($json);
@@ -29,25 +20,28 @@
 	
 	// sends the info about a contact in a JSON package to front end
 	function returnWithInfoContact($uid, $cid, $firstName, $lastName, $phone, $email,
-								   $address, $city, $state, $zip) {
-		$obj->uid = $uid;
-		$obj->cid = $cid;
-		$obj->firstName = $firstName;
-		$obj->lastName = $lastName;
-		$obj->phone = $phone;
-		$obj->email = $email;
-		$obj->address = $address;
-		$obj->city = $city;
-		$obj->state = $state;
-		$obj->zip = $zip;
+								   							 $address, $city, $state, $zip, $error) {
+
+		$obj = createObjectContact($uid, $cid, $firstName, $lastName, $phone, $email,
+															 $address, $city, $state, $zip, $error);
 
 		$json = json_encode($obj);
 		sendResultInfoAsJson($json);
 	}
 
-	// creates a JSON with info about a contact
-	function createJSONContact($uid, $cid, $firstName, $lastName, $phone, $email,
-							   $address, $city, $state, $zip) {
+	// returns an error in case a user json should be returned
+	function returnWithErrorUser($error) {
+		returnWithInfoUser(-1, "", "", "", "", $error);
+	}
+
+	// returns an error in case a user json should be returned
+	function returnWithErrorContact($error) {
+		returnWithInfoContact(-1, -1, "", "", "", "", "", "", "", "", $error);
+	}
+
+	// creates an object with info about a contact
+	function createObjectContact($uid, $cid, $firstName, $lastName, $phone, $email,
+							   						 	 $address, $city, $state, $zip, $error) {
 		$obj->uid = $uid;
 		$obj->cid = $cid;
 		$obj->firstName = $firstName;
@@ -58,41 +52,52 @@
 		$obj->city = $city;
 		$obj->state = $state;
 		$obj->zip = $zip;
+		$obj->error = $error;
+
+		return $obj;
+	}
+
+	// creates an object with user info
+	function createObjectUser($uid, $login, $password, $firstName, $lastName, $error) {
+		$obj->uid = $uid;
+		$obj->login = $login;
+		$obj->password = $password;
+		$obj->firstName = $firstName;
+		$obj->lastName = $lastName;
+		$obj->error = $error;
 
 		return $obj;
 	}
 
 	function checkUser($login, $password, $firstName, $lastName) {
 		if (strlen($login) >= 20)
-			returnWithError("The login is invalid. length");
-		else if ($login == NULL)
-			returnWithError("The login is invalid. null");
+			returnWithErrorUser("The login is invalid.");
 		else if (strlen($password) >= 70 || $password == NULL)
-			returnWithError("The password is invalid.");
+			returnWithErrorUser("The password is invalid.");
 		else if (strlen($firstName) >= 30 || $firstName == NULL)
-			returnWithError("The user first name is invalid.");
+			returnWithErrorUser("The first name is invalid.");
 		else if (strlen($lastName) >= 30 || $lastName == NULL)
-			returnWithError("The user last name is invalid.");
+			returnWithErrorUser("The last name is invalid.");
 	}
 
 	function checkContact($firstName, $lastName, $phone, $email, $address,
 						  					$city, $state, $zip) {
 		if (strlen($firstName) >= 30 || $firstName == NULL)
-			returnWithError("The contact first name is invalid.");
+			returnWithErrorContact("The contact first name is invalid.");
 		else if (strlen($lastName) >= 30 || $lastName == NULL)
-			returnWithError("The contact last name is invalid.");
+			returnWithErrorContact("The contact last name is invalid.");
 		else if (strlen($phone) >= 15 || $phone == NULL)
-			returnWithError("The contact phone is invalid.");
+			returnWithErrorContact("The contact phone is invalid.");
 		else if (strlen($email) >= 20 || $email == NULL)
-			returnWithError("The contact email is invalid.");
+			returnWithErrorContact("The contact email is invalid.");
 		else if (strlen($address) >= 100 || $address == NULL)
-			returnWithError("The contact adress is invalid.");
+			returnWithErrorContact("The contact adress is invalid.");
 		else if (strlen($city) >= 20 || $city == NULL)
-			returnWithError("The contact city is invalid.");
+			returnWithErrorContact("The contact city is invalid.");
 		else if (strlen($state) >= 20 || $state == NULL)
-			returnWithError("The contact state is invalid.");
+			returnWithErrorContact("The contact state is invalid.");
 		else if (strlen($zip) >= 7 || $zip == NULL)
-			returnWithError("The contact zip is invalid.");
+			returnWithErrorContact("The contact zip is invalid.");
 	}
 
 	function db_connection() {

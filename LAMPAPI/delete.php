@@ -5,14 +5,17 @@
 
     $cid = $inData["cid"];
     
-	$conn = db_connection();
+	$connecttion = db_connection();
 
     if ($connection->connect_error) {
-        returnWithError($connection->connect_error);
+        returnWithErrorContact($connection->connect_error);
     } else {
         $sql = "DELETE FROM CONTACTS WHERE cid = " . $cid . ";";
 
         $result = $connection->query($sql);
+        
+        // actually returns no error
+        returnWithErrorContact("");
         $connection->close;
     }
 ?>

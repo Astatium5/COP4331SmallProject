@@ -10,22 +10,22 @@
 	$conn = db_connection();
     
     if ($conn->connect_error) {
-        returnWithError($conn->connect_error);
+        returnWithErrorContact($conn->connect_error);
     } else {
         $sql = "SELECT * FROM CONTACTS WHERE uid=" . $uid . ";";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $results[$resCount] = createJSONContact($row["uid"], $row["cid"],
-                                                        $row["firstName"], $row["lastName"], 
-                                                        $row["phone"], $row["email"],
-                                                        $row["address"], $row["city"],
-                                                        $row["state"], $row["zip"]);
+                $results[$resCount] = createObjectContact($row["uid"], $row["cid"],
+                                                          $row["firstName"], $row["lastName"], 
+                                                          $row["phone"], $row["email"],
+                                                          $row["address"], $row["city"],
+                                                          $row["state"], $row["zip"], "");
                 $resCount++;
             }
         } else {
-            returnWithError("No records found");
+            returnWithErrorContact("No records found");
         }
 
         $conn->close();

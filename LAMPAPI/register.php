@@ -12,15 +12,20 @@
 	$conn = db_connection();
 
 	if ($conn->connect_error) {
-		returnWithError($conn->connect_error);
+		returnWithErrorUser($conn->connect_error);
 	} else {
 		$sql = "insert into USERS (firstName, lastName, login, password) VALUES ('" . $firstName . 
 		"', '". $lastName . "', '" . $login . "', '" . $password . "')";
 
 		if ($result = $conn->query($sql) != TRUE) {
-			returnWithError($conn->error);
+			returnWithErrorUser($conn->error);
+		} else {
+			$sql = "SELECT LAST_INSERT_ID();";
+			$result = $conn->query($sql);
+			$row = $result->fetch_assoc();
+			$cid = $row["uid"];
+			returnWithInfoUser($uid, "", "", "", "", "");
 		}
-		
 		$conn->close();
 	}
 ?>

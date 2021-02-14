@@ -21,14 +21,20 @@
 	$conn = db_connection();
 
 	if ($conn->connect_error) {
-		returnWithError($conn->connect_error);
+		returnWithErrorContact($conn->connect_error);
 	} else {
 		$sql = "insert into CONTACTS (uid, firstName, lastName, phone, email, address, city, state, zip) VALUES 
 		('" . $uid . ", " . $firstName . "', '". $lastName . "', '" . $phone . "', '" . $email . "', '" 
 		. $address . "', '" . $city . "', '" . $state . "', '" . $zip . "');";
 
-		if($result = $conn->query($sql) != TRUE) {
-			returnWithError($conn->error);
+		if ($result = $conn->query($sql) != TRUE) {
+			returnWithErrorContact($conn->error);
+		} else {
+			$sql = "SELECT LAST_INSERT_ID();";
+			$result = $conn->query($sql);
+			$row = $result->fetch_assoc();
+			$cid = $row["cid"];
+			returnWithInfoContact($uid, $cid, "", "", "", "", "", "", "", "", "");
 		}
 		
 		$conn->close;
