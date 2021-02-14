@@ -19,13 +19,13 @@
 	$zip = $inData["zip"];
 
 	$conn = db_connection();
-	if ($conn->connect_error)  {
+	echo 'test';
+	if ($conn->connect_error) {
 		returnWithErrorContact($conn->connect_error);
 	} else {
 		$sql = "SELECT FROM CONTACTS WHERE cid=" . $cid . ";";
 		$result = $conn->query($sql);
 
-		echo 'test';
 		if ($result->num_rows > 0) {
 			$currentFirstName = $row["firstName"];
 			$currentLastName = $row["larstName"];
