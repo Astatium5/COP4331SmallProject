@@ -31,7 +31,7 @@
 			$currentState = $row["state"];
 			$currentZip = $row["zip"];
 
-			if ($currentFirstName != $firstName && $firstName === "") {
+			if ($currentFirstName != $firstName && $firstName == "") {
 				$firstName = $currentFirstName;
 			}
 
