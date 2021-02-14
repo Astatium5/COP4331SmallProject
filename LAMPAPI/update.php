@@ -5,7 +5,7 @@
 	
 	checkContact($inData["firstName"], $inData["lastName"], $inData["phone"],
 				 			 $inData["email"], $inData["address"], $inData["city"], 
-				 			 $inData["state"], $inData["zip"]);
+				 				$inData["state"], $inData["zip"]);
 				 
 	$uid = $inData["uid"];
 	$cid = $inData["cid"];
@@ -19,6 +19,7 @@
 	$zip = $inData["zip"];
 
 	$conn = db_connection();
+
 	if ($conn->connect_error)  {
 		returnWithErrorContact($conn->connect_error);
 	} 
@@ -34,19 +35,13 @@
 				"', zip = '" . $zip . "'" . 
 				"WHERE cid = " . $cid . ";";
 
-		$result = $conn->query($sql);
-
-		if ($result->num_rows > 0) {	
-			returnWithInfoContact($uid, $cid,
-						   		  				$firstName, $lastName,
-						   		  				$phone, $email,
-								  					$address, $city,
-								  					$state, $zip, "");
-		}
-		else {
+		if ($result = $conn->query($sql) != TRUE) {
 			returnWithErrorContact("No Records Found");
+		} else {
+			// actually returns no error
+			returnWithErrorContact("");
 		}
-
+		
 		$conn->close;
 	}
 ?>
