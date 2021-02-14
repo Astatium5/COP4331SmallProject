@@ -109,18 +109,35 @@
           }
           
           // builds the table of jsons
+          // each table element includes the first and last names of the contact
+          // and a button to manage the contact's info.
           function buildTable(data)
           {
             var table = document.getElementById("userTable");
 
             for (var i = 0; i < data.length; i++)
             {
+              var contactID = data[i].cid;
               var row = `<tr>
                               <td>$(data[i].firstName)</td>
                               <td>$(data[i].lastName)</td>
+                              <td><button type="button" class="btn btn-outline-dark" onclick="manageContact(data[i]);">Manage</button></td>
                         </tr>`
                 table.innerHTML += row;
             }
+          }
+
+          // this function reads the data of the selected json and those become the elements in the update form
+          function manageContact(selectedJSON)
+          {
+            document.getElementById("editedFirstName").innerHTML = selectedJSON.firstName;
+            document.getElementsById("editedLastName").innerHTML = selectedJSON.lastName;
+            document.getElementById("editedEmail").innerHTML = selectedJSON.email;
+            document.getElementById("editedPhone").innerHTML = selectedJSON.phone;
+            document.getElementById("editedAddress").innerHTML = selectedJSON.address;
+            document.getElementById("editedCity").innerHTML = selectedJSON.city;
+            document.getElementById("editedState").innerHTML = selectedJSON.state;
+            document.getElementById("editedZip").innerHTML = selectedJSON.zip;
           }
         </script>
         </div>
@@ -310,8 +327,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal" onclick="addContact();">Create New Contact</button>
+        <button type="button" class="btn btn-success" onclick="addContact();">Create New Contact</button>
       </div>
+      <div id="createContactResult"></div>
     </div>
   </div>
   </div>
