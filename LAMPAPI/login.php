@@ -19,7 +19,8 @@
         $sql = "SELECT uid, firstName, lastName FROM USERS 
         WHERE login='" . $login . "' AND password='" . $password . "';";
         $result = $connection->query($sql);
-
+        
+        echo 'test';
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $firstName = $row["firstName"];
@@ -29,7 +30,6 @@
             returnWithInfoUser($uid, $login, $firstName, $lastName, "");
         } else returnWithErrorUser("The account with the given login and password does not exist.");
 
-        echo 'test';
         $connection->close();
     }
 ?>
