@@ -25,6 +25,7 @@
 		$sql = "SELECT FROM CONTACTS WHERE cid=" . $cid . ";";
 		$result = $conn->query($sql);
 
+		echo 'test';
 		if ($result->num_rows > 0) {
 			$currentFirstName = $row["firstName"];
 			$currentLastName = $row["larstName"];
