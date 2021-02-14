@@ -196,12 +196,48 @@ function addContact() {
 
 // update contact
 function updateContact() {
-	
+	const firstName = document.getElementById('editFirstName').value;
+	const lastName = document.getElementById('editLastName').value;
+	const phone = document.getElementById('editPhone').value;
+	const email = document.getElementById('editEmail').value;
+	const address = document.getElementById('editAddress').value;
+	const city = document.getElementById('editCity').value;
+	const state = document.getElementById('editState').value;
+	const zip = document.getElementById('editZip').value;
+	const cid; // must be added from the data attribute from html
+
+	const obj = new Object();
+	obj.cid = cid;
+	obj.firstName = firstName;
+	obj.lastName = lastName;
+	obj.phone = phone;
+	obj.email = email;
+	obj.address = address;
+	obj.city = city;
+	obj.state = state;
+	obj.zip = zip;
+
+	const jsonPayload = JSON.stringify(obj);
+	const url = urlBase + '/update' + extension;
+
+	const xhr = new XMLHttpRequest();
+	xhr.open('POST', url, true);
+	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 }
 
 // delete contact
 function deleteContact() {
+	const cid; // must be added from the data attribute from html
 
+	const obj = new Object();
+	obj.cid = cid;
+
+	const jsonPayload = JSON.stringify(obj);
+	const url = urlBase + '/delete' + extension;
+
+	const xhr = new XMLHttpRequest();
+	xhr.open('DELETE', url, true);
+	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 }
 
 // search for a contact
