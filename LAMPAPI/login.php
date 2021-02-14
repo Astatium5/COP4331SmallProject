@@ -20,7 +20,7 @@
         WHERE login='" . $login . "' AND password='" . $password . "';";
         $result = $connection->query($sql);
         
-        echo 'test';
+        echo $result;
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $firstName = $row["firstName"];
