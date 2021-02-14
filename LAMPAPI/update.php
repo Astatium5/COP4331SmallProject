@@ -25,7 +25,7 @@
 			$row = $result->fetch_assoc();
 
 			$currentFirstName = $row["firstName"];
-			$currentLastName = $row["larstName"];
+			$currentLastName = $row["lastName"];
 			$currentPhone = $row["phone"];
 			$currentEmail = $row["email"];
 			$currentAddress = $row["address"];
