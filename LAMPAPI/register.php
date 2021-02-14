@@ -20,12 +20,10 @@
 		if ($result = $conn->query($sql) != TRUE) {
 			returnWithErrorUser($conn->error);
 		} else {
-			$sql = "SELECT LAST_INSERT_ID();";
-			$result = $conn->query($sql);
-			$row = $result->fetch_assoc();
-			$cid = $row["uid"];
+			$uid = $conn->insert_id;
 			returnWithInfoUser($uid, "", "", "", "", "");
 		}
+
 		$conn->close();
 	}
 ?>

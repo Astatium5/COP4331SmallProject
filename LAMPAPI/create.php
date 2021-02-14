@@ -30,10 +30,7 @@
 		if ($result = $conn->query($sql) != TRUE) {
 			returnWithErrorContact($conn->error);
 		} else {
-			$sql = "SELECT LAST_INSERT_ID();";
-			$result = $conn->query($sql);
-			$row = $result->fetch_assoc();
-			$cid = $row["cid"];
+			$cid = $conn->insert_id;
 			returnWithInfoContact($uid, $cid, "", "", "", "", "", "", "", "", "");
 		}
 		
