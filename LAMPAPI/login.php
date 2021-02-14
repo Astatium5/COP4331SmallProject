@@ -27,7 +27,7 @@
             $uid = $row["uid"];
             
             echo 'test';
-            returnWithInfoUser($uid, $login, $firstName, $lastName, "");
+            returnWithInfoUser($uid, $login, "", $firstName, $lastName, "");
         } else returnWithErrorUser("The account with the given login and password does not exist.");
 
         $connection->close();
