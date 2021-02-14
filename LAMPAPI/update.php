@@ -21,6 +21,7 @@
 		$sql = "SELECT * FROM CONTACTS WHERE cid=" . $cid . ";";
 		$result = $conn->query($sql);
 
+		echo $firstName;
 		if ($result->num_rows > 0) {
 			$currentFirstName = $row["firstName"];
 			$currentLastName = $row["larstName"];
@@ -31,7 +32,6 @@
 			$currentState = $row["state"];
 			$currentZip = $row["zip"];
 
-			echo $currentFirstName;
 			if ($currentFirstName != $firstName && $firstName == "") {
 				$firstName = $currentFirstName;
 			}
