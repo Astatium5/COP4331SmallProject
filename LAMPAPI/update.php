@@ -21,8 +21,9 @@
 		$sql = "SELECT * FROM CONTACTS WHERE cid=" . $cid . ";";
 		$result = $conn->query($sql);
 
-		echo $result->num_rows;
 		if ($result->num_rows > 0) {
+			$row = result->fetch_assoc();
+
 			$currentFirstName = $row["firstName"];
 			$currentLastName = $row["larstName"];
 			$currentPhone = $row["phone"];
