@@ -181,7 +181,8 @@ function addContact() {
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/create' + extension;
-
+	console.log(jsonPayload);
+	
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
