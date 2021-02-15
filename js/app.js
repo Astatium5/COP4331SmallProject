@@ -106,6 +106,12 @@ function doRegister() {
 		xhr.onreadystatechange = function() {
 			console.log(this.status);
 			if (this.readyState == 4 && this.status == 200) {
+				const jsonResponse = JSON.parse(xhr.responseText);
+
+				userId = jsonResponse.uid;
+				firstName = first;
+				lastName = last;
+
 				saveCookie();
 				window.location.href = 'contacts.html';
 			}
