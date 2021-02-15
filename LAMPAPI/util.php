@@ -80,7 +80,8 @@
 			returnWithErrorUser("The last name is invalid.");
 	}
 
-	function checkContact($firstName, $lastName) {
+	function checkContact($firstName, $lastName, $phone, $email, $address,
+												$city, $state, $zip) {
 		if (strlen($firstName) >= 30 || $firstName == NULL)
 			returnWithErrorContact("The contact first name is invalid.");
 		else if (strlen($lastName) >= 30 || $lastName == NULL)
