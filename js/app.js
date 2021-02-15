@@ -285,12 +285,12 @@ function searchContact() {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById('contactSearchResult').innerHTML = 'Contact(s) has been retrieved';
-				const jsonObject = JSON.parse(xhr.responseText);
+				const jsonArray = JSON.parse(xhr.responseText);
 
-				for (let i = 0; i < jsonObject.results.length; i++) {
-					contactList += jsonObject.results[i];
+				for (let i = 0; i < jsonArray.length; i++) {
+					contactList += jsonArray[i];
 
-					if (i < jsonObject.results.length - 1) {
+					if (i < jsonArray.length - 1) {
 						contactList += '<br />\r\n';
 					}
 				}
