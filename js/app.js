@@ -104,10 +104,10 @@ function doRegister() {
 	try {
 		console.log('test 105');
 		xhr.onreadystatechange = function() {
-			console.log(this.status);
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonResponse = JSON.parse(xhr.responseText);
-
+				
+				console.log(this.status);
 				userId = jsonResponse.uid;
 				firstName = first;
 				lastName = last;
@@ -170,8 +170,8 @@ function doLogout() {
 // add a contact
 function addContact() {
 	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
-	const firstName = document.getElementById('contactAddFirstName').value;
-	const lastName = document.getElementById('contactAddLastName').value;
+	const contactFirstName = document.getElementById('contactAddFirstName').value;
+	const contactLastName = document.getElementById('contactAddLastName').value;
 	const phone = document.getElementById('contactAddPhone').value;
 	const email = document.getElementById('contactAddEmail').value;
 	const address = document.getElementById('contactAddAddress').value;
@@ -181,8 +181,8 @@ function addContact() {
 
 	const obj = new Object();
 	obj.uid = uid;
-	obj.firstName = firstName;
-	obj.lastName = lastName;
+	obj.firstName = contactFirstName;
+	obj.lastName = contactLastName;
 	obj.phone = phone;
 	obj.email = email;
 	obj.address = address;
