@@ -50,7 +50,7 @@ function doLogin() {
 
 				window.location.href = 'contacts.html';
 				let contactsUserName = document.getElementById('contactsUserName');
-				console.log(contactsUserName.innerHTML);
+				console.log(document);
 				contactsUserName.innerHTML = 'Signed in as: ' + firstName + lastName;
 				contactsUserName.dataset.indexNumber = userId;
 			}
