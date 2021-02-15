@@ -104,7 +104,7 @@ function doRegister() {
 	try {
 		console.log('test 105');
 		xhr.onreadystatechange = function() {
-			console.log(this.readyState + this.status);
+			console.log(this.status);
 			if (this.readyState == 4 && this.status == 200) {
 				window.location.href = 'contacts.html';
 			}
