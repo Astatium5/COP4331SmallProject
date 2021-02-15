@@ -162,6 +162,10 @@ main > .container {
     cursor: pointer;
 }
 
+#contactsUserName {
+    background-color: white;
+}
+
 .colorbutton {
     fill: #cee3ed;
 }
