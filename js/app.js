@@ -30,7 +30,7 @@ function doLogin() {
 	try {
 		console.log('test 31');
 		xhr.onreadystatechange = function() {
-			console.log('test 33');
+			console.log(num.toString(this.readyState) + num.toString(this.status));
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonObject = JSON.parse(xhr.responseText);
 
@@ -103,6 +103,7 @@ function doRegister() {
 
 	try {
 		xhr.onreadystatechange = function() {
+			console.log(num.toString(this.readyState) + num.toString(this.status));
 			if (this.readyState == 4 && this.status == 200) {
 				window.location.href = 'contacts.html';
 			}
