@@ -34,6 +34,6 @@
 			returnWithInfoContact($uid, $cid, "", "", "", "", "", "", "", "", "");
 		}
 		
-		$conn->close;
+		$conn->close();
 	}
 ?>
