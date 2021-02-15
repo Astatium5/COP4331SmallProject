@@ -266,6 +266,8 @@ function deleteContact() {
 function searchContact() {
 	const srch = document.getElementById('searchText').value;
 	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
+	document.getElementById('contactSearchResult').innerHTML = '';
+
 	let contactList = '';
 
 	const obj = new Object();
