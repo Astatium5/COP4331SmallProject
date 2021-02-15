@@ -111,9 +111,6 @@ function doRegister() {
 			console.log(this.status);
 			if (this.readyState == 4 && this.status == 200) {
 				window.location.href = 'contacts.html';
-				let contactsUserName = document.getElementById('contactsUserName');
-				contactsUserName.innerHTML = 'Signed as ' + firstName + lastName;
-				contactsUserName.dataset.indexNumber = userId;
 			}
 		};
 
@@ -151,7 +148,10 @@ function readCookie() {
 	if (userId < 0) {
 		window.location.href = 'index.html';
 	} else {
-		document.getElementById('userName').innerHTML = 'Logged in as ' + firstName + ' ' + lastName;
+		let contactsUserName = document.getElementById('contactsUserName');
+
+		contactsUserName = innerHTML = 'Signed in as ' + firstName + ' ' + lastName;
+		contactsUserName.dataset.indexNumber = userId;
 	}
 }
 
