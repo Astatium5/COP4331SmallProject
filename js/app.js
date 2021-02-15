@@ -265,11 +265,16 @@ function deleteContact() {
 // search for a contact
 function searchContact() {
 	const srch = document.getElementById('searchText').value;
+	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
 	document.getElementById('contactSearchResult').innerHTML = '';
 
 	let contactList = '';
 
-	const jsonPayload = '{"search" : "' + srch + '","uid" : ' + userId + '}';
+	const obj = new Object();
+	obj.search = srch;
+	obj.uid = uid;
+
+	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/search' + extension;
 
 	const xhr = new XMLHttpRequest();
