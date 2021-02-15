@@ -163,7 +163,7 @@ function doLogout() {
 
 // add a contact
 function addContact() {
-	const uid = document.getElementById('contactsUserName').dataset.dataIndex;
+	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
 	const firstName = document.getElementById('contactFirstName').value;
 	const lastName = document.getElementById('contactLastName').value;
 	const phone = document.getElementById('phone').value;
