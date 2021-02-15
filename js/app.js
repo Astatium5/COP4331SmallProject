@@ -102,6 +102,7 @@ function doRegister() {
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
+		console.log('test 105');
 		xhr.onreadystatechange = function() {
 			console.log(num.toString(this.readyState) + num.toString(this.status));
 			if (this.readyState == 4 && this.status == 200) {
