@@ -49,6 +49,9 @@ function doLogin() {
 				saveCookie();
 
 				window.location.href = 'contacts.html';
+				let contactsUserName = document.getElementById('contactsUserName');
+				contactsUserName.innerHTML = 'Signed as ' + firstName + lastName;
+				contactsUserName.dataset.indexNumber = userId;
 			}
 		};
 
@@ -107,6 +110,9 @@ function doRegister() {
 			console.log(this.status);
 			if (this.readyState == 4 && this.status == 200) {
 				window.location.href = 'contacts.html';
+				let contactsUserName = document.getElementById('contactsUserName');
+				contactsUserName.innerHTML = 'Signed as ' + firstName + lastName;
+				contactsUserName.dataset.indexNumber = userId;
 			}
 		};
 
@@ -182,7 +188,7 @@ function addContact() {
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/create' + extension;
 	console.log(jsonPayload);
-	
+
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
