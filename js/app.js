@@ -28,6 +28,7 @@ function doLogin() {
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
+		console.log('test 31');
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonObject = JSON.parse(xhr.responseText);
