@@ -163,6 +163,7 @@ function doLogout() {
 
 // add a contact
 function addContact() {
+	const uid = document.getElementById('contactsUserName').dataset.dataIndex;
 	const firstName = document.getElementById('contactFirstName').value;
 	const lastName = document.getElementById('contactLastName').value;
 	const phone = document.getElementById('phone').value;
@@ -173,7 +174,7 @@ function addContact() {
 	const zipCode = document.getElementById('zip').value;
 
 	const obj = new Object();
-	obj.uid = userId;
+	obj.uid = uid;
 	obj.firstName = firstName;
 	obj.lastName = lastName;
 	obj.phone = phone;
