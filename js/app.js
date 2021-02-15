@@ -49,10 +49,6 @@ function doLogin() {
 				saveCookie();
 
 				window.location.href = 'contacts.html';
-				let contactsUserName = document.getElementById('contactsUserName');
-				console.log(document);
-				contactsUserName.innerHTML = 'Signed in as: ' + firstName + lastName;
-				contactsUserName.dataset.indexNumber = userId;
 			}
 		};
 
@@ -110,6 +106,7 @@ function doRegister() {
 		xhr.onreadystatechange = function() {
 			console.log(this.status);
 			if (this.readyState == 4 && this.status == 200) {
+				saveCookie();
 				window.location.href = 'contacts.html';
 			}
 		};
