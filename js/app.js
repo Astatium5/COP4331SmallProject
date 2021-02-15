@@ -164,14 +164,14 @@ function doLogout() {
 // add a contact
 function addContact() {
 	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
-	const firstName = document.getElementById('contactFirstName').value;
-	const lastName = document.getElementById('contactLastName').value;
-	const phone = document.getElementById('phone').value;
-	const email = document.getElementById('email').value;
-	const address = document.getElementById('address').value;
-	const city = document.getElementById('city').value;
-	const state = document.getElementById('state').value;
-	const zipCode = document.getElementById('zip').value;
+	const firstName = document.getElementById('contactAddFirstName').value;
+	const lastName = document.getElementById('contactAddLastName').value;
+	const phone = document.getElementById('contactAddPhone').value;
+	const email = document.getElementById('contactAddEmail').value;
+	const address = document.getElementById('contactAddAddress').value;
+	const city = document.getElementById('contactAddCity').value;
+	const state = document.getElementById('contactAddState').value;
+	const zipCode = document.getElementById('contactAddZip').value;
 
 	const obj = new Object();
 	obj.uid = uid;
