@@ -104,10 +104,10 @@ function doRegister() {
 	try {
 		console.log('test 105');
 		xhr.onreadystatechange = function() {
+			console.log(this.readyState + this.status);
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonResponse = JSON.parse(xhr.responseText);
 				
-				console.log(this.status);
 				userId = jsonResponse.uid;
 				firstName = first;
 				lastName = last;
