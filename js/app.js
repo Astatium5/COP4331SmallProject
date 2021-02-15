@@ -147,7 +147,7 @@ function readCookie() {
 	} else {
 		let contactsUserName = document.getElementById('contactsUserName');
 
-		contactsUserName = innerHTML = 'Signed in as ' + firstName + ' ' + lastName;
+		contactsUserName.innerHTML = 'Signed in as ' + firstName + ' ' + lastName;
 		contactsUserName.dataset.indexNumber = userId;
 	}
 }
