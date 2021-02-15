@@ -207,7 +207,7 @@ function updateContact() {
 	// const cid; // must be added from the data attribute from html
 
 	const obj = new Object();
-	obj.cid = cid;
+	// obj.cid = cid;
 	obj.firstName = firstName;
 	obj.lastName = lastName;
 	obj.phone = phone;
