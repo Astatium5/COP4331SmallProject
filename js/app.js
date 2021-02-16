@@ -316,8 +316,7 @@ function searchContact() {
 }
 
 // retrieves the contacts from the retrieve.php and puts them in a table
-function retrieveContacts()
-{
+function retrieveContacts() {
 	let contactID = 0;
 	const url = urlBase + '/retrieve' + extension;
 	
@@ -333,7 +332,7 @@ function retrieveContacts()
 				// gets the contact id
 				contactID = JSONArray[i].cid;
 				
-				const table = document.getElementById('userTable');
+				let table = document.getElementById('userTable');
 
 				let row = document.createElement('tr');
 				let firstNameField = document.createElement('td');
