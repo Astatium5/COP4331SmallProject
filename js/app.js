@@ -325,17 +325,37 @@ function retrieveContacts()
   xhr.open('GET', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
-	xhr.onreadystatechange = function()
-	 {
-		if (this.readyState == 4 && this.status == 200)
-		{
+	xhr.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
 			const JSONArray = JSON.parse(xhr.responseText);
 				
-			for (let i = 0; i < JSONArray.results.length; i++)
-			{
+			for (let i = 0; i < JSONArray.length; i++) {
 				// gets the contact id
 				contactID = JSONArray[i].cid;
+				
+				const table = document.getElementById('userTable');
 
+				let row = document.createElement('tr');
+				let firstNameField = document.createElement('td');
+				let lastNameField = document.createElement('td');
+				let buttonField = document.createElement('td');
+				let manageButton = document.createElement('button');
+
+				row.dataset.indexNumber = JSONArray[i].cid;
+
+				firstNameField.innerHTML = JSONArray[i].firstName;
+				lastNameField.innerHTML = JSONArray[i].lastName;
+
+				manageButton.type = 'button';
+				manageButton.class = 'btn btn-outline-dark';
+				manageButton.onclick = manageContact(JSONArray[i]);
+				manageButton.innerHTML = 'Manage';
+
+				buttonField.append(manageButton);
+				row.append(firstNameField);
+				row.append(lastNameField);
+				row.append(buttonField);
+				table.append(row);
 				// let row = '<tr>
         //             <td>${JSONArray[i].firstName}</td>
         //             <td>${JSONArray[i].lastName}</td>
@@ -349,21 +369,19 @@ function retrieveContacts()
 }
 
 // this function reads the data of the selected json and those become the elements in the update form
-function manageContact(selectedJSON)
-{
-	document.getElementById("editedFirstName").innerHTML = selectedJSON.firstName;
-	document.getElementsById("editedLastName").innerHTML = selectedJSON.lastName;
-	document.getElementById("editedEmail").innerHTML = selectedJSON.email;
-	document.getElementById("editedPhone").innerHTML = selectedJSON.phone;
-	document.getElementById("editedAddress").innerHTML = selectedJSON.address;
-	document.getElementById("editedCity").innerHTML = selectedJSON.city;
-	document.getElementById("editedState").innerHTML = selectedJSON.state;
-	document.getElementById("editedZip").innerHTML = selectedJSON.zip;
+function manageContact(selectedJSON) {
+	document.getElementById("editedFirstName").placeholder = selectedJSON.firstName;
+	document.getElementsById("editedLastName").placeholder = selectedJSON.lastName;
+	document.getElementById("editedEmail").placeholder = selectedJSON.email;
+	document.getElementById("editedPhone").placeholder = selectedJSON.phone;
+	document.getElementById("editedAddress").placeholder = selectedJSON.address;
+	document.getElementById("editedCity").placeholder = selectedJSON.city;
+	document.getElementById("editedState").placeholder = selectedJSON.state;
+	document.getElementById("editedZip").placeholder = selectedJSON.zip;
 }
 
 // is supposed to filter search the table of contacts
-function searchTable(value, contactsArray)
-{
+function searchTable(value, contactsArray) {
   var filteredData = [];
 
   for (var i = 0; i < contactsArray.length; i++){
