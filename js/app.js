@@ -112,6 +112,11 @@ function doRegister() {
 				firstName = first;
 				lastName = last;
 
+				if (userId < 0) {
+					document.getElementById('loginResult').innerHTML = 'The user with the given username already exists';
+					return;
+				}
+
 				saveCookie();
 				window.location.href = 'contacts.html';
 			}
@@ -313,7 +318,7 @@ function searchContact() {
 // retrieves the contacts from the retrieve.php and puts them in a table
 function retrieveContacts()
 {
-	const contactID = 0;
+	let contactID = 0;
 	const url = urlBase + '/retrieve' + extension;
 	
 	const xhr = new XMLHttpRequest();
@@ -326,17 +331,17 @@ function retrieveContacts()
 		{
 			const JSONArray = JSON.parse(xhr.responseText);
 				
-			for (var i = 0; i < JSONArray.results.length; i++)
+			for (let i = 0; i < JSONArray.results.length; i++)
 			{
 				// gets the contact id
 				contactID = JSONArray[i].cid;
 
-				var row = `<tr>
+				let row = '<tr>
                     <td>${JSONArray[i].firstName}</td>
                     <td>${JSONArray[i].lastName}</td>
-                    <td><button type='button' class='btn btn-outline-dark' onclick='manageContact(data[i]);'>Manage</button></td>
-                    </tr>`
-                   userTable.innerHTML += row;
+                    <td><button type="button" class="btn btn-outline-dark" onclick="manageContact(data[i]);">Manage</button></td>
+                    </tr>';
+        userTable.innerHTML += row;
 			}
 		}
 	}

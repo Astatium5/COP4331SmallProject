@@ -21,7 +21,7 @@
 			returnWithErrorUser($conn->error);
 		} else {
 			$uid = $conn->insert_id;
-			returnWithInfoUser($uid, "", "", "", "", "");
+			returnWithInfoUser($uid, "", "", $firstName, $lastName, "");
 		}
 
 		$conn->close();
