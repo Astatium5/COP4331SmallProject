@@ -74,81 +74,23 @@
                     <th class="bg-info" data-colname="first Name" data-order="desc">First Name</th>
                     <th data-colname="last Name" data-order="desc">Last Name</th>
                   </tr>
-                  <tbody id="userTable"></tbody>
+                  <tbody id="userTable" onload="retrieveContacts();"></tbody>
                 </table>
     
               </div>
         </div>
 
         <script>
-          // holds the jsons that we are dealing with 
-          var myArray = [];
+
+          // This Is supposed to filter the search results as the user is typing and builds replaces the table as the user
+          // is typing. Needs work
+
+          // $('#searchText').on('keyup', function(){
+          //   var value = $(this).val();
+          //   var data = searchTable(value, myArray);
+          //   buildTable(data);
+          // });
           
-          // gets the jsons and puts them into a table
-          $.ajax({
-            method: 'GET',
-            url: 'http://cop4331team21.live/LAMPAPI/retrieve.php',
-            success: function(response){
-              myArray = response.data;
-              buildTable(myArray)
-            }
-          });
-
-          // does the filtering
-          $('#searchText').on('keyup', function(){
-            var value = $(this).val();
-            var data = searchTable(value, myArray);
-            buildTable(data);
-          });
-          
-          // performs the live search
-          function searchTable(value, data)
-          {
-            var filteredData = [];
-
-            for (var i = 0; i < data.length; i++){
-              value = value.toLowerCase();
-              var first = data[i].firstName.toLowerCase();
-
-              if (first.includes(value)){
-                filteredData.push(data[i]);
-              }
-            }
-
-            return filteredData;
-          }
-          
-          // builds the table of jsons
-          // each table element includes the first and last names of the contact
-          // and a button to manage the contact's info.
-          function buildTable(data)
-          {
-            var table = document.getElementById("userTable");
-
-            for (var i = 0; i < data.length; i++)
-            {
-              var contactID = data[i].cid;
-              var row = `<tr>
-                              <td>$(data[i].firstName)</td>
-                              <td>$(data[i].lastName)</td>
-                              <td><button type="button" class="btn btn-outline-dark" onclick="manageContact(data[i]);">Manage</button></td>
-                        </tr>`
-                table.innerHTML += row;
-            }
-          }
-
-          // this function reads the data of the selected json and those become the elements in the update form
-          function manageContact(selectedJSON)
-          {
-            document.getElementById("editedFirstName").innerHTML = selectedJSON.firstName;
-            document.getElementsById("editedLastName").innerHTML = selectedJSON.lastName;
-            document.getElementById("editedEmail").innerHTML = selectedJSON.email;
-            document.getElementById("editedPhone").innerHTML = selectedJSON.phone;
-            document.getElementById("editedAddress").innerHTML = selectedJSON.address;
-            document.getElementById("editedCity").innerHTML = selectedJSON.city;
-            document.getElementById("editedState").innerHTML = selectedJSON.state;
-            document.getElementById("editedZip").innerHTML = selectedJSON.zip;
-          }
         </script>
         </div>
 
@@ -344,6 +286,13 @@
     </div>
   </div>
   </div>
+  
+  <!--clears the input fields of the modal when closed out-->
+  <script>
+    $('body').on('hidden.bs.modal', '.modal', function(){
+      $(this).removeData('bs.modal');
+    });
+  </script>
 </div>
 </main>
 
