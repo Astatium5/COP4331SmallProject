@@ -113,7 +113,7 @@ function doRegister() {
 				lastName = last;
 
 				if (userId < 0) {
-					document.getElementById('loginResult').innerHTML = 'The user with the given username already exists';
+					document.getElementById('registerResult').innerHTML = 'The user with the given username already exists';
 					return;
 				}
 
