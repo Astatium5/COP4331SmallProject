@@ -108,14 +108,14 @@ function doRegister() {
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonResponse = JSON.parse(xhr.responseText);
 				
-				userId = jsonResponse.uid;
-				firstName = first;
-				lastName = last;
-
 				if (jsonResponse.error != "") {
 					document.getElementById('registerResult').innerHTML = 'The user with the given username already exists';
 					return;
 				}
+
+				userId = jsonResponse.uid;
+				firstName = first;
+				lastName = last;
 
 				saveCookie();
 				window.location.href = 'contacts.html';
