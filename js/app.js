@@ -157,6 +157,7 @@ function readCookie() {
 		const contactsUserName = document.getElementById('contactsUserName');
 
 		contactsUserName.innerHTML = firstName + ' ' + lastName;
+		contactsUserName.classList.add("navlink");
 		contactsUserName.dataset.indexNumber = userId;
 	}
 }
@@ -248,7 +249,7 @@ function updateContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById('contactDeleteStatus').innerHTML = 'The contact was update succesfully';
+				document.getElementById('contactDeleteStatus').innerHTML = 'The contact was updated succesfully';
 				deleteContactsFromTable();
 				retrieveContacts();
 			}
