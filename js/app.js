@@ -330,11 +330,14 @@ function retrieveContacts() {
   xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
+	console.log('outside retrieve');
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				const JSONArray = JSON.parse(xhr.responseText);
-					
+
+				console.log('inside retrieve');
+
 				for (let i = 0; i < JSONArray.length; i++) {
 					// gets the contact id
 					contactID = JSONArray[i].cid;
