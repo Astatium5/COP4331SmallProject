@@ -317,11 +317,17 @@ function searchContact() {
 
 // retrieves the contacts from the retrieve.php and puts them in a table
 function retrieveContacts() {
+	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
 	let contactID = 0;
+
+	let obj = new Object();
+	obj.uid = uid;
+
+	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/retrieve' + extension;
 	
 	const xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
+  xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	xhr.onreadystatechange = function() {
@@ -364,7 +370,7 @@ function retrieveContacts() {
 			}
 		}
 	}
-		xhr.send();
+	xhr.send(jsonPayload);
 }
 
 // this function reads the data of the selected json and those become the elements in the update form
