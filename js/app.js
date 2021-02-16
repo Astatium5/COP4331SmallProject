@@ -24,7 +24,7 @@ function doLogin() {
 	const url = urlBase + '/login' + extension;
 
 	const xhr = new XMLHttpRequest();
-	xhr.open('GET', url, true);
+	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
