@@ -301,6 +301,7 @@ function searchContact() {
 	const url = urlBase + '/search' + extension;
 
 	if (srch == "") {
+		deleteContactsFromTable();
 		retrieveContacts();
 		return;
 	}
