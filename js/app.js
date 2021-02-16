@@ -349,7 +349,7 @@ function retrieveContacts() {
 				console.log('inside retrieve');
 
 				for (let i = 0; i < JSONArray.length; i++) {
-					addContactToTable(jsonArray[i]);
+					addContactToTable(JSONArray[i]);
 				}
 			}
 		};
