@@ -387,7 +387,7 @@ function retrieveContacts() {
 // this function reads the data of the selected json and those become the elements in the update form
 function manageContact(selectedJSON) {
 	document.getElementById("editedFirstName").placeholder = selectedJSON.firstName;
-	document.getElementsById("editedLastName").placeholder = selectedJSON.lastName;
+	document.getElementById("editedLastName").placeholder = selectedJSON.lastName;
 	document.getElementById("editedEmail").placeholder = selectedJSON.email;
 	document.getElementById("editedPhone").placeholder = selectedJSON.phone;
 	document.getElementById("editedAddress").placeholder = selectedJSON.address;
