@@ -112,7 +112,7 @@ function doRegister() {
 				firstName = first;
 				lastName = last;
 
-				if (userId < 0) {
+				if (jsonResponse.error != "") {
 					document.getElementById('registerResult').innerHTML = 'The user with the given username already exists';
 					return;
 				}
@@ -124,7 +124,7 @@ function doRegister() {
 
 		xhr.send(jsonPayload);
 	} catch (err) {
-		document.getElementById('registerContactResult').innerHTML = err.message;
+		document.getElementById('registerResult').innerHTML = err.message;
 	}
 }
 
