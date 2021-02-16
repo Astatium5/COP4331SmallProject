@@ -330,47 +330,55 @@ function retrieveContacts() {
   xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
-	xhr.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			const JSONArray = JSON.parse(xhr.responseText);
-				
-			for (let i = 0; i < JSONArray.length; i++) {
-				// gets the contact id
-				contactID = JSONArray[i].cid;
-				
-				let table = document.getElementById('userTable');
+	try {
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				const JSONArray = JSON.parse(xhr.responseText);
+					
+				for (let i = 0; i < JSONArray.length; i++) {
+					// gets the contact id
+					contactID = JSONArray[i].cid;
+					
+					let table = document.getElementById('userTable');
 
-				let row = document.createElement('tr');
-				let firstNameField = document.createElement('td');
-				let lastNameField = document.createElement('td');
-				let buttonField = document.createElement('td');
-				let manageButton = document.createElement('button');
+					let row = document.createElement('tr');
+					let firstNameField = document.createElement('td');
+					let lastNameField = document.createElement('td');
+					let buttonField = document.createElement('td');
+					let manageButton = document.createElement('button');
 
-				row.dataset.indexNumber = JSONArray[i].cid;
+					row.dataset.indexNumber = JSONArray[i].cid;
 
-				firstNameField.innerHTML = JSONArray[i].firstName;
-				lastNameField.innerHTML = JSONArray[i].lastName;
+					firstNameField.innerHTML = JSONArray[i].firstName;
+					lastNameField.innerHTML = JSONArray[i].lastName;
 
-				manageButton.type = 'button';
-				manageButton.class = 'btn btn-outline-dark';
-				manageButton.onclick = manageContact(JSONArray[i]);
-				manageButton.innerHTML = 'Manage';
+					manageButton.type = 'button';
+					manageButton.class = 'btn btn-outline-dark';
+					manageButton.onclick = manageContact(JSONArray[i]);
+					manageButton.innerHTML = 'Manage';
 
-				buttonField.append(manageButton);
-				row.append(firstNameField);
-				row.append(lastNameField);
-				row.append(buttonField);
-				table.append(row);
-				// let row = '<tr>
-        //             <td>${JSONArray[i].firstName}</td>
-        //             <td>${JSONArray[i].lastName}</td>
-        //             <td><button type="button" class="btn btn-outline-dark" onclick="manageContact(data[i]);">Manage</button></td>
-        //             </tr>';
-        userTable.innerHTML += row;
+					buttonField.append(manageButton);
+					row.append(firstNameField);
+					row.append(lastNameField);
+					row.append(buttonField);
+					table.append(row);
+					// let row = '<tr>
+					//             <td>${JSONArray[i].firstName}</td>
+					//             <td>${JSONArray[i].lastName}</td>
+					//             <td><button type="button" class="btn btn-outline-dark" onclick="manageContact(data[i]);">Manage</button></td>
+					//             </tr>';
+					userTable.innerHTML += row;
+				}
 			}
 		}
+
+		xhr.send(jsonPayload);
+	} catch (err) {
+		let errorField = document.createElement('td');
+		errorField.innerHTML = err.message;
+
+		document.getElementById('userTable').append(errorField);
 	}
-	xhr.send(jsonPayload);
 }
 
 // this function reads the data of the selected json and those become the elements in the update form
