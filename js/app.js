@@ -293,8 +293,6 @@ function searchContact() {
 	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
 	document.getElementById('contactSearchResult').innerHTML = '';
 
-	let contactList = '';
-
 	const obj = new Object();
 	obj.search = srch;
 	obj.uid = uid;
@@ -312,6 +310,7 @@ function searchContact() {
 				document.getElementById('contactSearchResult').innerHTML = 'Contact(s) has been retrieved';
 				const jsonArray = JSON.parse(xhr.responseText);
 
+				deleteContactsFromTable();
 				for (let i = 0; i < jsonArray.length; i++) {
 					addContactToTable(jsonArray[i]);
 				}
