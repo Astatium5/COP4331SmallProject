@@ -11,9 +11,10 @@
     if ($conn->connect_error) {
         returnWithErrorContact($conn->connect_error);
     } else {
-        $sql = "SELECT * FROM CONTACTS WHERE lastName LIKE '%" 
+        $sql = "SELECT * FROM CONTACTS WHERE uid=" 
+        . $inData["uid"] . "AND (lastName LIKE '%" 
         . $inData["search"] . "%' OR firstName LIKE '%" 
-        . $inData["search"] . "%' AND uid=" . $inData["uid"] . ";";
+        . $inData["search"] . "%');";
 
         $result = $conn->query($sql);
 
