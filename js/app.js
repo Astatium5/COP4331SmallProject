@@ -309,3 +309,66 @@ function searchContact() {
 		document.getElementById('contactSearchResult').innerHTML = err.message;
 	}
 }
+
+// retrieves the contacts from the retrieve.php and puts them in a table
+function retrieveContacts()
+{
+	const contactID = 0;
+	const url = urlBase + '/retrieve' + extension;
+	
+	const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+
+	xhr.onreadystatechange = function()
+	 {
+		if (this.readyState == 4 && this.status == 200)
+		{
+			const JSONArray = JSON.parse(xhr.responseText);
+				
+			for (var i = 0; i < JSONArray.results.length; i++)
+			{
+				// gets the contact id
+				contactID = JSONArray[i].cid;
+
+				var row = `<tr>
+                    <td>${JSONArray[i].firstName}</td>
+                    <td>${JSONArray[i].lastName}</td>
+                    <td><button type='button' class='btn btn-outline-dark' onclick='manageContact(data[i]);'>Manage</button></td>
+                    </tr>`
+                   userTable.innerHTML += row;
+			}
+		}
+	}
+		xhr.send();
+}
+
+// this function reads the data of the selected json and those become the elements in the update form
+function manageContact(selectedJSON)
+{
+	document.getElementById("editedFirstName").innerHTML = selectedJSON.firstName;
+	document.getElementsById("editedLastName").innerHTML = selectedJSON.lastName;
+	document.getElementById("editedEmail").innerHTML = selectedJSON.email;
+	document.getElementById("editedPhone").innerHTML = selectedJSON.phone;
+	document.getElementById("editedAddress").innerHTML = selectedJSON.address;
+	document.getElementById("editedCity").innerHTML = selectedJSON.city;
+	document.getElementById("editedState").innerHTML = selectedJSON.state;
+	document.getElementById("editedZip").innerHTML = selectedJSON.zip;
+}
+
+// is supposed to filter search the table of contacts
+function searchTable(value, contactsArray)
+{
+  var filteredData = [];
+
+  for (var i = 0; i < contactsArray.length; i++){
+	value = value.toLowerCase();
+	var first = contactsArray[i].firstName.toLowerCase();
+
+	if (first.includes(value)){
+	  filteredData.push(contactsArray[i]);
+	}
+  }
+
+  return filteredData;
+}
