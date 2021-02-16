@@ -24,7 +24,7 @@ function doLogin() {
 	const url = urlBase + '/login' + extension;
 
 	const xhr = new XMLHttpRequest();
-	xhr.open('POST', url, true);
+	xhr.open('GET', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
@@ -237,7 +237,7 @@ function updateContact() {
 	const url = urlBase + '/update' + extension;
 
 	const xhr = new XMLHttpRequest();
-	xhr.open('POST', url, true);
+	xhr.open('PUT', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 }
 
@@ -284,7 +284,7 @@ function searchContact() {
 	const url = urlBase + '/search' + extension;
 
 	const xhr = new XMLHttpRequest();
-	xhr.open('POST', url, true);
+	xhr.open('GET', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
