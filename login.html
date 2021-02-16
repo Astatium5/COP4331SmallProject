@@ -34,7 +34,7 @@
                                 <h3 class="display-5 login-heading text-center">Mana</h1>
                                 <form id="loginForm">
                                     <h3 class="login-heading mb-4 text-center">Welcome back!</h3>
-                                    </br><span id="loginResult"></span>
+                                    <span id="loginResult"></span>
                                     <div class="form-label-group">
                                         <input type="userName" class="form-control" id="login" placeholder="Username" required autofocus pattern="\S+">
                                     </div>
@@ -45,11 +45,11 @@
                                     <!-- #TODO Add remember me function -->
                                     <div class="custom-checkbox mb-3">
                                     <input type="checkbox" checked="checked" name="remember">Remember me</input>
-                                    <span id="loginResult"></span>
                                     </div>
                                 </form>
                                 <form id="register">
                                     <h3 class="login-heading mb-4 text-center">Welcome!</h3>
+                                    <span id="registerResult"></span>
                                     <div class="form-label-group">
                                         <input type="username" class="form-control" id="registerName" placeholder="Username" required autofocus pattern="\S+">
                                     </div>
@@ -63,7 +63,6 @@
                                         <input type="text" class="form-control" id="registerLast" placeholder="Last Name" required pattern="\S+">
                                     </div>
                                     <button type="button" class="btn-primary btn btn-block btn-dark text-uppercase font-weight-bold btn-login mb-2" id="create-account" onclick="doRegister();">Create account</button>
-                                    <span id="registerResult"></span>
                                 </form>
                                 <div class="text-center">
                                     <a class="small" id="formToggle">New User?</a>
