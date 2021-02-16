@@ -207,6 +207,12 @@ function addContact() {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById('createContactResult').innerHTML = 'A new contact has been added!';
+				const parent = document.getElementById('userTable');
+
+				while (parent.firstChild) {
+					parent.firstChild.remove();
+				}
+				
 				retrieveContacts();
 			}
 		};
