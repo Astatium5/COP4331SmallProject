@@ -367,7 +367,7 @@ function retrieveContacts() {
 					//             <td>${JSONArray[i].lastName}</td>
 					//             <td><button type="button" class="btn btn-outline-dark" onclick="manageContact(data[i]);">Manage</button></td>
 					//             </tr>';
-					userTable.innerHTML += row;
+					// userTable.innerHTML += row;
 				}
 			}
 		}
