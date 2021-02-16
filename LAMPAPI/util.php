@@ -32,11 +32,13 @@
 	// returns an error in case a user json should be returned
 	function returnWithErrorUser($error) {
 		returnWithInfoUser(-1, "", "", "", "", $error);
+		die(1);
 	}
 
 	// returns an error in case a user json should be returned
 	function returnWithErrorContact($error) {
 		returnWithInfoContact(-1, -1, "", "", "", "", "", "", "", "", $error);
+		die(1);
 	}
 
 	// creates an object with info about a contact

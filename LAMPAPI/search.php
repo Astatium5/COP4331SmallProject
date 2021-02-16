@@ -30,9 +30,9 @@
         } else {
             returnWithErrorContact("No records found");
         }
-
+        
+        sendResultInfoAsJSON(json_encode($searchResults));
         $conn->close();
     }
 
-    sendResultInfoAsJSON(json_encode($searchResults));
 ?>
