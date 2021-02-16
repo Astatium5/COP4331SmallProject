@@ -388,7 +388,7 @@ function addContactToTable(jsonObject) {
 
 	manageButton.type = 'button';
 	manageButton.classList.add('btn btn-primary');
-	manageButton.onclick = manageContact(jsonObject);
+	manageButton.onclick = 'manageContact();';
 	manageButton.innerHTML = 'Manage';
 
 	buttonField.append(manageButton);
