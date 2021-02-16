@@ -79,15 +79,13 @@ function doRegister() {
 
 	if (trimmed) {
 		input.dataset.state = 'valid';
-	}
-
-	else {
+	} else {
 		input.dataset.state = 'invalid';
 		return;
 	}
 
 	const hash = md5(trimmed);
-	let obj = new Object();
+	const obj = new Object();
 	obj.login = login;
 	obj.password = hash;
 	obj.firstName = first;
@@ -96,7 +94,7 @@ function doRegister() {
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/register' + extension;
 	console.log(jsonPayload);
-	
+
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
@@ -107,8 +105,8 @@ function doRegister() {
 			console.log(this.readyState + this.status);
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonResponse = JSON.parse(xhr.responseText);
-				
-				if (jsonResponse.error != "") {
+
+				if (jsonResponse.error != '') {
 					document.getElementById('registerResult').innerHTML = 'The user with the given username already exists';
 					return;
 				}
@@ -156,7 +154,7 @@ function readCookie() {
 	if (userId < 0) {
 		window.location.href = 'index.html';
 	} else {
-		let contactsUserName = document.getElementById('contactsUserName');
+		const contactsUserName = document.getElementById('contactsUserName');
 
 		contactsUserName.innerHTML = 'Signed in as ' + firstName + ' ' + lastName;
 		contactsUserName.dataset.indexNumber = userId;
@@ -207,12 +205,7 @@ function addContact() {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById('createContactResult').innerHTML = 'A new contact has been added!';
-				const parent = document.getElementById('userTable');
-
-				while (parent.firstChild) {
-					parent.firstChild.remove();
-				}
-				
+				deleteContactsFromTable();
 				retrieveContacts();
 			}
 		};
@@ -232,10 +225,10 @@ function updateContact() {
 	const city = document.getElementById('editedCity').value;
 	const state = document.getElementById('editedState').value;
 	const zip = document.getElementById('editedZip').value;
-	// const cid; // must be added from the data attribute from html
+	const cid = document.getElementById('editedFirstName').dataset.indexNumber;
 
 	const obj = new Object();
-	// obj.cid = cid;
+	obj.cid = cid;
 	obj.firstName = firstName;
 	obj.lastName = lastName;
 	obj.phone = phone;
@@ -249,8 +242,22 @@ function updateContact() {
 	const url = urlBase + '/update' + extension;
 
 	const xhr = new XMLHttpRequest();
-	xhr.open('PUT', url, true);
+	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+
+	try {
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById('contactDeleteStatus').innerHTML = 'The contact was update succesfully';
+				deleteContactsFromTable();
+				retrieveContacts();
+			}
+			
+			xhr.send(jsonPayload);
+		}
+	} catch (err) {
+		document.getElementById('contactDeleteStatus').innerHTML = 'The contact update was unsuccessful';
+	}
 }
 
 // delete contact
@@ -327,14 +334,14 @@ function retrieveContacts() {
 	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
 	let contactID = 0;
 
-	let obj = new Object();
+	const obj = new Object();
 	obj.uid = uid;
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/retrieve' + extension;
-	
+
 	const xhr = new XMLHttpRequest();
-  xhr.open('POST', url, true);
+	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	console.log('outside retrieve');
@@ -348,14 +355,14 @@ function retrieveContacts() {
 				for (let i = 0; i < JSONArray.length; i++) {
 					// gets the contact id
 					contactID = JSONArray[i].cid;
-					
-					let table = document.getElementById('userTable');
 
-					let row = document.createElement('tr');
-					let firstNameField = document.createElement('td');
-					let lastNameField = document.createElement('td');
-					let buttonField = document.createElement('td');
-					let manageButton = document.createElement('button');
+					const table = document.getElementById('userTable');
+
+					const row = document.createElement('tr');
+					const firstNameField = document.createElement('td');
+					const lastNameField = document.createElement('td');
+					const buttonField = document.createElement('td');
+					const manageButton = document.createElement('button');
 
 					row.dataset.indexNumber = JSONArray[i].cid;
 
@@ -374,41 +381,51 @@ function retrieveContacts() {
 					table.append(row);
 				}
 			}
-		}
+		};
 
 		xhr.send(jsonPayload);
 	} catch (err) {
-		let errorField = document.createElement('td');
+		const errorField = document.createElement('td');
 		errorField.innerHTML = err.message;
 
 		document.getElementById('userTable').append(errorField);
 	}
 }
 
+// deletes contacts from the table when required
+function deleteContactsFromTable() {
+	const parent = document.getElementById('userTable');
+
+	while (parent.firstChild) {
+		parent.firstChild.remove();
+	}
+}
+
 // this function reads the data of the selected json and those become the elements in the update form
 function manageContact(selectedJSON) {
-	document.getElementById("editedFirstName").placeholder = selectedJSON.firstName;
-	document.getElementById("editedLastName").placeholder = selectedJSON.lastName;
-	document.getElementById("editedEmail").placeholder = selectedJSON.email;
-	document.getElementById("editedPhone").placeholder = selectedJSON.phone;
-	document.getElementById("editedAddress").placeholder = selectedJSON.address;
-	document.getElementById("editedCity").placeholder = selectedJSON.city;
-	document.getElementById("editedState").placeholder = selectedJSON.state;
-	document.getElementById("editedZip").placeholder = selectedJSON.zip;
+	document.getElementById('editedFirstName').dataset.indexNumber = selectedJSON.cid;
+	document.getElementById('editedFirstName').placeholder = selectedJSON.firstName;
+	document.getElementById('editedLastName').placeholder = selectedJSON.lastName;
+	document.getElementById('editedEmail').placeholder = selectedJSON.email;
+	document.getElementById('editedPhone').placeholder = selectedJSON.phone;
+	document.getElementById('editedAddress').placeholder = selectedJSON.address;
+	document.getElementById('editedCity').placeholder = selectedJSON.city;
+	document.getElementById('editedState').placeholder = selectedJSON.state;
+	document.getElementById('editedZip').placeholder = selectedJSON.zip;
 }
 
 // is supposed to filter search the table of contacts
 function searchTable(value, contactsArray) {
-  var filteredData = [];
+	const filteredData = [];
 
-  for (var i = 0; i < contactsArray.length; i++){
-	value = value.toLowerCase();
-	var first = contactsArray[i].firstName.toLowerCase();
+	for (let i = 0; i < contactsArray.length; i++) {
+		value = value.toLowerCase();
+		const first = contactsArray[i].firstName.toLowerCase();
 
-	if (first.includes(value)){
+		if (first.includes(value)) {
 	  filteredData.push(contactsArray[i]);
+		}
 	}
-  }
 
-  return filteredData;
+	return filteredData;
 }
