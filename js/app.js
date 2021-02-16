@@ -336,11 +336,11 @@ function retrieveContacts()
 				// gets the contact id
 				contactID = JSONArray[i].cid;
 
-				let row = '<tr>
-                    <td>${JSONArray[i].firstName}</td>
-                    <td>${JSONArray[i].lastName}</td>
-                    <td><button type="button" class="btn btn-outline-dark" onclick="manageContact(data[i]);">Manage</button></td>
-                    </tr>';
+				// let row = '<tr>
+        //             <td>${JSONArray[i].firstName}</td>
+        //             <td>${JSONArray[i].lastName}</td>
+        //             <td><button type="button" class="btn btn-outline-dark" onclick="manageContact(data[i]);">Manage</button></td>
+        //             </tr>';
         userTable.innerHTML += row;
 			}
 		}
