@@ -284,7 +284,7 @@ function searchContact() {
 	const url = urlBase + '/search' + extension;
 
 	const xhr = new XMLHttpRequest();
-	xhr.open('GET', url, true);
+	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
@@ -317,7 +317,7 @@ function retrieveContacts()
 	const url = urlBase + '/retrieve' + extension;
 	
 	const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
+  xhr.open('GET', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	xhr.onreadystatechange = function()
