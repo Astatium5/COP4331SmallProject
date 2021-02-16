@@ -156,7 +156,7 @@ function readCookie() {
 	} else {
 		const contactsUserName = document.getElementById('contactsUserName');
 
-		contactsUserName.innerHTML = 'Signed in as ' + firstName + ' ' + lastName;
+		contactsUserName.innerHTML = firstName + ' ' + lastName;
 		contactsUserName.dataset.indexNumber = userId;
 	}
 }
@@ -370,7 +370,7 @@ function retrieveContacts() {
 					lastNameField.innerHTML = JSONArray[i].lastName;
 
 					manageButton.type = 'button';
-					manageButton.class = 'btn btn-outline-dark';
+					manageButton.classList.add('btn btn-primary');
 					manageButton.onclick = manageContact(JSONArray[i]);
 					manageButton.innerHTML = 'Manage';
 
