@@ -19,7 +19,7 @@
 </head>
 
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" onload="retrieveContacts();">
     <header>
         <nav class = "navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
@@ -70,11 +70,11 @@
                 </div>
                 <!--table that shows contacts-->
                 <table class="table table-striped">
-                  <tr class="bg-info" onload="alertforusertable();">
+                  <tr class="bg-info">
                     <th class="bg-info" data-colname="first Name" data-order="desc">First Name</th>
                     <th data-colname="last Name" data-order="desc">Last Name</th>
                   </tr>
-                  <tbody id="userTable" onload="retrieveContacts();"></tbody>
+                  <tbody id="userTable"></tbody>
                 </table>
 
                 <script>
