@@ -300,6 +300,11 @@ function searchContact() {
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/search' + extension;
 
+	if (srch == "") {
+		retrieveContacts();
+		return;
+	}
+
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
