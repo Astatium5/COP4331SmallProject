@@ -294,14 +294,18 @@ function searchContact() {
 	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
 	document.getElementById('contactSearchResult').innerHTML = '';
 
-	let contactList = '';
-
 	const obj = new Object();
 	obj.search = srch;
 	obj.uid = uid;
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/search' + extension;
+
+	if (srch == "") {
+		deleteContactsFromTable();
+		retrieveContacts();
+		return;
+	}
 
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
@@ -310,20 +314,23 @@ function searchContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById('contactSearchResult').innerHTML = 'Contact(s) has been retrieved';
+				console.log(xhr.responseText);
 				const jsonArray = JSON.parse(xhr.responseText);
 
-				for (let i = 0; i < jsonArray.length; i++) {
-					contactList += jsonArray[i];
-
-					if (i < jsonArray.length - 1) {
-						contactList += '<br />\r\n';
-					}
+				if (jsonArray instanceof Object && jsonArray.error == "No records found") {
+					document.getElementById('contactSearchResult').innerHTML = 'No contacts found';
+					return;
 				}
 
-				document.getElementsByTagName('contactList').innerHTML = contactList;
+				document.getElementById('contactSearchResult').innerHTML = 'Contact(s) has been retrieved';
+				deleteContactsFromTable();
+				for (let i = 0; i < jsonArray.length; i++) {
+					addContactToTable(jsonArray[i]);
+				}
+
 			}
 		};
+
 		xhr.send(jsonPayload);
 	} catch (err) {
 		document.getElementById('contactSearchResult').innerHTML = err.message;
@@ -354,32 +361,7 @@ function retrieveContacts() {
 				console.log('inside retrieve');
 
 				for (let i = 0; i < JSONArray.length; i++) {
-					// gets the contact id
-					contactID = JSONArray[i].cid;
-
-					const table = document.getElementById('userTable');
-
-					const row = document.createElement('tr');
-					const firstNameField = document.createElement('td');
-					const lastNameField = document.createElement('td');
-					const buttonField = document.createElement('td');
-					const manageButton = document.createElement('button');
-
-					row.dataset.indexNumber = JSONArray[i].cid;
-
-					firstNameField.innerHTML = JSONArray[i].firstName;
-					lastNameField.innerHTML = JSONArray[i].lastName;
-
-					manageButton.type = 'button';
-					manageButton.classList.add('btn btn-primary');
-					manageButton.onclick = manageContact(JSONArray[i]);
-					manageButton.innerHTML = 'Manage';
-
-					buttonField.append(manageButton);
-					row.append(firstNameField);
-					row.append(lastNameField);
-					row.append(buttonField);
-					table.append(row);
+					addContactToTable(JSONArray[i]);
 				}
 			}
 		};
@@ -400,6 +382,32 @@ function deleteContactsFromTable() {
 	while (parent.firstChild) {
 		parent.firstChild.remove();
 	}
+}
+
+function addContactToTable(jsonObject) {
+	const table = document.getElementById('userTable');
+
+	const row = document.createElement('tr');
+	const firstNameField = document.createElement('td');
+	const lastNameField = document.createElement('td');
+	const buttonField = document.createElement('td');
+	const manageButton = document.createElement('button');
+
+	row.dataset.indexNumber = jsonObject.cid;
+
+	firstNameField.innerHTML = jsonObject.firstName;
+	lastNameField.innerHTML = jsonObject.lastName;
+
+	manageButton.type = 'button';
+	manageButton.classList.add('btn', 'btn-primary');
+	manageButton.onclick = 'manageContact();';
+	manageButton.innerHTML = 'Manage';
+
+	buttonField.append(manageButton);
+	row.append(firstNameField);
+	row.append(lastNameField);
+	row.append(buttonField);
+	table.append(row);
 }
 
 // this function reads the data of the selected json and those become the elements in the update form
