@@ -207,6 +207,7 @@ function addContact() {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById('createContactResult').innerHTML = 'A new contact has been added!';
+				retrieveContacts();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -365,12 +366,6 @@ function retrieveContacts() {
 					row.append(lastNameField);
 					row.append(buttonField);
 					table.append(row);
-					// let row = '<tr>
-					//             <td>${JSONArray[i].firstName}</td>
-					//             <td>${JSONArray[i].lastName}</td>
-					//             <td><button type="button" class="btn btn-outline-dark" onclick="manageContact(data[i]);">Manage</button></td>
-					//             </tr>';
-					// userTable.innerHTML += row;
 				}
 			}
 		}
