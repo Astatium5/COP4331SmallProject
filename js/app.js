@@ -313,10 +313,15 @@ function searchContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById('contactSearchResult').innerHTML = 'Contact(s) has been retrieved';
 				console.log(xhr.responseText);
 				const jsonArray = JSON.parse(xhr.responseText);
 
+				if (jsonArray instanceof Object && jsonArray.error == "No records found") {
+					document.getElementById('contactSearchResult').innerHTML = 'No contacts found';
+					return;
+				}
+
+				document.getElementById('contactSearchResult').innerHTML = 'Contact(s) has been retrieved';
 				deleteContactsFromTable();
 				for (let i = 0; i < jsonArray.length; i++) {
 					addContactToTable(jsonArray[i]);
