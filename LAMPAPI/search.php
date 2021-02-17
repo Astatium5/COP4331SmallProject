@@ -8,7 +8,7 @@
 
     $conn = db_connection();
     
-    if (preg_match('\w+\s\w+', $inData["search"])) 
+    if (preg_match('\w+\s\w+', $inData["search"]) == 1) 
         $partial = false;
     else
         $partial = true;
