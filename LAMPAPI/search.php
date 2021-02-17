@@ -14,7 +14,6 @@
         returnWithErrorContact($conn->connect_error);
     } else {
         if ($partial) {
-            echo 'test outside';
             $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
             . $uid . " AND (firstName LIKE '%" 
             . $search . "%' OR lastName LIKE '%" 
@@ -24,8 +23,8 @@
             . $search . "%' OR city LIKE '%"
             . $search . "%' OR state LIKE '%"
             . $search . "%' OR zip LIKE '%"
-            . $search . "%' OR concat(firstName, ' ', lastName) '%"
-            . $search . "%' OR concat(lastName, ' ', firstName) '%"
+            . $search . "%' OR CONCAT(firstName, ' ', lastName) LIKE '%"
+            . $search . "%' OR CONCAT(lastName, ' ', firstName) LIKE '%"
             . $search . "%'));";
 
         $result = $conn->query($sql);
