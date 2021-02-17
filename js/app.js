@@ -325,7 +325,7 @@ function searchContact() {
 					document.getElementById('contactSearchResult').innerHTML = jsonArray.error;
 				}
 
-				document.getElementById('contactSearchResult').innerHTML = 'Contact(s) has been retrieved';
+				document.getElementById('contactSearchResult').innerHTML = 'Contact(s) have been retrieved';
 				deleteContactsFromTable();
 				for (let i = 0; i < jsonArray.length; i++) {
 					addContactToTable(jsonArray[i]);
@@ -413,7 +413,7 @@ function addContactToTable(jsonObject) {
 	lastNameField.innerHTML = jsonObject.lastName;
 
 	manageButton.type = 'button';
-	manageButton.classList.add('btn', 'btn-primary');
+	manageButton.classList.add('btn', 'btn-link', 'btn-block');
 	manageButton.onclick = 'manageContact();';
 	manageButton.innerHTML = 'Manage';
 

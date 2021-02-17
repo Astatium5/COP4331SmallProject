@@ -69,13 +69,18 @@
                 </div>
                 <span id="contactSearchResult"></span>
                 <!--table that shows contacts-->
-                <div class="card border-light">
+                <div class="card border-dark table-responsive">
+                  <div class="card-header">
+                    <ul class="nav nav-justified">
+                      <li class="nav-item">
+                        <a class="active">First Name</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="active">Last Name</a>
+                      </li>
+                    </ul>
+                  </div>
                 <table class="table table-striped table-hover table-responsive align-middle">
-                  <tr class="bg-info">
-                    <th class="bg-info" data-colname="first Name" data-order="desc">First Name</th>
-                    <th data-colname="last Name" data-order="desc">Last Name</th>
-                    <th data-colname="manage button" data-order="desc"></th>
-                  </tr>
                   <tbody id="userTable"></tbody>
                 </table>
               </div>
