@@ -503,8 +503,8 @@ function createTableHeader() {
 	firstNameLabel.style.color = '#6272a4';
 	lastNameLabel.style.color = '#6272a4';
 
-	firstNameLabel.value = 'First Name';
-	lastNameLabel.value = 'Last Name';
+	firstNameLabel.innerHTML = 'First Name';
+	lastNameLabel.innerHTML = 'Last Name';
 
 	row.append(firstNameLabel);
 	row.append(lastNameLabel);
