@@ -205,6 +205,7 @@ function addContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
+				deleteContactsInfoFromAddContact();
 				document.getElementById('createContactResult').innerHTML = 'A new contact has been added!';
 				deleteContactsFromTable();
 				retrieveContacts();
@@ -375,6 +376,17 @@ function retrieveContacts() {
 
 		document.getElementById('userTable').append(errorField);
 	}
+}
+
+function deleteContactsInfoFromAddContact() {
+	document.getElementById('contactAddFirstName').value = '';
+	document.getElementById('contactAddLastName').value = '';
+	document.getElementById('contactAddPhone').value = '';
+	document.getElementById('contactAddEmail').value = '';
+	document.getElementById('contactAddAddress').value = '';
+	document.getElementById('contactAddCity').value = '';
+	document.getElementById('contactAddState').value = '';
+	document.getElementById('contactAddZip').value = '';
 }
 
 // deletes contacts from the table when required
