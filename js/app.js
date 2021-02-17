@@ -453,8 +453,8 @@ function addContactToTable(jsonObject) {
 // this function reads the data of the selected json and those become the elements in the update form
 function manageContact(id) {
 	const editor = document.getElementById('editor');
-	console.log(editor.getAttribute('aria-hidden'));
-	editor.getAttribute('aria-hidden') == 'true' ? editor.setAttribute('aria-hidden', 'false') : editor.setAttribute('aria-hidden', 'true');
+	console.log(editor.getAttribute('hidden'));
+	editor.getAttribute('hidden') == 'true' ? editor.setAttribute('hidden', 'false') : editor.setAttribute('hidden', 'true');
 
 	const row = document.getElementById(id).parentElement.parentElement;
 
