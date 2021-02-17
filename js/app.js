@@ -278,7 +278,7 @@ function deleteContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				// should have "updated successfuly somewhere in html"
+				// should have "updated successfully somewhere in html"
 			}
 		};
 
