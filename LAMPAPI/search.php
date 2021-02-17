@@ -22,6 +22,7 @@
             . $inData["search"] . "%' OR lastName LIKE '%" 
             . $inData["search"] . "%'));";
         } else {
+            echo 'test';
             $firstAndLastNames = explode(" ", $inData["search"]);
             $firstName = $firstAndLastNames[0];
             $lastName = $firstAndLastNames[1];
