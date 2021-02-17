@@ -243,6 +243,7 @@ function updateContact() {
 
 	try {
 		console.log(xhr.state + '' + xhr.status);
+		xhr.send(jsonPayload);
 		xhr.onreadystatechange = function() {
 			console.log(this.readyState + this.status);
 			if (this.readyState == 4 && this.status == 200) {
@@ -254,7 +255,6 @@ function updateContact() {
 			}
 
 			console.log(xhr.state + '' + xhr.status);
-			xhr.send(jsonPayload);
 			console.log(xhr.state + '' + xhr.status);
 		};
 	} catch (err) {
