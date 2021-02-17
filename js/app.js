@@ -449,7 +449,7 @@ function manageContact(id) {
 }
 
 function updateContactInfoInEditField(id) {
-	const row = document.getElementById(id);
+	const row = document.getElementById(id).parentElement.parentElement;
 
 	document.getElementById('editedFirstName').dataset.indexNumber = row.dataset.indexNumber;
 	document.getElementById('editedFirstName').placeholder = row.childNodes[0].innerHTML;
@@ -473,22 +473,6 @@ function deleteInfoFromEditFields() {
 	document.getElementById('editedCity').innerHTML = '';
 	document.getElementById('editedState').innerHTML = '';
 	document.getElementById('editedZip').innerHTML = '';
-}
-
-// is supposed to filter search the table of contacts
-function searchTable(value, contactsArray) {
-	const filteredData = [];
-
-	for (let i = 0; i < contactsArray.length; i++) {
-		value = value.toLowerCase();
-		const first = contactsArray[i].firstName.toLowerCase();
-
-		if (first.includes(value)) {
-	  	filteredData.push(contactsArray[i]);
-		}
-	}
-
-	return filteredData;
 }
 
 function toggleEdit() {
