@@ -13,19 +13,18 @@
     if ($conn->connect_error) {
         returnWithErrorContact($conn->connect_error);
     } else {
-        if ($partial) {
-            $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
-            . $uid . " AND (firstName LIKE '%" 
-            . $search . "%' OR lastName LIKE '%" 
-            . $search . "%' OR phone LIKE '%"
-            . $search . "%' OR email LIKE '%"
-            . $search . "%' OR address LIKE '%"
-            . $search . "%' OR city LIKE '%"
-            . $search . "%' OR state LIKE '%"
-            . $search . "%' OR zip LIKE '%"
-            . $search . "%' OR CONCAT(firstName, ' ', lastName) LIKE '%"
-            . $search . "%' OR CONCAT(lastName, ' ', firstName) LIKE '%"
-            . $search . "%'));";
+        $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
+        . $uid . " AND (firstName LIKE '%" 
+        . $search . "%' OR lastName LIKE '%" 
+        . $search . "%' OR phone LIKE '%"
+        . $search . "%' OR email LIKE '%"
+        . $search . "%' OR address LIKE '%"
+        . $search . "%' OR city LIKE '%"
+        . $search . "%' OR state LIKE '%"
+        . $search . "%' OR zip LIKE '%"
+        . $search . "%' OR CONCAT(firstName, ' ', lastName) LIKE '%"
+        . $search . "%' OR CONCAT(lastName, ' ', firstName) LIKE '%"
+        . $search . "%'));";
 
         $result = $conn->query($sql);
 
