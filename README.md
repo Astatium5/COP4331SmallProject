@@ -12,3 +12,5 @@ COP 4331 Small Project
 * Henry
 * Dima
 * Andrew
+
+[SwaggerHub](https://app.swaggerhub.com/apis/COP4331Team21/SmallProject/1.0.0)
