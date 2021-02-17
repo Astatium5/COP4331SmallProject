@@ -453,17 +453,17 @@ function manageContact(id) {
 	const editor = document.getElementById('editor');
 	(editor.style.display == 'none' ? editor.style.display = 'block' : editor.style.display = 'none');
 
-	const row = document.getElementById(id).parentElement;
+	const row = document.getElementById(id).parentElement.parentElement;
 
 	document.getElementById('editedFirstName').dataset.indexNumber = row.dataset.indexNumber;
-	document.getElementById('editedFirstName').placeholder = row.childNodes[1].innerHTML;
-	document.getElementById('editedLastName').placeholder = row.childNodes[2].innerHTML;
-	document.getElementById('editedEmail').placeholder = row.childNodes[3].innerHTML;
-	document.getElementById('editedPhone').placeholder = row.childNodes[4].innerHTML;
-	document.getElementById('editedAddress').placeholder = row.childNodes[5].innerHTML;
-	document.getElementById('editedCity').placeholder = row.childNodes[6].innerHTML;
-	document.getElementById('editedState').placeholder = row.childNodes[7].innerHTML;
-	document.getElementById('editedZip').placeholder = row.childNodes[8].innerHTML;
+	document.getElementById('editedFirstName').placeholder = row.childNodes[0].innerHTML;
+	document.getElementById('editedLastName').placeholder = row.childNodes[1].innerHTML;
+	document.getElementById('editedEmail').placeholder = row.childNodes[2].innerHTML;
+	document.getElementById('editedPhone').placeholder = row.childNodes[3].innerHTML;
+	document.getElementById('editedAddress').placeholder = row.childNodes[4].innerHTML;
+	document.getElementById('editedCity').placeholder = row.childNodes[5].innerHTML;
+	document.getElementById('editedState').placeholder = row.childNodes[6].innerHTML;
+	document.getElementById('editedZip').placeholder = row.childNodes[7].innerHTML;
 }
 
 // is supposed to filter search the table of contacts
