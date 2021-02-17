@@ -298,15 +298,11 @@ main > .container {
     width: 100%;
 }
 
-.header-names:link {
-    color: #6272a4;
-}
-
-.header-names:active {
+.tr:active {
     color: #bd93f9;
 }
 
-.header-names:hover {
+.tr:hover {
     color: #B18BEF;
 }
 
