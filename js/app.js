@@ -241,7 +241,7 @@ function updateContact() {
 
 	try {
 		xhr.onreadystatechange = function() {
-			console.log('test1');
+			console.log(this.readyState + this.status);
 			if (this.readyState == 4 && this.status == 200) {
 				console.log('test2');
 				document.getElementById('contactDeleteStatus').innerHTML = 'The contact was updated succesfully';
