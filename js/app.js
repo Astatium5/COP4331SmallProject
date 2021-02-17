@@ -20,7 +20,6 @@ function doLogin() {
 	obj.password = hash;
 
 	const jsonPayload = JSON.stringify(obj);
-	console.log(jsonPayload);
 	const url = urlBase + '/login' + extension;
 
 	const xhr = new XMLHttpRequest();
@@ -28,9 +27,7 @@ function doLogin() {
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
-		console.log('test 31');
 		xhr.onreadystatechange = function() {
-			console.log(this.status);
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonObject = JSON.parse(xhr.responseText);
 
@@ -40,8 +37,6 @@ function doLogin() {
 					document.getElementById('loginResult').innerHTML = 'User/Password combination incorrect';
 					return;
 				}
-
-				console.log(jsonObject);
 
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
@@ -93,16 +88,13 @@ function doRegister() {
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/register' + extension;
-	console.log(jsonPayload);
 
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
-		console.log('test 105');
 		xhr.onreadystatechange = function() {
-			console.log(this.readyState + this.status);
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonResponse = JSON.parse(xhr.responseText);
 
@@ -196,7 +188,6 @@ function addContact() {
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/create' + extension;
-	console.log(jsonPayload);
 
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
@@ -316,7 +307,6 @@ function searchContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				console.log(xhr.responseText);
 				const jsonArray = JSON.parse(xhr.responseText);
 
 				if (jsonArray instanceof Object && jsonArray.error == 'No records found') {
@@ -355,13 +345,10 @@ function retrieveContacts() {
 	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
-	console.log('outside retrieve');
 	try {
 		 xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				const JSONArray = JSON.parse(xhr.responseText);
-
-				console.log('inside retrieve');
 
 				for (let i = 0; i < JSONArray.length; i++) {
 					addContactToTable(JSONArray[i]);
