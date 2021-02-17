@@ -157,7 +157,7 @@ function readCookie() {
 		const contactsUserName = document.getElementById('contactsUserName');
 
 		contactsUserName.innerHTML = firstName + ' ' + lastName;
-		contactsUserName.classList.add("navlink");
+		contactsUserName.classList.add('navlink');
 		contactsUserName.dataset.indexNumber = userId;
 	}
 }
@@ -254,9 +254,9 @@ function updateContact() {
 				deleteContactsFromTable();
 				retrieveContacts();
 			}
-			
+
 			xhr.send(jsonPayload);
-		}
+		};
 	} catch (err) {
 		document.getElementById('contactDeleteStatus').innerHTML = 'The contact update was unsuccessful';
 	}
@@ -285,10 +285,8 @@ function deleteContact() {
 			}
 		};
 		xhr.send(jsonPayload);
-	} 
-	catch (err) {
+	} catch (err) {
 		document.getElementById('contactDeleteStatus').innerHTML = 'Try Again';
-
 	}
 }
 
@@ -305,7 +303,7 @@ function searchContact() {
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/search' + extension;
 
-	if (srch == "") {
+	if (srch == '') {
 		deleteContactsFromTable();
 		retrieveContacts();
 		return;
@@ -321,7 +319,7 @@ function searchContact() {
 				console.log(xhr.responseText);
 				const jsonArray = JSON.parse(xhr.responseText);
 
-				if (jsonArray instanceof Object && jsonArray.error == "No records found") {
+				if (jsonArray instanceof Object && jsonArray.error == 'No records found') {
 					document.getElementById('contactSearchResult').innerHTML = 'No contacts found';
 					return;
 				} else if (jsonArray instanceof Object) {
@@ -333,7 +331,6 @@ function searchContact() {
 				for (let i = 0; i < jsonArray.length; i++) {
 					addContactToTable(jsonArray[i]);
 				}
-
 			}
 		};
 
@@ -346,7 +343,7 @@ function searchContact() {
 // retrieves the contacts from the retrieve.php and puts them in a table
 function retrieveContacts() {
 	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
-	let contactID = 0;
+	const contactID = 0;
 
 	const obj = new Object();
 	obj.uid = uid;
@@ -435,7 +432,8 @@ function addContactToTable(jsonObject) {
 
 	manageButton.type = 'button';
 	manageButton.classList.add('btn', 'btn-link', 'btn-block', 'text-align-center');
-	manageButton.onclick = 'manageContact();';
+	manageButton.id = 'button' + jsonObject.cid;
+	manageButton.setAttribute('onclick', 'manageContact(this.id);');
 	manageButton.innerHTML = 'Manage';
 
 	buttonField.append(manageButton);
@@ -451,20 +449,21 @@ function addContactToTable(jsonObject) {
 }
 
 // this function reads the data of the selected json and those become the elements in the update form
-function manageContact(selectedJSON) {
+function manageContact(id) {
+	const editor = document.getElementById('editor');
+	(editor.style.display == 'none' ? editor.style.display = 'block' : editor.style.display = 'none');
 
-	const editor = document.getElementById("editor");
-	(editor.style.display == "none" ? editor.style.display = "block" : editor.style.display = "none").fadeIn();
+	const row = document.getElementById(id).parentElement;
 
-	document.getElementById('editedFirstName').dataset.indexNumber = selectedJSON.cid;
-	document.getElementById('editedFirstName').placeholder = selectedJSON.firstName;
-	document.getElementById('editedLastName').placeholder = selectedJSON.lastName;
-	document.getElementById('editedEmail').placeholder = selectedJSON.email;
-	document.getElementById('editedPhone').placeholder = selectedJSON.phone;
-	document.getElementById('editedAddress').placeholder = selectedJSON.address;
-	document.getElementById('editedCity').placeholder = selectedJSON.city;
-	document.getElementById('editedState').placeholder = selectedJSON.state;
-	document.getElementById('editedZip').placeholder = selectedJSON.zip;
+	document.getElementById('editedFirstName').dataset.indexNumber = row.dataset.indexNumber;
+	document.getElementById('editedFirstName').placeholder = row.childNodes[1].innerHTML;
+	document.getElementById('editedLastName').placeholder = row.childNodes[2].innerHTML;
+	document.getElementById('editedEmail').placeholder = row.childNodes[3].innerHTML;
+	document.getElementById('editedPhone').placeholder = row.childNodes[4].innerHTML;
+	document.getElementById('editedAddress').placeholder = row.childNodes[5].innerHTML;
+	document.getElementById('editedCity').placeholder = row.childNodes[6].innerHTML;
+	document.getElementById('editedState').placeholder = row.childNodes[7].innerHTML;
+	document.getElementById('editedZip').placeholder = row.childNodes[8].innerHTML;
 }
 
 // is supposed to filter search the table of contacts
