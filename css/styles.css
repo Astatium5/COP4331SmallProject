@@ -298,14 +298,6 @@ main > .container {
     width: 100%;
 }
 
-.tr:active {
-    color: #bd93f9;
-}
-
-.tr:hover {
-    color: #B18BEF;
-}
-
 #editor {
     display: none;
 }
@@ -313,4 +305,8 @@ main > .container {
 #card {
     height: 100%;
     overflow-y: auto;
+}
+
+#tableHeader {
+    background-color: var(--primary);
 }
