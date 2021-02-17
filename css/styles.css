@@ -154,6 +154,7 @@ main > .container {
 #register {
     display: none;
 }
+
 #login {
     display: block;
 }
@@ -223,6 +224,7 @@ main > .container {
     border: 0;
     margin-bottom: 1rem;
 }
+
 .form-control {
     border: 1px solid #d7dbee;
     -webkit-border-radius: 2px;
