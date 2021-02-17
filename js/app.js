@@ -272,6 +272,7 @@ function deleteContact() {
 			if (this.readyState == 4 && this.status == 200) {
 				deleteContactsFromTable();
 				retrieveContacts();
+				updateContactInfoInEditField('button' + cid);
 				document.getElementById('contactDeleteStatus').innerHTML = 'Contact successfully deleted';
 			}
 		};
@@ -440,15 +441,16 @@ function addContactToTable(jsonObject) {
 // this function reads the data of the selected json and those become the elements in the update form
 function manageContact(id) {
 	const editor = document.getElementById('editor');
-	console.log('before: ' + editor.style.display);
 
 	if (editor.style.display == 'none')
 		editor.style.display = 'block';
 	else 
 		editor.style.display = 'none';
 
-	console.log('after: ' + editor.style.display);
+	updateContactInfoInEditField(id);
+}
 
+function updateContactInfoInEditField(id) {
 	const row = document.getElementById(id).parentElement.parentElement;
 
 	document.getElementById('editedFirstName').dataset.indexNumber = row.dataset.indexNumber;
