@@ -468,11 +468,11 @@ function deleteInfoFromEditFields() {
 	document.getElementById('editedFirstName').value = '';
 	document.getElementById('editedLastName').value = '';
 	document.getElementById('editedEmail').value = '';
-	document.getElementById('editedPhone').innerHTML = '';
-	document.getElementById('editedAddress').innerHTML = '';
-	document.getElementById('editedCity').innerHTML = '';
-	document.getElementById('editedState').innerHTML = '';
-	document.getElementById('editedZip').innerHTML = '';
+	document.getElementById('editedPhone').value = '';
+	document.getElementById('editedAddress').value = '';
+	document.getElementById('editedCity').value = '';
+	document.getElementById('editedState').value = '';
+	document.getElementById('editedZip').value = '';
 }
 
 function toggleEdit() {
