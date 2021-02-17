@@ -453,7 +453,7 @@ function manageContact(id) {
 	const editor = document.getElementById('editor');
 	(editor.style.display == 'none' ? editor.style.display = 'block' : editor.style.display = 'none');
 
-	const row = document.getElementById(id).parentElement;
+	const row = document.getElementById(id).parentElement.parentElement;
 
 	document.getElementById('editedFirstName').dataset.indexNumber = row.dataset.indexNumber;
 	document.getElementById('editedFirstName').placeholder = row.childNodes[1].innerHTML;
