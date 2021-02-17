@@ -248,7 +248,7 @@ function updateContact() {
 				document.getElementById('contactDeleteStatus').innerHTML = 'The contact was updated succesfully';
 				deleteContactsFromTable();
 				retrieveContacts();
-				const button = document.getElementsByTagName('button');
+				console.log(getElements('button').length);
 	      const row = document.getElementById('button' + cid).parentElement.parentElement;
 				console.log(row);
 				updateContactInfoInEditField(row);
