@@ -244,9 +244,7 @@ function updateContact() {
 		xhr.send(jsonPayload);
 
 		xhr.onreadystatechange = function() {
-			console.log(this.readyState + this.status);
 			if (this.readyState == 4 && this.status == 200) {
-				console.log('test2');
 				document.getElementById('contactDeleteStatus').innerHTML = 'The contact was updated succesfully';
 				deleteContactsFromTable();
 				retrieveContacts();
@@ -451,6 +449,7 @@ function manageContact(id) {
 }
 
 function updateContactInfoInEditField(id) {
+	console.log(document.getElementById(id));
 	const row = document.getElementById(id).parentElement.parentElement;
 
 	document.getElementById('editedFirstName').dataset.indexNumber = row.dataset.indexNumber;
@@ -462,6 +461,16 @@ function updateContactInfoInEditField(id) {
 	document.getElementById('editedCity').placeholder = row.childNodes[5].innerHTML;
 	document.getElementById('editedState').placeholder = row.childNodes[6].innerHTML;
 	document.getElementById('editedZip').placeholder = row.childNodes[7].innerHTML;
+
+	
+	document.getElementById('editedFirstName').innerHTML = '';
+	document.getElementById('editedLastName').innerHTML = '';
+	document.getElementById('editedEmail').innerHTML = '';
+	document.getElementById('editedPhone').innerHTML = '';
+	document.getElementById('editedAddress').innerHTML = '';
+	document.getElementById('editedCity').innerHTML = '';
+	document.getElementById('editedState').innerHTML = '';
+	document.getElementById('editedZip').innerHTML = '';
 }
 
 // is supposed to filter search the table of contacts
