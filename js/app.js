@@ -454,7 +454,7 @@ function addContactToTable(jsonObject) {
 function manageContact(id) {
 	const editor = document.getElementById('editor');
 	console.log(editor.getAttribute('hidden'));
-	editor.getAttribute('hidden') == true ? editor.setAttribute('hidden', 'false') : editor.setAttribute('hidden', 'true');
+	editor.getAttribute('hidden') == 'true' ? editor.setAttribute('hidden', 'false') : editor.setAttribute('hidden', 'true');
 
 	const row = document.getElementById(id).parentElement.parentElement;
 
