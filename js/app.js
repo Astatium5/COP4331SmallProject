@@ -424,8 +424,9 @@ function addContactToTable(jsonObject) {
 	stateField.innerHTML = jsonObject.state;
 	zipField.innerHTML = jsonObject.zip;
 
-	phoneField.setAttribute('aria-hidden', 'true');
 	emailField.setAttribute('aria-hidden', 'true');
+	phoneField.setAttribute('aria-hidden', 'true');
+	addressField.setAttribute('aria-hidden', 'true');
 	cityField.setAttribute('aria-hidden', 'true');
 	stateField.setAttribute('aria-hidden', 'true');
 	zipField.setAttribute('aria-hidden', 'true');
@@ -439,8 +440,9 @@ function addContactToTable(jsonObject) {
 	buttonField.append(manageButton);
 	row.append(firstNameField);
 	row.append(lastNameField);
-	row.append(phoneField);
 	row.append(emailField);
+	row.append(phoneField);
+	row.append(addressField);
 	row.append(cityField);
 	row.append(stateField);
 	row.append(zipField);
