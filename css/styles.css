@@ -306,13 +306,3 @@ main > .container {
     height: 100%;
     overflow-y: auto;
 }
-
-td#headerFirstName:hover {
-    color: #B18BEF;
-}
-
-td#headerLastName:hover {
-    color: #B18BEF;
-}
-
-#tableHeader:
