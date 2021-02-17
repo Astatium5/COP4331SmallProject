@@ -489,7 +489,29 @@ function toggleEdit() {
 	deleteInfoFromEditFields();
 }
 
+function createTableHeader() {
+	const table = document.getElementById('userTable');
+
+	const row = document.createElement('tr');
+	row.style.backgroundColor = '#21c4dc';
+
+	const firstNameLabel = document.createElement('td');
+	const lastNameLabel = document.createElement('td');
+	const emptyLabel = document.createElement('td');
+
+	firstNameLabel.style.color = '#6272a4';
+	lastNameLabel.style.color = '#6272a4';
+
+	firstNameLabel.value = 'First Name';
+	lastNameLabel.value = 'Last Name';
+
+	row.append(firstNameLabel);
+	row.append(lastNameLabel);
+	row.append(emptyLabel);
+	table.append(row);
+}
+
 function toggleAddContact() {
 	document.getElementById('createContactResult').innerHTML = '';
-	$('#addContactModal').modal('hide')
+	$('#addContactModal').modal('hide');
 }
