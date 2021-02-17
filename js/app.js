@@ -440,13 +440,7 @@ function addContactToTable(jsonObject) {
 
 // this function reads the data of the selected json and those become the elements in the update form
 function manageContact(id) {
-	const editor = document.getElementById('editor');
-
-	if (editor.style.display == 'none')
-		editor.style.display = 'block';
-	else 
-		editor.style.display = 'none';
-
+	toggleEdit();
 	updateContactInfoInEditField(id);
 }
 
@@ -478,4 +472,13 @@ function searchTable(value, contactsArray) {
 	}
 
 	return filteredData;
+}
+
+function toggleEdit() {
+	const editor = document.getElementById('editor');
+
+	if (editor.style.display == 'none')
+		editor.style.display = 'block';
+	else 
+		editor.style.display = 'none';
 }
