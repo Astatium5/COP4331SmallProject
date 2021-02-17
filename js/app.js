@@ -264,10 +264,10 @@ function updateContact() {
 
 // delete contact
 function deleteContact() {
-	// const cid; // must be added from the data attribute from html
+	const cid = document.getElementById('editedFirstName').dataset.indexNumber; // must be added from the data attribute from html
 
 	const obj = new Object();
-	// obj.cid = cid;
+	obj.cid = cid;
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/delete' + extension;
@@ -279,12 +279,14 @@ function deleteContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				// should have "updated successfully somewhere in html"
+				deleteContactsFromTable(); 
+				document.getElementById('contactDeleteStatus').innerHTML = 'contact successfully deleted';
 			}
 		};
-
 		xhr.send(jsonPayload);
-	} catch (err) {
+	} 
+	catch (err) {
+		document.getElementById('contactDeleteStatus').innerHTML = 'Try Again';
 
 	}
 }
@@ -357,7 +359,7 @@ function retrieveContacts() {
 
 	console.log('outside retrieve');
 	try {
-		xhr.onreadystatechange = function() {
+		 xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				const JSONArray = JSON.parse(xhr.responseText);
 
