@@ -13,7 +13,7 @@
     } else {
         $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
         . $inData["uid"] . " AND (firstName LIKE '%" 
-        . $inData["firstName"] . "%' OR firstName LIKE '%" 
+        . $inData["firstName"] . "%' OR lastName LIKE '%" 
         . $inData["lastName"] . "%'));";
 
         $result = $conn->query($sql);
