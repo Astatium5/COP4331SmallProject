@@ -244,6 +244,7 @@ function updateContact() {
 				document.getElementById('contactDeleteStatus').innerHTML = 'The contact was updated succesfully';
 				deleteContactsFromTable();
 				retrieveContacts();
+				updateContactInfoInEditField('button' + cid);
 			}
 
 			xhr.send(jsonPayload);
