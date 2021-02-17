@@ -26,11 +26,9 @@
             $firstName = $firstAndLastNames[0];
             $lastName = $firstAndLastNames[1];
             $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
-            . $inData["uid"] . " AND ((firstName LIKE '%" 
+            . $inData["uid"] . " AND (firstName LIKE '%" 
             . $firstName . "%' AND lastName LIKE '%" 
-            . $lastName . "%') OR (lastName LIKE '%" 
-            . $firstName . "%' AND firstName LIKE '%" 
-            . $lastName . "%')));";
+            . $lastName . "%'));";
         }
 
         $result = $conn->query($sql);
