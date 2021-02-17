@@ -461,7 +461,7 @@ function updateContactInfoInEditField(id) {
 	document.getElementById('editedState').placeholder = row.childNodes[6].innerHTML;
 	document.getElementById('editedZip').placeholder = row.childNodes[7].innerHTML;
 
-	document.getElementById('userName').innerHTML = row.childNodes[0].innerHTML + row.childNodes[1].innerHTML;
+	document.getElementById('userName').innerHTML = row.childNodes[0].innerHTML + ' ' + row.childNodes[1].innerHTML;
 
 	deleteInfoFromEditFields();
 }
@@ -487,4 +487,9 @@ function toggleEdit() {
 
 	document.getElementById('contactDeleteStatus').innerHTML = '';
 	deleteInfoFromEditFields();
+}
+
+function toggleAddContact() {
+	document.getElementById('createContactResult').innerHTML = '';
+	document.getElementById('closeAddContactModalButton').setAttribute('data-bs-dismiss', 'modal');
 }
