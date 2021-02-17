@@ -305,5 +305,5 @@ main > .container {
 }
 
 #card {
-    overflow-y: hidden;
+    overflow-y: auto;
 }
