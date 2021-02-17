@@ -253,7 +253,6 @@ function updateContact() {
 				console.log(row);
 				updateContactInfoInEditField(row);
 			}
-
 		};
 	} catch (err) {
 		document.getElementById('contactDeleteStatus').innerHTML = 'The contact update was unsuccessful';
@@ -449,7 +448,7 @@ function addContactToTable(jsonObject) {
 // this function reads the data of the selected json and those become the elements in the update form
 function manageContact(id) {
 	toggleEdit();
-	const row = document.getElementById(id).parentElement.parentElement;
+	const row = document.getElementById(id);
 	updateContactInfoInEditField(row);
 }
 
@@ -464,7 +463,6 @@ function updateContactInfoInEditField(row) {
 	document.getElementById('editedState').placeholder = row.childNodes[6].innerHTML;
 	document.getElementById('editedZip').placeholder = row.childNodes[7].innerHTML;
 
-	
 	document.getElementById('editedFirstName').innerHTML = '';
 	document.getElementById('editedLastName').innerHTML = '';
 	document.getElementById('editedEmail').innerHTML = '';
@@ -494,8 +492,9 @@ function searchTable(value, contactsArray) {
 function toggleEdit() {
 	const editor = document.getElementById('editor');
 
-	if (editor.style.display == 'none')
+	if (editor.style.display == 'none') {
 		editor.style.display = 'block';
-	else 
+	} else {
 		editor.style.display = 'none';
+	}
 }
