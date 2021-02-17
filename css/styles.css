@@ -61,6 +61,10 @@ body, html {
     background-color: var(--surface1, #E7FCFF);
 }
 
+body {
+    display:flex;
+}
+
 main > .container {
     padding: 80px 15px 0;
   }
