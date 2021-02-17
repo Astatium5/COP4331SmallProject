@@ -272,7 +272,7 @@ function deleteContact() {
 			if (this.readyState == 4 && this.status == 200) {
 				deleteContactsFromTable();
 				retrieveContacts();
-				updateContactInfoInEditField('button' + cid);
+				toggleEdit();
 				document.getElementById('contactDeleteStatus').innerHTML = 'Contact successfully deleted';
 			}
 		};
