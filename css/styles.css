@@ -1,5 +1,13 @@
 :root[color-mode="light"] {
     --dark: #4A4453;
+    --warning: #fb4454;
+    --blue: #6272a4;
+    --purple: #bd93f9;
+    --white: #E7FCFF;
+    --gray: #d7dbee;
+    --primary: #21c4dc;
+    --secondary: #cee3ed;
+    --gray-dark: #4c3257;
 }
 
 :root[color-mode="dark"] {
@@ -249,7 +257,7 @@ main > .container {
     cursor: pointer;
     text-align: center;
 }
-.picture{
+.picture {
     width: 106px;
     height: 106px;
     background-color: #999999;
@@ -262,13 +270,13 @@ main > .container {
     -webkit-transition: all 0.2s;
 }
 .picture:hover{
-    border-color: #2ca8ff;
+    border-color: --primary;
 }
 .content.ct-wizard-green .picture:hover{
     border-color: #05ae0e;
 }
 .content.ct-wizard-blue .picture:hover{
-    border-color: #3472f7;
+    border-color: --blue;
 }
 .content.ct-wizard-orange .picture:hover{
     border-color: #ff9500;
