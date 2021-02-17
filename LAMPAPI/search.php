@@ -17,12 +17,13 @@
         returnWithErrorContact($conn->connect_error);
     } else {
         if ($partial) {
+            echo 'test outside';
             $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
             . $inData["uid"] . " AND (firstName LIKE '%" 
             . $inData["search"] . "%' OR lastName LIKE '%" 
             . $inData["search"] . "%'));";
         } else {
-            echo 'test';
+            echo 'test inside';
             $firstAndLastNames = explode(" ", $inData["search"]);
             $firstName = $firstAndLastNames[0];
             $lastName = $firstAndLastNames[1];
