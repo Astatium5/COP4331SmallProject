@@ -307,6 +307,6 @@ main > .container {
     overflow-y: auto;
 }
 
-#tableHeader {
+.header-names {
     background-color: var(--primary);
 }
