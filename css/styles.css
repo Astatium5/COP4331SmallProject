@@ -53,7 +53,7 @@ a:hover {
 }
 
 body, html {
-    height: 100vh;
+    height: 100%;
     overflow-x: hidden;
     font-size: 1rem;
     line-height: 1.5;
@@ -99,7 +99,7 @@ main > .container {
 .btn-primary {
     background-color: #21c4dc;
     border-color: #21c4dc;
-
+    width: 100vw
 }
 
 .form-label-group {
@@ -131,8 +131,7 @@ main > .container {
     box-sizing: border-box;
 }
 
-.register
-{
+.register {
     width: 60%;
     margin: 0 auto;
 }
@@ -297,7 +296,6 @@ main > .container {
 
 .picture-src{
     width: 100%;
-    
 }
 
 #editor {
