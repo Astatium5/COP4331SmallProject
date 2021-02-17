@@ -1,0 +1,309 @@
+:root[color-mode="light"] {
+    --dark: #4A4453;
+    --warning: #fb4454;
+    --blue: #6272a4;
+    --purple: #bd93f9;
+    --white: #E7FCFF;
+    --gray: #d7dbee;
+    --primary: #21c4dc;
+    --secondary: #cee3ed;
+    --gray-dark: #4c3257;
+}
+
+:root[color-mode="dark"] {
+    background-color: #282a36;
+
+}
+
+:root[color-mode="light"] .light-hidden {
+    display: none;
+}
+
+:root[color-mode="dark"] .dark-hidden {
+    display: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+    float: right;
+}
+
+a {
+    display: block;
+    padding: 8px;
+    color: #6272a4;
+    text-decoration: none; 
+}
+
+a:link {
+    color: #6272a4;
+}
+
+a:active {
+    color: #bd93f9;
+}
+
+a:hover {
+    color: #B18BEF;
+}
+
+body, html {
+    height: 100%;
+    overflow-x: hidden;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #282a36;
+    background-color: var(--surface1, #E7FCFF);
+}
+
+main > .container {
+    padding: 80px 15px 0;
+  }
+
+.login, .image {
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+.bg-image {
+    background-image: url("../imgs/castle/118Z_2012.w017.n001.334B.p15.334.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 45% 50%;
+  }
+
+.login .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d7dbee;
+    margin-bottom: 4%;
+    box-sizing: border-box;
+    background-color: #F9FEFF;
+}
+
+.btn {
+    text-decoration: double;
+}
+
+.btn-warning {
+    background-color: #fb4454;
+    border-color: #fb4454;
+    color: #4c3257;
+}
+
+.btn-primary {
+    background-color: #21c4dc;
+    border-color: #21c4dc;
+    width: 100%
+}
+
+.form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+.form-label-group > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    line-height: 1;
+    color: #495057;
+    cursor: text;
+    /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: .2rem;
+    transition: all .1s ease-in-out;  
+  }
+  
+.login button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    cursor: text;
+    box-sizing: border-box;
+}
+
+.register {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.register {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d7dbee;
+    margin-bottom: 4%;
+    box-sizing: border-box;
+}
+
+/* Disallow access if there's no JavaScript */
+.no-js main {
+    display: none !important;
+  }
+
+.jumbotron {
+    padding: 3rem;
+    background-color: #cee3ed;
+}
+
+.potion {
+    transform: rotate(40deg) scaleX(-1);
+}
+
+#register {
+    display: none;
+}
+
+#login {
+    display: block;
+}
+
+#formToggle {
+    cursor: pointer;
+}
+
+.colorbutton {
+    fill: #cee3ed;
+}
+
+.light-hidden {
+    display: block;
+}
+
+.dark-hidden {
+    display: none;
+}
+
+.leftside{
+    height:100vh;
+    width:100%;
+    background: #cee3ed;
+}
+
+.rightside{
+    height:100vh;
+    width:100%;
+    background:#d7dbee;
+
+}
+
+.account-settings .user-profile {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.account-settings .user-profile .user-avatar {
+    margin: 0 0 1rem 0;
+}
+.account-settings .user-profile .user-avatar img {
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+}
+.account-settings .user-profile h6.user-email {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+.account-settings .about {
+    margin: 1rem 0 0 0;
+    font-size: 0.8rem;
+    text-align: center;
+}
+.card {
+    background:#d7dbee;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 2px;
+    border: 0;
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    border: 1px solid #d7dbee;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 1px;
+    font-size: .825rem;
+    background: #E7FCFF;
+    color: #6272a4;
+}
+
+.form-control[data-state="valid"] {
+    border-color: #21C4DC;
+  }
+
+.form-control[data-state="invalid"] {
+    border-color: #fb4454;
+  }
+
+  /*Profile Pic Start*/
+.picture-container{
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+.picture {
+    width: 106px;
+    height: 106px;
+    background-color: #999999;
+    border: 4px solid #CCCCCC;
+    color: #FFFFFF;
+    border-radius: 50%;
+    margin: 0px auto;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+.picture:hover{
+    border-color: --primary;
+}
+.content.ct-wizard-green .picture:hover{
+    border-color: #05ae0e;
+}
+.content.ct-wizard-blue .picture:hover{
+    border-color: --blue;
+}
+.content.ct-wizard-orange .picture:hover{
+    border-color: #ff9500;
+}
+.content.ct-wizard-red .picture:hover{
+    border-color: #ff3b30;
+}
+.picture input[type="file"] {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.picture-src{
+    width: 100%;
+}
+
+#editor {
+    display: none;
+}
+
+#card {
+    height: 100%;
+    overflow-y: auto;
+    max-height: 100vh;
+}
