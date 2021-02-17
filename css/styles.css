@@ -294,5 +294,8 @@ main > .container {
 
 #editor {
     display: none;
-    
+}
+
+#card {
+    overflow-y: hidden;
 }

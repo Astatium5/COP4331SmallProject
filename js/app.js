@@ -413,7 +413,7 @@ function addContactToTable(jsonObject) {
 	lastNameField.innerHTML = jsonObject.lastName;
 
 	manageButton.type = 'button';
-	manageButton.classList.add('btn', 'btn-link', 'btn-block');
+	manageButton.classList.add('btn', 'btn-link', 'btn-block', 'text-align-center');
 	manageButton.onclick = 'manageContact();';
 	manageButton.innerHTML = 'Manage';
 
