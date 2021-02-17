@@ -264,7 +264,7 @@ function updateContact() {
 
 // delete contact
 function deleteContact() {
-	const cid = document.getElementById('editedFirstName').dataset.indexNumber; // must be added from the data attribute from html
+	const cid = document.getElementById('editedFirstName').dataset.indexNumber;
 
 	const obj = new Object();
 	obj.cid = cid;
@@ -279,7 +279,8 @@ function deleteContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				deleteContactsFromTable(); 
+				deleteContactsFromTable();
+				retrieveContacts();
 				document.getElementById('contactDeleteStatus').innerHTML = 'contact successfully deleted';
 			}
 		};
@@ -400,12 +401,19 @@ function deleteContactsFromTable() {
 	}
 }
 
+// adds a single contact to the table
 function addContactToTable(jsonObject) {
 	const table = document.getElementById('userTable');
 
 	const row = document.createElement('tr');
 	const firstNameField = document.createElement('td');
 	const lastNameField = document.createElement('td');
+	const phoneField = document.createElement('td');
+	const emailField = document.createElement('td');
+	const addressField = document.createElement('td');
+	const cityField = document.createElement('td');
+	const stateField = document.createElement('td');
+	const zipField = document.createElement('td');
 	const buttonField = document.createElement('td');
 	const manageButton = document.createElement('button');
 
@@ -413,6 +421,17 @@ function addContactToTable(jsonObject) {
 
 	firstNameField.innerHTML = jsonObject.firstName;
 	lastNameField.innerHTML = jsonObject.lastName;
+	phoneField.innerHTML = jsonObject.phone;
+	emailField.innerHTML = jsonObject.email;
+	cityField.innerHTML = jsonObject.city;
+	stateField.innerHTML = jsonObject.state;
+	zipField.innerHTML = jsonObject.zip;
+
+	phoneField.setAttribute('aria-hidden', 'true');
+	emailField.setAttribute('aria-hidden', 'true');
+	cityField.setAttribute('aria-hidden', 'true');
+	stateField.setAttribute('aria-hidden', 'true');
+	zipField.setAttribute('aria-hidden', 'true');
 
 	manageButton.type = 'button';
 	manageButton.classList.add('btn', 'btn-link', 'btn-block', 'text-align-center');
@@ -422,6 +441,11 @@ function addContactToTable(jsonObject) {
 	buttonField.append(manageButton);
 	row.append(firstNameField);
 	row.append(lastNameField);
+	row.append(phoneField);
+	row.append(emailField);
+	row.append(cityField);
+	row.append(stateField);
+	row.append(zipField);
 	row.append(buttonField);
 	table.append(row);
 }
