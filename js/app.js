@@ -426,6 +426,10 @@ function addContactToTable(jsonObject) {
 
 // this function reads the data of the selected json and those become the elements in the update form
 function manageContact(selectedJSON) {
+
+	const editor = document.getElementById("editor");
+	(editor.style.display == "none" ? editor.style.display = "block" : editor.style.display = "none").fadeIn();
+
 	document.getElementById('editedFirstName').dataset.indexNumber = selectedJSON.cid;
 	document.getElementById('editedFirstName').placeholder = selectedJSON.firstName;
 	document.getElementById('editedLastName').placeholder = selectedJSON.lastName;
