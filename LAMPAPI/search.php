@@ -8,10 +8,10 @@
 
     $conn = db_connection();
     
-    if ($inData["search"] == trim($inData["search"]))
-        $partial = true;
-    else
+    if (preg_match('\w+\s\w+', $inData["search"])) 
         $partial = false;
+    else
+        $partial = true;
     
     if ($conn->connect_error) {
         returnWithErrorContact($conn->connect_error);
