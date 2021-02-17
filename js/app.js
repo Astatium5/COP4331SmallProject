@@ -248,11 +248,9 @@ function updateContact() {
 				document.getElementById('contactDeleteStatus').innerHTML = 'The contact was updated succesfully';
 				deleteContactsFromTable();
 				retrieveContacts();
-				console.log(getElements('button').length);
-	      const row = document.getElementById('button' + cid).parentElement.parentElement;
-				console.log(row);
-				updateContactInfoInEditField(row);
+				deleteInfoFromEditFields();
 			}
+
 		};
 	} catch (err) {
 		document.getElementById('contactDeleteStatus').innerHTML = 'The contact update was unsuccessful';
@@ -428,9 +426,8 @@ function addContactToTable(jsonObject) {
 	manageButton.type = 'button';
 	manageButton.classList.add('btn', 'btn-link', 'btn-block', 'text-align-center');
 	manageButton.id = 'button' + jsonObject.cid;
+	manageButton.setAttribute('onclick', 'manageContact(this.id);');
 	manageButton.innerHTML = 'Manage';
-
-	row.setAttribute('onclick', 'manageContact(this.id);');
 
 	buttonField.append(manageButton);
 	row.append(firstNameField);
@@ -448,11 +445,12 @@ function addContactToTable(jsonObject) {
 // this function reads the data of the selected json and those become the elements in the update form
 function manageContact(id) {
 	toggleEdit();
-	const row = document.getElementById(id);
-	updateContactInfoInEditField(row);
+	updateContactInfoInEditField(id);
 }
 
-function updateContactInfoInEditField(row) {
+function updateContactInfoInEditField(id) {
+	const row = document.getElementById(id);
+
 	document.getElementById('editedFirstName').dataset.indexNumber = row.dataset.indexNumber;
 	document.getElementById('editedFirstName').placeholder = row.childNodes[0].innerHTML;
 	document.getElementById('editedLastName').placeholder = row.childNodes[1].innerHTML;
@@ -463,6 +461,10 @@ function updateContactInfoInEditField(row) {
 	document.getElementById('editedState').placeholder = row.childNodes[6].innerHTML;
 	document.getElementById('editedZip').placeholder = row.childNodes[7].innerHTML;
 
+	deleteInfoFromEditFields();
+}
+
+function deleteInfoFromEditFields() {
 	document.getElementById('editedFirstName').innerHTML = '';
 	document.getElementById('editedLastName').innerHTML = '';
 	document.getElementById('editedEmail').innerHTML = '';
@@ -492,9 +494,8 @@ function searchTable(value, contactsArray) {
 function toggleEdit() {
 	const editor = document.getElementById('editor');
 
-	if (editor.style.display == 'none') {
+	if (editor.style.display == 'none')
 		editor.style.display = 'block';
-	} else {
+	else 
 		editor.style.display = 'none';
-	}
 }
