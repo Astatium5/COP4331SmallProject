@@ -320,6 +320,8 @@ function searchContact() {
 				if (jsonArray instanceof Object && jsonArray.error == "No records found") {
 					document.getElementById('contactSearchResult').innerHTML = 'No contacts found';
 					return;
+				} else if (jsonArray instanceof Object) {
+					document.getElementById('contactSearchResult').innerHTML = jsonArray.error;
 				}
 
 				document.getElementById('contactSearchResult').innerHTML = 'Contact(s) has been retrieved';
