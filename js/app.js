@@ -482,4 +482,6 @@ function toggleEdit() {
 		editor.style.display = 'block';
 	else 
 		editor.style.display = 'none';
+
+	deleteInfoFromEditFields();
 }
