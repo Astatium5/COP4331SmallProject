@@ -20,7 +20,6 @@ function doLogin() {
 	obj.password = hash;
 
 	const jsonPayload = JSON.stringify(obj);
-	console.log(jsonPayload);
 	const url = urlBase + '/login' + extension;
 
 	const xhr = new XMLHttpRequest();
@@ -28,9 +27,7 @@ function doLogin() {
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
-		console.log('test 31');
 		xhr.onreadystatechange = function() {
-			console.log(this.status);
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonObject = JSON.parse(xhr.responseText);
 
@@ -40,8 +37,6 @@ function doLogin() {
 					document.getElementById('loginResult').innerHTML = 'User/Password combination incorrect';
 					return;
 				}
-
-				console.log(jsonObject);
 
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
@@ -93,16 +88,13 @@ function doRegister() {
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/register' + extension;
-	console.log(jsonPayload);
 
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
-		console.log('test 105');
 		xhr.onreadystatechange = function() {
-			console.log(this.readyState + this.status);
 			if (this.readyState == 4 && this.status == 200) {
 				const jsonResponse = JSON.parse(xhr.responseText);
 
@@ -157,7 +149,7 @@ function readCookie() {
 		const contactsUserName = document.getElementById('contactsUserName');
 
 		contactsUserName.innerHTML = firstName + ' ' + lastName;
-		contactsUserName.classList.add("navlink");
+		contactsUserName.classList.add('navlink');
 		contactsUserName.dataset.indexNumber = userId;
 	}
 }
@@ -196,7 +188,6 @@ function addContact() {
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/create' + extension;
-	console.log(jsonPayload);
 
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
@@ -213,7 +204,7 @@ function addContact() {
 		};
 		xhr.send(jsonPayload);
 	} catch (err) {
-		document.getElementById('createContactResult').innerHTML = err.message;
+		document.getElementById('createContactResult').innerHTML = 'Error while creating the contact';
 	}
 }
 
@@ -228,9 +219,11 @@ function updateContact() {
 	const state = document.getElementById('editedState').value;
 	const zip = document.getElementById('editedZip').value;
 	const cid = document.getElementById('editedFirstName').dataset.indexNumber;
+	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
 
 	const obj = new Object();
 	obj.cid = cid;
+	obj.uid = uid;
 	obj.firstName = firstName;
 	obj.lastName = lastName;
 	obj.phone = phone;
@@ -248,15 +241,18 @@ function updateContact() {
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
+		xhr.send(jsonPayload);
+
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById('contactDeleteStatus').innerHTML = 'The contact was updated succesfully';
 				deleteContactsFromTable();
 				retrieveContacts();
+				console.log('button' + cid);
+				updateContactInfoInEditField('button' + cid);
 			}
-			
-			xhr.send(jsonPayload);
-		}
+
+		};
 	} catch (err) {
 		document.getElementById('contactDeleteStatus').innerHTML = 'The contact update was unsuccessful';
 	}
@@ -264,10 +260,10 @@ function updateContact() {
 
 // delete contact
 function deleteContact() {
-	// const cid; // must be added from the data attribute from html
+	const cid = document.getElementById('editedFirstName').dataset.indexNumber;
 
 	const obj = new Object();
-	// obj.cid = cid;
+	obj.cid = cid;
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/delete' + extension;
@@ -279,13 +275,15 @@ function deleteContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				// should have "updated successfully somewhere in html"
+				deleteContactsFromTable();
+				retrieveContacts();
+				toggleEdit();
+				document.getElementById('contactDeleteStatus').innerHTML = 'Contact successfully deleted';
 			}
 		};
-
 		xhr.send(jsonPayload);
 	} catch (err) {
-
+		document.getElementById('contactDeleteStatus').innerHTML = 'Try Again';
 	}
 }
 
@@ -296,13 +294,13 @@ function searchContact() {
 	document.getElementById('contactSearchResult').innerHTML = '';
 
 	const obj = new Object();
-	obj.search = srch;
+	obj.search = srch.trim();
 	obj.uid = uid;
 
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/search' + extension;
 
-	if (srch == "") {
+	if (srch == '') {
 		deleteContactsFromTable();
 		retrieveContacts();
 		return;
@@ -315,10 +313,9 @@ function searchContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				console.log(xhr.responseText);
 				const jsonArray = JSON.parse(xhr.responseText);
 
-				if (jsonArray instanceof Object && jsonArray.error == "No records found") {
+				if (jsonArray instanceof Object && jsonArray.error == 'No records found') {
 					document.getElementById('contactSearchResult').innerHTML = 'No contacts found';
 					return;
 				} else if (jsonArray instanceof Object) {
@@ -330,7 +327,6 @@ function searchContact() {
 				for (let i = 0; i < jsonArray.length; i++) {
 					addContactToTable(jsonArray[i]);
 				}
-
 			}
 		};
 
@@ -343,7 +339,7 @@ function searchContact() {
 // retrieves the contacts from the retrieve.php and puts them in a table
 function retrieveContacts() {
 	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
-	let contactID = 0;
+	const contactID = 0;
 
 	const obj = new Object();
 	obj.uid = uid;
@@ -355,13 +351,10 @@ function retrieveContacts() {
 	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
-	console.log('outside retrieve');
 	try {
-		xhr.onreadystatechange = function() {
+		 xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				const JSONArray = JSON.parse(xhr.responseText);
-
-				console.log('inside retrieve');
 
 				for (let i = 0; i < JSONArray.length; i++) {
 					addContactToTable(JSONArray[i]);
@@ -398,12 +391,19 @@ function deleteContactsFromTable() {
 	}
 }
 
+// adds a single contact to the table
 function addContactToTable(jsonObject) {
 	const table = document.getElementById('userTable');
 
 	const row = document.createElement('tr');
 	const firstNameField = document.createElement('td');
 	const lastNameField = document.createElement('td');
+	const phoneField = document.createElement('td');
+	const emailField = document.createElement('td');
+	const addressField = document.createElement('td');
+	const cityField = document.createElement('td');
+	const stateField = document.createElement('td');
+	const zipField = document.createElement('td');
 	const buttonField = document.createElement('td');
 	const manageButton = document.createElement('button');
 
@@ -411,34 +411,67 @@ function addContactToTable(jsonObject) {
 
 	firstNameField.innerHTML = jsonObject.firstName;
 	lastNameField.innerHTML = jsonObject.lastName;
+	phoneField.innerHTML = jsonObject.phone;
+	emailField.innerHTML = jsonObject.email;
+	cityField.innerHTML = jsonObject.city;
+	stateField.innerHTML = jsonObject.state;
+	zipField.innerHTML = jsonObject.zip;
+
+	emailField.setAttribute('hidden', 'true');
+	phoneField.setAttribute('hidden', 'true');
+	addressField.setAttribute('hidden', 'true');
+	cityField.setAttribute('hidden', 'true');
+	stateField.setAttribute('hidden', 'true');
+	zipField.setAttribute('hidden', 'true');
 
 	manageButton.type = 'button';
 	manageButton.classList.add('btn', 'btn-link', 'btn-block', 'text-align-center');
-	manageButton.onclick = 'manageContact();';
+	manageButton.id = 'button' + jsonObject.cid;
+	manageButton.setAttribute('onclick', 'manageContact(this.id);');
 	manageButton.innerHTML = 'Manage';
 
 	buttonField.append(manageButton);
 	row.append(firstNameField);
 	row.append(lastNameField);
+	row.append(emailField);
+	row.append(phoneField);
+	row.append(addressField);
+	row.append(cityField);
+	row.append(stateField);
+	row.append(zipField);
 	row.append(buttonField);
 	table.append(row);
 }
 
 // this function reads the data of the selected json and those become the elements in the update form
-function manageContact(selectedJSON) {
+function manageContact(id) {
+	toggleEdit();
+	updateContactInfoInEditField(id);
+}
 
-	const editor = document.getElementById("editor");
-	(editor.style.display == "none" ? editor.style.display = "block" : editor.style.display = "none").fadeIn();
+function updateContactInfoInEditField(id) {
+	console.log(document.getElementById(id));
+	const row = document.getElementById(id).parentElement.parentElement;
 
-	document.getElementById('editedFirstName').dataset.indexNumber = selectedJSON.cid;
-	document.getElementById('editedFirstName').placeholder = selectedJSON.firstName;
-	document.getElementById('editedLastName').placeholder = selectedJSON.lastName;
-	document.getElementById('editedEmail').placeholder = selectedJSON.email;
-	document.getElementById('editedPhone').placeholder = selectedJSON.phone;
-	document.getElementById('editedAddress').placeholder = selectedJSON.address;
-	document.getElementById('editedCity').placeholder = selectedJSON.city;
-	document.getElementById('editedState').placeholder = selectedJSON.state;
-	document.getElementById('editedZip').placeholder = selectedJSON.zip;
+	document.getElementById('editedFirstName').dataset.indexNumber = row.dataset.indexNumber;
+	document.getElementById('editedFirstName').placeholder = row.childNodes[0].innerHTML;
+	document.getElementById('editedLastName').placeholder = row.childNodes[1].innerHTML;
+	document.getElementById('editedEmail').placeholder = row.childNodes[2].innerHTML;
+	document.getElementById('editedPhone').placeholder = row.childNodes[3].innerHTML;
+	document.getElementById('editedAddress').placeholder = row.childNodes[4].innerHTML;
+	document.getElementById('editedCity').placeholder = row.childNodes[5].innerHTML;
+	document.getElementById('editedState').placeholder = row.childNodes[6].innerHTML;
+	document.getElementById('editedZip').placeholder = row.childNodes[7].innerHTML;
+
+	
+	document.getElementById('editedFirstName').innerHTML = '';
+	document.getElementById('editedLastName').innerHTML = '';
+	document.getElementById('editedEmail').innerHTML = '';
+	document.getElementById('editedPhone').innerHTML = '';
+	document.getElementById('editedAddress').innerHTML = '';
+	document.getElementById('editedCity').innerHTML = '';
+	document.getElementById('editedState').innerHTML = '';
+	document.getElementById('editedZip').innerHTML = '';
 }
 
 // is supposed to filter search the table of contacts
@@ -455,4 +488,13 @@ function searchTable(value, contactsArray) {
 	}
 
 	return filteredData;
+}
+
+function toggleEdit() {
+	const editor = document.getElementById('editor');
+
+	if (editor.style.display == 'none')
+		editor.style.display = 'block';
+	else 
+		editor.style.display = 'none';
 }

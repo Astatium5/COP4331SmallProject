@@ -70,6 +70,13 @@ main > .container {
     margin: 0 auto;
 }
 
+.col
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 .bg-image {
     background-image: url("../imgs/castle/118Z_2012.w017.n001.334B.p15.334.jpg");
     background-size: cover;
@@ -99,7 +106,7 @@ main > .container {
 .btn-primary {
     background-color: #21c4dc;
     border-color: #21c4dc;
-
+    width: 100%
 }
 
 .form-label-group {
@@ -131,8 +138,7 @@ main > .container {
     box-sizing: border-box;
 }
 
-.register
-{
+.register {
     width: 60%;
     margin: 0 auto;
 }
@@ -297,7 +303,6 @@ main > .container {
 
 .picture-src{
     width: 100%;
-    
 }
 
 #editor {

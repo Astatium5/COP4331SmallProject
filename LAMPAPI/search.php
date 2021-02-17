@@ -6,15 +6,32 @@
     $searchResults = array();
     $searchCount = 0;
 
-	$conn = db_connection();
+    $conn = db_connection();
+    
+    if (preg_match('\w+\s\w+', $inData["search"]) == 1) 
+        $partial = false;
+    else
+        $partial = true;
     
     if ($conn->connect_error) {
         returnWithErrorContact($conn->connect_error);
     } else {
-        $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
-        . $inData["uid"] . " AND (firstName LIKE '%" 
-        . $inData["search"] . "%' OR lastName LIKE '%" 
-        . $inData["search"] . "%'));";
+        if ($partial) {
+            echo 'test outside';
+            $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
+            . $inData["uid"] . " AND (firstName LIKE '%" 
+            . $inData["search"] . "%' OR lastName LIKE '%" 
+            . $inData["search"] . "%'));";
+        } else {
+            echo 'test inside';
+            $firstAndLastNames = explode(" ", $inData["search"]);
+            $firstName = $firstAndLastNames[0];
+            $lastName = $firstAndLastNames[1];
+            $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
+            . $inData["uid"] . " AND (firstName LIKE '%" 
+            . $firstName . "%' AND lastName LIKE '%" 
+            . $lastName . "%'));";
+        }
 
         $result = $conn->query($sql);
 
