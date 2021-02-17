@@ -8,7 +8,7 @@
 
     $conn = db_connection();
     
-    if (strpos($inData["search"], '') == false)
+    if ($inData["search"] == trim($inData["search"]))
         $partial = true;
     else
         $partial = false;
