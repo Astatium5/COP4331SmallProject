@@ -483,5 +483,6 @@ function toggleEdit() {
 	else 
 		editor.style.display = 'none';
 
+	document.getElementById('contactDeleteStatus').innerHTML = '';
 	deleteInfoFromEditFields();
 }
