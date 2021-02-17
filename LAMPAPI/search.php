@@ -27,10 +27,10 @@
             $lastName = $firstAndLastNames[1];
             $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
             . $inData["uid"] . " AND ((firstName LIKE '%" 
-            . $inData["firstName"] . "%' AND lastName LIKE '%" 
-            . $inData["lastName"] . "%') OR (lastName LIKE '%" 
-            . $inData["firstName"] . "%' AND firstName LIKE '%" 
-            . $inData["lastName"] . "%')));";
+            . $firstName . "%' AND lastName LIKE '%" 
+            . $lastName . "%') OR (lastName LIKE '%" 
+            . $firstName . "%' AND firstName LIKE '%" 
+            . $lastName . "%')));";
         }
 
         $result = $conn->query($sql);
