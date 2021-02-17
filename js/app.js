@@ -412,13 +412,14 @@ function addContactToTable(jsonObject) {
 	phoneField.innerHTML = jsonObject.phone;
 	emailField.innerHTML = jsonObject.email;
 	cityField.innerHTML = jsonObject.city;
+	addressField.innerHTML = jsonObject.address;
 	stateField.innerHTML = jsonObject.state;
 	zipField.innerHTML = jsonObject.zip;
 
-	emailField.setAttribute('hidden', 'true');
 	phoneField.setAttribute('hidden', 'true');
-	addressField.setAttribute('hidden', 'true');
+	emailField.setAttribute('hidden', 'true');
 	cityField.setAttribute('hidden', 'true');
+	addressField.setAttribute('hidden', 'true');
 	stateField.setAttribute('hidden', 'true');
 	zipField.setAttribute('hidden', 'true');
 
@@ -464,9 +465,9 @@ function updateContactInfoInEditField(id) {
 }
 
 function deleteInfoFromEditFields() {
-	document.getElementById('editedFirstName').innerHTML = '';
-	document.getElementById('editedLastName').innerHTML = '';
-	document.getElementById('editedEmail').innerHTML = '';
+	document.getElementById('editedFirstName').value = '';
+	document.getElementById('editedLastName').value = '';
+	document.getElementById('editedEmail').value = '';
 	document.getElementById('editedPhone').innerHTML = '';
 	document.getElementById('editedAddress').innerHTML = '';
 	document.getElementById('editedCity').innerHTML = '';
