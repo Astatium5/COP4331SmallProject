@@ -433,7 +433,7 @@ function addContactToTable(jsonObject) {
 	manageButton.type = 'button';
 	manageButton.classList.add('btn', 'btn-link', 'btn-block', 'text-align-center');
 	manageButton.id = 'button' + jsonObject.cid;
-	manageButton.setAttribute('click', 'manageContact(this.id)');
+	manageButton.setAttribute('onclick', 'manageContact(this.id);');
 	manageButton.innerHTML = 'Manage';
 
 	buttonField.append(manageButton);
