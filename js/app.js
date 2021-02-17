@@ -205,6 +205,7 @@ function addContact() {
 	try {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
+				deleteContactsInfoFromAddContact();
 				document.getElementById('createContactResult').innerHTML = 'A new contact has been added!';
 				deleteContactsFromTable();
 				retrieveContacts();
