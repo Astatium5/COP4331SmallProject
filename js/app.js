@@ -354,6 +354,7 @@ function retrieveContacts() {
 			if (this.readyState == 4 && this.status == 200) {
 				const JSONArray = JSON.parse(xhr.responseText);
 
+				createTableHeader();
 				for (let i = 0; i < JSONArray.length; i++) {
 					addContactToTable(JSONArray[i]);
 				}
