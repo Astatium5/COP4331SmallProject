@@ -429,8 +429,9 @@ function addContactToTable(jsonObject) {
 	manageButton.type = 'button';
 	manageButton.classList.add('btn', 'btn-link', 'btn-block', 'text-align-center');
 	manageButton.id = 'button' + jsonObject.cid;
-	manageButton.setAttribute('onclick', 'manageContact(this.id);');
 	manageButton.innerHTML = 'Manage';
+
+	row.setAttribute('onclick', 'manageContact(this.id);');
 
 	buttonField.append(manageButton);
 	row.append(firstNameField);
@@ -483,7 +484,7 @@ function searchTable(value, contactsArray) {
 		const first = contactsArray[i].firstName.toLowerCase();
 
 		if (first.includes(value)) {
-	  filteredData.push(contactsArray[i]);
+	  	filteredData.push(contactsArray[i]);
 		}
 	}
 
