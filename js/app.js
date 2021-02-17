@@ -440,7 +440,9 @@ function addContactToTable(jsonObject) {
 // this function reads the data of the selected json and those become the elements in the update form
 function manageContact(id) {
 	const editor = document.getElementById('editor');
+	console.log('before: ' + editor.style.display);
 	editor.style.display == 'none' ? editor.style.display = 'block' : editor.style.diplay = 'none';
+	console.log('after: ' + editor.style.display);
 
 	const row = document.getElementById(id).parentElement.parentElement;
 
