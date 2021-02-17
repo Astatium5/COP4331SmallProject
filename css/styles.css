@@ -99,7 +99,7 @@ main > .container {
 .btn-primary {
     background-color: #21c4dc;
     border-color: #21c4dc;
-    width: 50vw
+    width: 100%
 }
 
 .form-label-group {
