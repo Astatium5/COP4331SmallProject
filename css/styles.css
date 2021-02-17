@@ -307,10 +307,10 @@ main > .container {
     overflow-y: auto;
 }
 
-#headerFirstName:hover {
+td#headerFirstName:hover {
     color: #B18BEF;
 }
 
-#headerLastName:hover {
+td#headerLastName:hover {
     color: #B18BEF;
 }
