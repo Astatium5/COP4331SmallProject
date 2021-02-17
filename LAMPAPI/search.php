@@ -3,15 +3,12 @@
     
     $inData = getRequestInfo();
 
+    $uid = $inData["uid"];
+    $search = $inData["search"];
     $searchResults = array();
     $searchCount = 0;
 
     $conn = db_connection();
-    
-    if (preg_match('\w+\s\w+', $inData["search"]) == 1) 
-        $partial = false;
-    else
-        $partial = true;
     
     if ($conn->connect_error) {
         returnWithErrorContact($conn->connect_error);
@@ -19,19 +16,17 @@
         if ($partial) {
             echo 'test outside';
             $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
-            . $inData["uid"] . " AND (firstName LIKE '%" 
-            . $inData["search"] . "%' OR lastName LIKE '%" 
-            . $inData["search"] . "%'));";
-        } else {
-            echo 'test inside';
-            $firstAndLastNames = explode(" ", $inData["search"]);
-            $firstName = $firstAndLastNames[0];
-            $lastName = $firstAndLastNames[1];
-            $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
-            . $inData["uid"] . " AND (firstName LIKE '%" 
-            . $firstName . "%' AND lastName LIKE '%" 
-            . $lastName . "%'));";
-        }
+            . $uid . " AND (firstName LIKE '%" 
+            . $search . "%' OR lastName LIKE '%" 
+            . $search . "%' OR phone LIKE '%"
+            . $search . "%' OR email LIKE '%"
+            . $search . "%' OR address LIKE '%"
+            . $search . "%' OR city LIKE '%"
+            . $search . "%' OR state LIKE '%"
+            . $search . "%' OR zip LIKE '%"
+            . $search . "%' OR concat(firstName, ' ', lastName) '%"
+            . $search . "%' OR concat(lastName, ' ', firstName) '%"
+            . $search . "%'));";
 
         $result = $conn->query($sql);
 
