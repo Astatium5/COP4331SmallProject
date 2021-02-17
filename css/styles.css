@@ -70,13 +70,6 @@ main > .container {
     margin: 0 auto;
 }
 
-.col
-{
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
 .bg-image {
     background-image: url("../imgs/castle/118Z_2012.w017.n001.334B.p15.334.jpg");
     background-size: cover;
