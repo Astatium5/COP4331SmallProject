@@ -441,7 +441,13 @@ function addContactToTable(jsonObject) {
 function manageContact(id) {
 	const editor = document.getElementById('editor');
 	console.log('before: ' + editor.style.display);
-	(editor.style.display == 'none' ? editor.style.display = 'block' : editor.style.diplay = 'none');
+	// editor.style.display == 'none' ? editor.style.display = 'block' : editor.style.diplay = 'none';
+
+	if (editor.style.display == 'none')
+		editor.style.display = 'block';
+	else
+		editor.style.display = 'none';
+		
 	console.log('after: ' + editor.style.display);
 
 	const row = document.getElementById(id).parentElement.parentElement;
