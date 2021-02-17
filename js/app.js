@@ -248,8 +248,9 @@ function updateContact() {
 				document.getElementById('contactDeleteStatus').innerHTML = 'The contact was updated succesfully';
 				deleteContactsFromTable();
 				retrieveContacts();
-				console.log('button' + cid);
-				updateContactInfoInEditField('button' + cid);
+	      const row = document.getElementById('button' + cid).parentElement.parentElement;
+				console.log(row);
+				updateContactInfoInEditField(row);
 			}
 
 		};
@@ -446,13 +447,11 @@ function addContactToTable(jsonObject) {
 // this function reads the data of the selected json and those become the elements in the update form
 function manageContact(id) {
 	toggleEdit();
-	updateContactInfoInEditField(id);
+	const row = document.getElementById(id).parentElement.parentElement;
+	updateContactInfoInEditField(row);
 }
 
-function updateContactInfoInEditField(id) {
-	console.log(document.getElementById(id));
-	const row = document.getElementById(id).parentElement.parentElement;
-
+function updateContactInfoInEditField(row) {
 	document.getElementById('editedFirstName').dataset.indexNumber = row.dataset.indexNumber;
 	document.getElementById('editedFirstName').placeholder = row.childNodes[0].innerHTML;
 	document.getElementById('editedLastName').placeholder = row.childNodes[1].innerHTML;
