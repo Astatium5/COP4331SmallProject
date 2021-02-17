@@ -291,3 +291,8 @@ main > .container {
     width: 100%;
     
 }
+
+#editor {
+    display: none;
+    
+}
