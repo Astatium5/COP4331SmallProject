@@ -491,5 +491,5 @@ function toggleEdit() {
 
 function toggleAddContact() {
 	document.getElementById('createContactResult').innerHTML = '';
-	document.getElementById('closeAddContactModalButton').setAttribute('data-bs-dismiss', 'modal');
+	document.getElementById('closeAddContactModalButton').setAttribute('data-dismiss', 'modal');
 }
