@@ -204,7 +204,7 @@ function addContact() {
 		};
 		xhr.send(jsonPayload);
 	} catch (err) {
-		document.getElementById('createContactResult').innerHTML = err.message;
+		document.getElementById('createContactResult').innerHTML = 'Error while creating the contact';
 	}
 }
 
@@ -242,6 +242,7 @@ function updateContact() {
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
+		console.log('test12');
 		xhr.onreadystatechange = function() {
 			console.log(this.readyState + this.status);
 			if (this.readyState == 4 && this.status == 200) {
