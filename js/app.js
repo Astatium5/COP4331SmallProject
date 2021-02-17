@@ -219,9 +219,11 @@ function updateContact() {
 	const state = document.getElementById('editedState').value;
 	const zip = document.getElementById('editedZip').value;
 	const cid = document.getElementById('editedFirstName').dataset.indexNumber;
+	const uid = document.getElementById('contactsUserName').dataset.indexNumber;
 
 	const obj = new Object();
 	obj.cid = cid;
+	obj.uid = uid;
 	obj.firstName = firstName;
 	obj.lastName = lastName;
 	obj.phone = phone;
