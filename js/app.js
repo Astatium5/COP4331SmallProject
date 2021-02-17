@@ -445,9 +445,11 @@ function manageContact(id) {
 
 	if (editor.style.display == 'none')
 		editor.style.display = 'block';
-	else
+	else {
+		console.log('here');
 		editor.style.display = 'none';
-		
+	}
+
 	console.log('after: ' + editor.style.display);
 
 	const row = document.getElementById(id).parentElement.parentElement;
