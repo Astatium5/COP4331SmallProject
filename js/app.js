@@ -424,12 +424,12 @@ function addContactToTable(jsonObject) {
 	stateField.innerHTML = jsonObject.state;
 	zipField.innerHTML = jsonObject.zip;
 
-	emailField.setAttribute('aria-hidden', 'true');
-	phoneField.setAttribute('aria-hidden', 'true');
-	addressField.setAttribute('aria-hidden', 'true');
-	cityField.setAttribute('aria-hidden', 'true');
-	stateField.setAttribute('aria-hidden', 'true');
-	zipField.setAttribute('aria-hidden', 'true');
+	emailField.setAttribute('hidden', 'true');
+	phoneField.setAttribute('hidden', 'true');
+	addressField.setAttribute('hidden', 'true');
+	cityField.setAttribute('hidden', 'true');
+	stateField.setAttribute('hidden', 'true');
+	zipField.setAttribute('hidden', 'true');
 
 	manageButton.type = 'button';
 	manageButton.classList.add('btn', 'btn-link', 'btn-block', 'text-align-center');
