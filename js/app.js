@@ -236,14 +236,13 @@ function updateContact() {
 	const jsonPayload = JSON.stringify(obj);
 	const url = urlBase + '/update' + extension;
 
-	console.log(uid + ' ' + cid);
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', url, true);
 	xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 
 	try {
-		console.log(xhr.state + '' + xhr.status);
 		xhr.send(jsonPayload);
+
 		xhr.onreadystatechange = function() {
 			console.log(this.readyState + this.status);
 			if (this.readyState == 4 && this.status == 200) {
@@ -254,8 +253,6 @@ function updateContact() {
 				updateContactInfoInEditField('button' + cid);
 			}
 
-			console.log(xhr.state + '' + xhr.status);
-			console.log(xhr.state + '' + xhr.status);
 		};
 	} catch (err) {
 		document.getElementById('contactDeleteStatus').innerHTML = 'The contact update was unsuccessful';
