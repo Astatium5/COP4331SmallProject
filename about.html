@@ -21,18 +21,40 @@
         </script>
     </header>
 
-    <div container>
-        <div clasa="row">
-            <div class="col-6" style="background-color: #d7dbee;">
-                <h1 class="display-3">ABOUT MANA</h1>
-                <p>
-                    We know how important it is to 
-                    stay up to date with the connections that matter the most to you. 
-                    That’s why we created Mana, a contact manager that makes it easy to 
-                    keep the magic of friendship.
-                </p>
+    <div class="container p-1 p-sm-3">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="display-3">About Us</h2>
             </div>
         </div>
     </div>
+
+    <section class="about-website">
+        <div class="container p-1 p-sm-3">
+            <div class="row">
+                <div class="col-12">
+                    <h2>About MANA</h2>
+                </div>
+            </div>
+            <div class="col-9">
+                <p>
+                    We know how important it is to stay up to date with the connections 
+                    that matter the most to you. 
+                    That’s why we created Mana, a contact
+                     manager that makes it easy 
+                     to keep the magic of friendship!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer mt-auto py-3 bg-dark">
+        <div id="foot-placement"></div>
+        <script>
+            $(function(){
+                $('#foot-placement').load("nav.html footer");
+            });
+        </script>
+    </footer>
 </body>
 </html>
