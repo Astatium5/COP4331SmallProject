@@ -248,7 +248,6 @@ function updateContact() {
 				document.getElementById('contactDeleteStatus').innerHTML = 'The contact was updated succesfully';
 				deleteContactsFromTable();
 				retrieveContacts();
-				deleteInfoFromEditFields();
 			}
 
 		};
@@ -450,6 +449,7 @@ function manageContact(id) {
 
 function updateContactInfoInEditField(id) {
 	const row = document.getElementById(id).parentElement.parentElement;
+	console.log(row);
 
 	document.getElementById('editedFirstName').dataset.indexNumber = row.dataset.indexNumber;
 	document.getElementById('editedFirstName').placeholder = row.childNodes[0].innerHTML;
