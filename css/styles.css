@@ -303,6 +303,6 @@ main > .container {
 }
 
 #card {
-    height: max-content;
+    height: 75vh;
     overflow-y: auto;
 }
