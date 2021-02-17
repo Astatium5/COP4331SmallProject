@@ -6,15 +6,32 @@
     $searchResults = array();
     $searchCount = 0;
 
-	$conn = db_connection();
+    $conn = db_connection();
+    
+    if (strpos($inData["search"], '') == false)
+        $partial = true;
+    else
+        $partial = false;
     
     if ($conn->connect_error) {
         returnWithErrorContact($conn->connect_error);
     } else {
-        $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
-        . $inData["uid"] . " AND (firstName LIKE '%" 
-        . $inData["search"] . "%' OR lastName LIKE '%" 
-        . $inData["search"] . "%'));";
+        if ($partial) {
+            $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
+            . $inData["uid"] . " AND (firstName LIKE '%" 
+            . $inData["search"] . "%' OR lastName LIKE '%" 
+            . $inData["search"] . "%'));";
+        } else {
+            $firstAndLastNames = explode(" ", $inData["search"]);
+            $firstName = $firstAndLastNames[0];
+            $lastName = $firstAndLastNames[1];
+            $sql = "SELECT * FROM CONTACTS WHERE (uid=" 
+            . $inData["uid"] . " AND ((firstName LIKE '%" 
+            . $inData["firstName"] . "%' AND lastName LIKE '%" 
+            . $inData["lastName"] . "%') OR (lastName LIKE '%" 
+            . $inData["firstName"] . "%' AND firstName LIKE '%" 
+            . $inData["lastName"] . "%')));";
+        }
 
         $result = $conn->query($sql);
 

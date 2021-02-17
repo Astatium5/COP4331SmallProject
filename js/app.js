@@ -294,7 +294,7 @@ function searchContact() {
 	document.getElementById('contactSearchResult').innerHTML = '';
 
 	const obj = new Object();
-	obj.search = srch;
+	obj.search = srch.trim();
 	obj.uid = uid;
 
 	const jsonPayload = JSON.stringify(obj);
