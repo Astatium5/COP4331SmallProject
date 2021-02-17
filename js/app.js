@@ -377,6 +377,17 @@ function retrieveContacts() {
 	}
 }
 
+function deleteContactsInfoFromAddContact() {
+	document.getElementById('contactAddFirstName').innerHTML = '';
+	document.getElementById('contactAddLastName').innerHTML = '';
+	document.getElementById('contactAddPhone').innerHTML = '';
+	document.getElementById('contactAddEmail').innerHTML = '';
+	document.getElementById('contactAddAddress').innerHTML = '';
+	document.getElementById('contactAddCity').innerHTML = '';
+	document.getElementById('contactAddState').innerHTML = '';
+	document.getElementById('contactAddZip').innerHTML = '';
+}
+
 // deletes contacts from the table when required
 function deleteContactsFromTable() {
 	const parent = document.getElementById('userTable');
