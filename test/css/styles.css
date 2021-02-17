@@ -305,4 +305,5 @@ main > .container {
 #card {
     height: max-content;
     overflow-y: auto;
+    max-height: 100vh;
 }
