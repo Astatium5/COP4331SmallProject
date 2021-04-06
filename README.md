@@ -1,7 +1,7 @@
 
-# Mana Contact Manager
+## Mana Contact Manager
 
-A contact management website with (insert features here).
+A contact management website built with the LAMP stack.
 
 COP 4331 Small Project
 
