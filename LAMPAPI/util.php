@@ -11,19 +11,19 @@
 	}
 	
 	// sends the info about a user in a JSON package to front end
-  function returnWithInfoUser($uid, $login, $password, $firstName, $lastName, $error) {
+ 	function returnWithInfoUser($uid, $login, $password, $firstName, $lastName, $error) {
 		$obj = createObjectUser($uid, $login, $password, $firstName, $lastName, $error);
 
 		$json = json_encode($obj);
-    sendResultInfoAsJSON($json);
+    		sendResultInfoAsJSON($json);
 	}
 	
 	// sends the info about a contact in a JSON package to front end
 	function returnWithInfoContact($uid, $cid, $firstName, $lastName, $phone, $email,
-								   							 $address, $city, $state, $zip, $error) {
+				       $address, $city, $state, $zip, $error) {
 
 		$obj = createObjectContact($uid, $cid, $firstName, $lastName, $phone, $email,
-															 $address, $city, $state, $zip, $error);
+					   $address, $city, $state, $zip, $error);
 
 		$json = json_encode($obj);
 		sendResultInfoAsJson($json);
@@ -43,7 +43,7 @@
 
 	// creates an object with info about a contact
 	function createObjectContact($uid, $cid, $firstName, $lastName, $phone, $email,
-							   						 	 $address, $city, $state, $zip, $error) {
+				     $address, $city, $state, $zip, $error) {
 		$obj->uid = $uid;
 		$obj->cid = $cid;
 		$obj->firstName = $firstName;
@@ -83,7 +83,7 @@
 	}
 
 	function checkContact($firstName, $lastName, $phone, $email, $address,
-												$city, $state, $zip) {
+			      $city, $state, $zip) {
 		if (strlen($firstName) >= 30 || $firstName == NULL)
 			returnWithErrorContact("The contact first name is invalid.");
 		else if (strlen($lastName) >= 30 || $lastName == NULL)
